@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Harsha M T - Interactive 3D Anatomy Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(180deg, #071426, #0A1E3D);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #5EEAD4, #14B8A6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .demo-notice {
+      background: rgba(13,148,136,0.1);
+      border: 1px solid rgba(13,148,136,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .demo-notice h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #5EEAD4;
+      margin-bottom: 8px;
+    }
+    
+    .demo-notice p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    
+    .integration-note {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 40px;
+    }
+    
+    .integration-note h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    
+    .integration-note ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .integration-note li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    
+    .integration-note li:last-child {
+      border-bottom: none;
+    }
+    
+    .integration-note code {
+      background: rgba(13,148,136,0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #5EEAD4;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(13,148,136,0.3);
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .feature-card .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    
+    .feature-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    
+    .feature-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🫀 Interactive 3D Anatomy Viewer</h1>
+      <p>Explore the cardiovascular system with clickable hotspots and animated procedure explanations</p>
+    </div>
+
+    <div class="demo-notice">
+      <h2>✨ Component Successfully Created!</h2>
+      <p>The 3D Anatomy Viewer has been created as a React component and integrated into your main application. 
+      The component is now available in <code>3d-anatomy-viewer.jsx</code> and has been added to your website.</p>
+    </div>
+
+    <div class="integration-note">
+      <h3>📋 What's Been Added</h3>
+      <ul>
+        <li>✅ <strong>3D Body Model:</strong> Interactive drag-to-rotate cardiovascular system visualization</li>
+        <li>✅ <strong>6 Clickable Hotspots:</strong> Varicose Veins, Thyroid Nodules, Uterine Fibroids, Peripheral Vascular Disease, Varicocele, and Enlarged Prostate</li>
+        <li>✅ <strong>Animated Procedures:</strong> Step-by-step visual explanations with real medical illustrations</li>
+        <li>✅ <strong>SVG Medical Illustrations:</strong> Custom animations for laser ablation, embolisation, angioplasty, and RFA procedures</li>
+        <li>✅ <strong>Responsive Design:</strong> Works seamlessly on desktop and mobile devices</li>
+        <li>✅ <strong>Auto-rotation:</strong> The 3D model rotates automatically when not being interacted with</li>
+      </ul>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🦵</div>
+        <h4>Varicose Veins</h4>
+        <p>EVLA laser ablation procedure with 5-step animated explanation showing catheter insertion and vein sealing</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🦋</div>
+        <h4>Thyroid Nodules</h4>
+        <p>Radiofrequency ablation visualization showing needle insertion and tissue destruction without surgery</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🩺</div>
+        <h4>Uterine Fibroids</h4>
+        <p>Embolisation procedure animation demonstrating microsphere delivery and fibroid shrinkage</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🫀</div>
+        <h4>Peripheral Vascular Disease</h4>
+        <p>Angioplasty and stenting animation showing balloon inflation and artery restoration</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">👶</div>
+        <h4>Varicocele</h4>
+        <p>Embolisation procedure with coil deployment visualization for fertility improvement</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">🔬</div>
+        <h4>Enlarged Prostate</h4>
+        <p>Prostate artery embolisation showing microsphere delivery and prostate shrinkage</p>
+      </div>
+    </div>
+
+    <div class="integration-note" style="margin-top: 60px;">
+      <h3>🚀 How to Use in Your Application</h3>
+      <ul>
+        <li>The component has been automatically imported into <code>dr-harsha-final.jsx</code></li>
+        <li>It appears on the main page after the Services section</li>
+        <li>Users can drag to rotate the 3D body model</li>
+        <li>Clicking on any pulsing hotspot reveals detailed procedure information</li>
+        <li>The "Play Procedure Animation" button shows step-by-step animated explanations</li>
+        <li>Each procedure includes real medical illustrations with SVG animations</li>
+        <li>The viewer is fully responsive and works on all devices</li>
+      </ul>
+    </div>
+
+    <div class="integration-note" style="margin-top: 40px; background: rgba(13,148,136,0.1); border-color: rgba(13,148,136,0.3);">
+      <h3>💡 Key Features</h3>
+      <ul>
+        <li><strong>Interactive 3D Rotation:</strong> Drag with mouse to rotate the body model in any direction</li>
+        <li><strong>Auto-rotation:</strong> Model rotates automatically when idle for better visual appeal</li>
+        <li><strong>Pulsing Hotspots:</strong> Animated rings draw attention to clickable treatment areas</li>
+        <li><strong>Procedure Animations:</strong> Real-time step-by-step visual explanations of each treatment</li>
+        <li><strong>Medical Illustrations:</strong> Custom SVG animations showing laser ablation, embolisation, angioplasty, and RFA</li>
+        <li><strong>Responsive Panels:</strong> Side panel shows procedure details or instructions based on interaction</li>
+        <li><strong>Color-coded Conditions:</strong> Each condition has a unique color for easy identification</li>
+        <li><strong>Educational Content:</strong> Detailed step descriptions for each minimally invasive procedure</li>
+      </ul>
+    </div>
+
+    <div class="demo-notice" style="margin-top: 60px; background: rgba(94,234,212,0.05); border-color: rgba(94,234,212,0.2);">
+      <h2>✅ Integration Complete</h2>
+      <p>The 3D Anatomy Viewer is now live on your website! Visit the main page and scroll to the "Interactive Anatomy" section to see it in action. 
+      Users can explore Dr. Harsha's treatments through an immersive, educational 3D experience.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,348 @@
+/* ─── DOCTOR INFORMATION ─── */
+export const DOC = {
+    name: "Dr. Harsha M T",
+    title: "Consultant Vascular & Interventional Radiologist",
+    tagline: "Minimally Invasive. Maximally Effective.",
+    sub: "Pinhole procedures that replace complex surgeries — so you heal faster, with no scars and no stitches.",
+    quals: "MBBS • MD (PGIMER) • FVIR (AIIMS) • EBIR • EDiR • DICRI",
+    exp: "8+",
+    procs: "1000+",
+    certs: "6",
+    phone: "+91 98765 43210",
+    wa: "919876543210",
+    email: "dr.harsha.mt@email.com",
+    loc: "SPARSH Hospital, Infantry Road & Yelahanka, Bengaluru",
+    time: "Mon – Sat, 10:00 AM – 7:00 PM",
+    reg: "KMC 120648",
+    photo: "https://www.sparshhospital.com/wp-content/uploads/2024/05/Dr.-Harsha-M-T.jpg",
+};
+
+/* ─── IMAGES ─── */
+export const IMG = {
+    hero: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=1400&h=900&fit=crop",
+    varicose: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop",
+    fibroid: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
+    thyroid: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=400&fit=crop",
+    vascular: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&h=400&fit=crop",
+    liver: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
+    dialysis: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&h=400&fit=crop",
+    prostate: "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&h=400&fit=crop",
+    varicocele: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=400&fit=crop",
+    about: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800&h=600&fit=crop",
+    ir: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&h=500&fit=crop",
+    blog1: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=800&h=500&fit=crop",
+    blog2: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=800&h=500&fit=crop",
+    blog3: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=500&fit=crop",
+    blog4: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop",
+    blog5: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&h=500&fit=crop",
+    blog6: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=500&fit=crop",
+    sparsh: "https://www.sparshhospital.com/wp-content/uploads/2025/06/new-logo.svg",
+    gallery1: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop",
+    gallery2: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=400&h=300&fit=crop",
+    gallery3: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop",
+    gallery4: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&h=300&fit=crop",
+};
+
+/* ─── NAVIGATION ─── */
+export const NAV = [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Why Choose", href: "#why" },
+    { label: "Blog", href: "#blog" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
+];
+
+/* ─── CREDENTIALS ─── */
+export const CREDS = [
+    { inst: "PGIMER", desc: "MD Radiodiagnosis", loc: "Chandigarh" },
+    { inst: "AIIMS", desc: "Fellowship VIR", loc: "Rishikesh" },
+    { inst: "EBIR", desc: "European Board IR", loc: "Certified" },
+    { inst: "EDiR", desc: "European Diploma", loc: "Radiology" },
+];
+
+/* ─── SERVICES ─── */
+export const SERVICES = [
+    {
+        icon: "🦵",
+        t: "Varicose Veins",
+        sub: "EVLA / Venaseal",
+        img: IMG.varicose,
+        hl: true,
+        d: "Walk-in, walk-out laser treatment for painful, bulging leg veins. No surgery, no bed rest — most patients resume normal activities the next day.",
+    },
+    {
+        icon: "🩺",
+        t: "Uterine Fibroid Embolisation",
+        sub: "UFE",
+        img: IMG.fibroid,
+        hl: false,
+        d: "A surgery-free solution for fibroids. Through a tiny wrist puncture, blood supply to the fibroid is blocked, causing it to shrink naturally.",
+    },
+    {
+        icon: "🦋",
+        t: "Thyroid Nodule Ablation",
+        sub: "Radiofrequency Ablation",
+        img: IMG.thyroid,
+        hl: false,
+        d: "Shrink thyroid nodules without surgery or scars. A needle-based procedure done under local anaesthesia with no visible marks.",
+    },
+    {
+        icon: "👶",
+        t: "Varicocele Embolisation",
+        sub: "Non-surgical",
+        img: IMG.varicocele,
+        hl: false,
+        d: "A fertility-preserving treatment for varicocele. Done through a pinhole in the wrist — no incision in the groin, faster recovery.",
+    },
+    {
+        icon: "🫀",
+        t: "Peripheral Vascular Disease",
+        sub: "Angioplasty & Stenting",
+        img: IMG.vascular,
+        hl: false,
+        d: "Restore blood flow in blocked leg arteries through minimally invasive balloon and stent procedures, avoiding bypass surgery.",
+    },
+    {
+        icon: "🔬",
+        t: "Prostate Artery Embolisation",
+        sub: "PAE",
+        img: IMG.prostate,
+        hl: false,
+        d: "A non-surgical option for enlarged prostate (BPH). Shrinks the prostate through a pinhole — no catheter, no hospital stay.",
+    },
+    {
+        icon: "💉",
+        t: "Dialysis Access Care",
+        sub: "Fistuloplasty & Permacath",
+        img: IMG.dialysis,
+        hl: false,
+        d: "Keep your dialysis lifeline working. Minimally invasive procedures to maintain and restore fistula and catheter function.",
+    },
+    {
+        icon: "🫁",
+        t: "Liver & Cancer Interventions",
+        sub: "TACE / TARE",
+        img: IMG.liver,
+        hl: false,
+        d: "Targeted tumour treatment delivered directly to cancer cells through blood vessels, minimising damage to healthy tissue.",
+    },
+];
+
+/* ─── LOCATIONS ─── */
+export const LOCATIONS = [
+    {
+        name: "SPARSH Hospital, Infantry Road",
+        address: "No. 29, Infantry Road, Tasker Town, Bengaluru - 560001",
+        phone: "080 4969 4969",
+        primary: true,
+        mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8252551!2d77.6069!3d12.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU5JzAwLjAiTiA3N8KwMzYnMjUuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin",
+    },
+    {
+        name: "SPARSH Hospital, Yelahanka",
+        address: "No. 146/1, Bellary Road, Yelahanka, Bengaluru - 560064",
+        phone: "080 4969 4969",
+        primary: false,
+        mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5!2d77.5969!3d13.1033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA2JzEyLjAiTiA3N8KwMzUnNDguMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin",
+    },
+];
+
+/* ─── TESTIMONIALS ─── */
+export const TESTIMONIALS = [
+    {
+        name: "Ramesh K.",
+        age: 58,
+        condition: "Varicose Veins",
+        rating: 5,
+        text: "I had been suffering from painful varicose veins for 5 years. Dr. Harsha explained the laser procedure clearly and did it in just 30 minutes. I walked out of the hospital the same day. Highly recommend!",
+    },
+    {
+        name: "Priya S.",
+        age: 42,
+        condition: "Uterine Fibroids",
+        rating: 5,
+        text: "I was told I needed a hysterectomy. Then I found Dr. Harsha who suggested UFE. The procedure saved my uterus and my heavy bleeding stopped within weeks. I am so grateful.",
+    },
+    {
+        name: "Vikram M.",
+        age: 29,
+        condition: "Varicocele",
+        rating: 5,
+        text: "We were struggling with fertility for 2 years. After varicocele embolisation by Dr. Harsha, my sperm count improved significantly in 3 months. The procedure was painless — just a small puncture on my wrist.",
+    },
+    {
+        name: "Suresh N.",
+        age: 65,
+        condition: "Enlarged Prostate",
+        rating: 5,
+        text: "Waking up 5-6 times at night was ruining my life. After PAE, I sleep through the night. No surgery, no catheter. Dr. Harsha is extremely skilled and patient in explaining everything.",
+    },
+    {
+        name: "Lakshmi R.",
+        age: 48,
+        condition: "Thyroid Nodule",
+        rating: 5,
+        text: "I had a visible lump in my neck that was growing. Dr. Harsha treated it with RFA — no surgery, no scar. The swelling has reduced significantly in just 3 months. Thank you, doctor!",
+    },
+    {
+        name: "Anil P.",
+        age: 52,
+        condition: "Leg Artery Blockage",
+        rating: 4,
+        text: "I could barely walk 100 meters without severe calf pain. Dr. Harsha performed angioplasty through my wrist. Now I walk 2 km daily without any pain. Life-changing procedure.",
+    },
+];
+
+/* ─── FAQS ─── */
+export const FAQS = [
+    {
+        q: "What is Interventional Radiology?",
+        a: "Interventional Radiology (IR) is a medical specialty that uses advanced imaging (X-ray, ultrasound, CT) to guide minimally invasive treatments. Instead of open surgery, IR doctors treat conditions through pinhole-sized punctures — meaning less pain, faster recovery, and no scars.",
+    },
+    {
+        q: "Is the procedure painful?",
+        a: "Most IR procedures are done under local anaesthesia with mild sedation. Patients typically feel minimal discomfort — far less than traditional surgery. Many patients describe it as similar to getting a blood test.",
+    },
+    {
+        q: "How long is the recovery?",
+        a: "Recovery is significantly faster than surgery. For most procedures like varicose vein treatment or varicocele embolisation, patients can walk the same day and return to normal activities within 1-3 days.",
+    },
+    {
+        q: "Will there be any scars?",
+        a: "No visible scars. IR procedures are done through a needle puncture (2-3mm) — smaller than a pen tip. There are no surgical cuts and no stitches needed.",
+    },
+    {
+        q: "Is this covered by insurance?",
+        a: "Yes, most IR procedures are covered under health insurance policies. We recommend checking with your insurance provider. Our team can help you with documentation.",
+    },
+    {
+        q: "How is this different from regular surgery?",
+        a: "Traditional surgery requires large incisions, general anaesthesia, and several days of hospital stay. IR procedures use a pinhole entry point, local anaesthesia, and most patients go home the same day.",
+    },
+];
+
+/* ─── WHY CHOOSE DR. HARSHA ─── */
+export const WHY = [
+    {
+        n: "01",
+        t: "Elite Training",
+        d: "Trained at India's top institutions — PGIMER Chandigarh and AIIMS — and topped the national VIR fellowship exam",
+    },
+    {
+        n: "02",
+        t: "European Board Certified",
+        d: "One of few Indian IR specialists with EBIR certification — the gold standard in interventional radiology worldwide",
+    },
+    {
+        n: "03",
+        t: "Pinhole Expertise",
+        d: "Specialises in replacing complex surgeries with minimally invasive pinhole procedures across all vascular conditions",
+    },
+    {
+        n: "04",
+        t: "Comprehensive Care",
+        d: "Handles the full spectrum — from varicose veins and fibroids to liver tumours and peripheral vascular disease",
+    },
+];
+
+/* ─── JOURNEY STEPS ─── */
+export const STEPS = [
+    { s: "01", t: "Consultation", d: "Discuss your condition and explore options", i: "📋" },
+    { s: "02", t: "Diagnosis", d: "Advanced imaging for precise planning", i: "🔍" },
+    { s: "03", t: "Pinhole Procedure", d: "No cuts, no stitches, no general anaesthesia", i: "✨" },
+    { s: "04", t: "Go Home", d: "Same-day or next-morning discharge", i: "🏠" },
+];
+
+/* ─── AWARDS ─── */
+export const AWARDS = [
+    {
+        icon: "🏆",
+        title: "EBIR Certified",
+        desc: "European Board of Interventional Radiology — International gold standard certification",
+    },
+    {
+        icon: "🥇",
+        title: "AIR #1 — AIIMS Fellowship",
+        desc: "Topped the All India entrance exam for Vascular & Interventional Radiology fellowship",
+    },
+    {
+        icon: "🎓",
+        title: "PGIMER Top Rank",
+        desc: "Secured top rank in MD Radiodiagnosis entrance at PGIMER Chandigarh",
+    },
+    {
+        icon: "📜",
+        title: "EDiR Certified",
+        desc: "European Diploma in Radiology — demonstrating comprehensive diagnostic expertise",
+    },
+    {
+        icon: "🏥",
+        title: "AIIMS & PGIMER Trained",
+        desc: "Fellowship and residency at India's two most prestigious medical institutions",
+    },
+    {
+        icon: "📚",
+        title: "Research Publications",
+        desc: "Contributed to multiple peer-reviewed publications in interventional radiology",
+    },
+];
+
+/* ─── BEFORE/AFTER OUTCOMES ─── */
+export const BEFORE_AFTER = [
+    {
+        condition: "Varicose Veins",
+        desc: "58-year-old patient with painful leg veins",
+        before: "Severe pain, visible bulging veins, difficulty standing for long periods",
+        after: "Pain-free, veins disappeared, returned to normal activities in 2 days"
+    },
+    {
+        condition: "Uterine Fibroids",
+        desc: "42-year-old with heavy menstrual bleeding",
+        before: "Severe bleeding, anemia, fatigue, considering hysterectomy",
+        after: "Normal periods, energy restored, uterus preserved — no surgery needed"
+    },
+    {
+        condition: "Thyroid Nodule",
+        desc: "48-year-old with visible neck swelling",
+        before: "Visible lump, cosmetic concern, fear of surgery and scars",
+        after: "70% reduction in nodule size, no scar, normal thyroid function"
+    },
+    {
+        condition: "Varicocele",
+        desc: "29-year-old couple facing fertility issues",
+        before: "Low sperm count, 2 years of infertility, considering surgery",
+        after: "Sperm count improved 3x, natural conception within 6 months"
+    },
+    {
+        condition: "Enlarged Prostate",
+        desc: "65-year-old with urinary problems",
+        before: "Waking 6 times/night, weak stream, considering TURP surgery",
+        after: "Sleeping through the night, normal flow, no catheter needed"
+    },
+    {
+        condition: "Leg Artery Blockage",
+        desc: "52-year-old unable to walk without pain",
+        before: "Severe calf pain after 100m, considering bypass surgery",
+        after: "Walking 2km daily pain-free, avoided major surgery"
+    }
+];
+
+
+/* ─── INSURANCE ─── */
+export const INSURANCE = [
+    "Star Health",
+    "HDFC Ergo",
+    "ICICI Lombard",
+    "Bajaj Allianz",
+    "New India Assurance",
+    "Max Bupa",
+    "Religare",
+    "Apollo Munich",
+    "Tata AIG",
+    "Care Health",
+    "United India",
+    "National Insurance",
+    "Oriental Insurance",
+    "Niva Bupa",
+    "ManipalCigna",
+];
