@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
-import { DOC, IMG, AWARDS } from '../../config/data';
+import { DOC, IMG } from '../../config/data';
 
 const GALLERY = [
     { img: IMG.gallery1, label: "Procedure in Progress" },
@@ -12,15 +12,8 @@ const GALLERY = [
     { img: IMG.thyroid, label: "Thyroid Ablation" },
 ];
 
-const PATIENT_QUOTES = [
-    { name: "Ramesh K., 58", text: "Dr. Harsha explained everything so clearly. The varicose vein procedure took 30 minutes and I walked out. Truly life-changing.", condition: "Varicose Veins" },
-    { name: "Priya S., 42", text: "I was told I'd need a hysterectomy. Dr. Harsha saved my uterus with UFE. My quality of life is completely restored.", condition: "Uterine Fibroids" },
-    { name: "Lakshmi R., 48", text: "The thyroid nodule in my neck disappeared without any surgery or scar. Dr. Harsha is a rare expert with a compassionate approach.", condition: "Thyroid Nodule" },
-];
-
 export default function About() {
     const [galleryIdx, setGalleryIdx] = useState(null);
-    const [quoteIdx, setQuoteIdx] = useState(0);
 
     return (
         <section id="about" style={{ background: "#FAFBFC", padding: "90px 0" }}>
@@ -96,12 +89,11 @@ export default function About() {
                         ))}
                     </FadeIn>
 
-                    {/* Education Timeline + Stats */}
+                    {/* Stats row */}
                     <FadeIn delay={0.2} style={{ flex: "1 1 320px", minWidth: 280 }}>
-                        {/* Stats row */}
                         <div style={{
                             display: "grid", gridTemplateColumns: "repeat(2, 1fr)",
-                            gap: 12, marginBottom: 20
+                            gap: 12
                         }}>
                             {[
                                 { v: DOC.exp, l: "Years Experience" },
@@ -118,136 +110,9 @@ export default function About() {
                                 </div>
                             ))}
                         </div>
-
-                        {/* Education Timeline */}
-                        <div style={{
-                            background: "#fff", borderRadius: 16, padding: 24,
-                            boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 8px 28px rgba(0,0,0,0.04)",
-                            border: "1px solid rgba(0,0,0,0.04)", marginBottom: 14
-                        }}>
-                            <div style={{
-                                fontSize: 11, fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
-                                letterSpacing: "0.1em", textTransform: "uppercase",
-                                color: "#0D9488", marginBottom: 20
-                            }}>Education & International Training</div>
-
-                            {[
-                                { y: "2018", t: "MBBS", p: "RGUHS, Bengaluru" },
-                                { y: "2022", t: "MD Radiodiagnosis", p: "PGI Chandigarh" },
-                                { y: "2023", t: "Fellowship VIR", p: "AIIMS Rishikesh" },
-                                { y: "2023", t: "Fellowship VIR", p: "SNUH, South Korea" },
-                                { y: "2024", t: "Thyroid Thermal Ablation", p: "IEO Milan, Italy" },
-                                { y: "—", t: "EBIR • EDiR • DICRI", p: "European Board Certified" },
-                            ].map((it, i, arr) => (
-                                <div key={i} style={{
-                                    display: "flex", gap: 14,
-                                    marginBottom: i < arr.length - 1 ? 14 : 0,
-                                    paddingBottom: i < arr.length - 1 ? 14 : 0,
-                                    borderBottom: i < arr.length - 1 ? "1px solid rgba(0,0,0,0.05)" : "none"
-                                }}>
-                                    <div style={{ width: 44, flexShrink: 0, fontSize: 11, fontWeight: 700, color: "#0D9488", fontFamily: "'DM Sans', sans-serif", paddingTop: 1 }}>{it.y}</div>
-                                    <div>
-                                        <div style={{ fontSize: 13, fontWeight: 600, color: "#071426", fontFamily: "'DM Sans', sans-serif", marginBottom: 1 }}>{it.t}</div>
-                                        <div style={{ fontSize: 11, color: "rgba(7,20,38,0.45)", fontFamily: "'DM Sans', sans-serif" }}>{it.p}</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Achievement badge */}
-                        <div style={{
-                            background: "linear-gradient(135deg, #071426, #0A1E3D)",
-                            borderRadius: 14, padding: "18px 22px",
-                            display: "flex", alignItems: "center", gap: 14
-                        }}>
-                            <span style={{ fontSize: 28 }}>🏆</span>
-                            <div>
-                                <div style={{ color: "#5EEAD4", fontSize: 13, fontWeight: 600, fontFamily: "'DM Sans', sans-serif" }}>National Rank #1</div>
-                                <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, fontFamily: "'DM Sans', sans-serif" }}>AIIMS VIR Fellowship Entrance Exam</div>
-                            </div>
-                        </div>
                     </FadeIn>
                 </div>
 
-                {/* ── Certifications / Achievements ── */}
-                <FadeIn>
-                    <div style={{ marginBottom: 56 }}>
-                        <h3 style={{
-                            fontFamily: "'Inter', sans-serif", fontSize: 22,
-                            fontWeight: 700, color: "#071426", marginBottom: 24,
-                            textAlign: "center"
-                        }}>Certifications & Achievements</h3>
-                        <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                            gap: 14
-                        }}>
-                            {AWARDS.map((a, i) => (
-                                <motion.div
-                                    key={i}
-                                    whileHover={{ y: -4, boxShadow: "0 10px 28px rgba(37,99,235,0.10)" }}
-                                    style={{
-                                        background: "#fff", border: "1px solid #E5E7EB",
-                                        borderRadius: 14, padding: "22px 20px",
-                                        transition: "all 0.3s ease"
-                                    }}
-                                >
-                                    <div style={{ fontSize: 30, marginBottom: 10 }}>{a.icon}</div>
-                                    <div style={{ fontSize: 14, fontWeight: 700, color: "#071426", fontFamily: "'DM Sans', sans-serif", marginBottom: 6 }}>{a.title}</div>
-                                    <div style={{ fontSize: 12, color: "#6B7280", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}>{a.desc}</div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </FadeIn>
-
-                {/* ── What Patients Say ── */}
-                <FadeIn>
-                    <div style={{ marginBottom: 56 }}>
-                        <h3 style={{
-                            fontFamily: "'Inter', sans-serif", fontSize: 22,
-                            fontWeight: 700, color: "#071426", marginBottom: 24,
-                            textAlign: "center"
-                        }}>What Patients Say About Dr. Harsha</h3>
-                        <div style={{
-                            background: "linear-gradient(135deg, #071426, #0A1E3D)",
-                            borderRadius: 20, padding: "36px 40px", position: "relative"
-                        }}>
-                            <div style={{ fontSize: 60, color: "rgba(20,184,166,0.3)", fontFamily: "Georgia, serif", lineHeight: 0.8, marginBottom: 20 }}>"</div>
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={quoteIdx}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.4 }}
-                                >
-                                    <p style={{
-                                        fontFamily: "'DM Sans', sans-serif", fontSize: 17,
-                                        color: "rgba(255,255,255,0.85)", lineHeight: 1.8,
-                                        marginBottom: 20, fontStyle: "italic"
-                                    }}>{PATIENT_QUOTES[quoteIdx].text}</p>
-                                    <div style={{ fontSize: 13, fontWeight: 600, color: "#5EEAD4", fontFamily: "'DM Sans', sans-serif" }}>
-                                        {PATIENT_QUOTES[quoteIdx].name}
-                                    </div>
-                                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", fontFamily: "'DM Sans', sans-serif", marginTop: 2 }}>
-                                        {PATIENT_QUOTES[quoteIdx].condition}
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
-                            <div style={{ display: "flex", gap: 8, marginTop: 24 }}>
-                                {PATIENT_QUOTES.map((_, i) => (
-                                    <button key={i} onClick={() => setQuoteIdx(i)} style={{
-                                        width: i === quoteIdx ? 24 : 8, height: 8, borderRadius: 4,
-                                        background: i === quoteIdx ? "#14B8A6" : "rgba(255,255,255,0.25)",
-                                        border: "none", cursor: "pointer",
-                                        transition: "all 0.3s ease", padding: 0
-                                    }} />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </FadeIn>
 
                 {/* ── Gallery ── */}
                 <FadeIn>

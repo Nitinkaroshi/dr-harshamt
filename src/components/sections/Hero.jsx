@@ -244,53 +244,6 @@ export default function Hero() {
                                 </div>
                             </div>
 
-                            {/* Qualifications card below photo */}
-                            <div style={{
-                                position: "absolute", bottom: -20, left: -16, right: -16,
-                                background: "#FFFFFF",
-                                border: "2px solid #E5E7EB",
-                                borderRadius: 16, padding: "14px 18px",
-                                boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
-                            }}>
-                                <div style={{
-                                    color: "#2563EB", fontSize: 10,
-                                    fontFamily: "'DM Sans', sans-serif",
-                                    letterSpacing: "0.08em", textTransform: "uppercase",
-                                    marginBottom: 4, fontWeight: 700
-                                }}>Qualifications</div>
-                                <div style={{
-                                    color: "#374151", fontSize: 12,
-                                    fontFamily: "'DM Sans', sans-serif",
-                                    lineHeight: 1.5, fontWeight: 500
-                                }}>{DOC.qualsBadge}</div>
-                            </div>
-
-                            {/* Thumbnail strip */}
-                            <div style={{
-                                display: "flex", gap: 8, marginTop: 36, justifyContent: "center"
-                            }}>
-                                {HERO_PHOTOS.map((p, i) => (
-                                    <motion.div
-                                        key={i}
-                                        onClick={() => setActive(i)}
-                                        whileHover={{ scale: 1.08 }}
-                                        style={{
-                                            width: 56, height: 56,
-                                            borderRadius: 10, overflow: "hidden",
-                                            cursor: "pointer",
-                                            border: i === active
-                                                ? "2px solid #2563EB"
-                                                : "2px solid #E5E7EB",
-                                            opacity: i === active ? 1 : 0.6,
-                                            transition: "all 0.3s ease"
-                                        }}
-                                    >
-                                        <img src={p.img} alt={p.label}
-                                            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-                                        />
-                                    </motion.div>
-                                ))}
-                            </div>
                         </div>
                     </FadeIn>
                 </div>

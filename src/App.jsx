@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Navbar from './components/common/Navbar';
 import Hero from './components/sections/Hero';
 import SocialProof from './components/sections/SocialProof';
-import CredBar from './components/sections/CredBar';
 import About from './components/sections/About';
 import IRSection from './components/sections/IRSection';
 import ConditionsCollage from './components/sections/ConditionsCollage';
@@ -75,7 +74,6 @@ function App() {
                 <>
                     <Hero />
                     <SocialProof />
-                    <CredBar />
                     <About />
                     <IRSection />
                     <ConditionsCollage onTreatment={goToTreatment} />
