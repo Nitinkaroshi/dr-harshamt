@@ -6,7 +6,7 @@ import { SERVICES } from '../../config/data';
 export default function ServicesSection({ onTreatment }) {
 
     return (
-        <section id="services" style={{ background: "#FAFBFC", padding: "90px 0" }}>
+        <section id="services" style={{ background: "#FAFBFC", padding: "clamp(40px, 8vw, 90px) 0" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
                 <SectionHead
                     light
@@ -66,7 +66,8 @@ export default function ServicesSection({ onTreatment }) {
                             <div style={{ height: 140, overflow: "hidden", position: "relative" }}>
                                 <motion.img
                                     src={s.img}
-                                    alt={s.t}
+                                    alt={`${s.t} treatment in Bengaluru — Dr. Harsha M T`}
+                                    loading="lazy"
                                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                                     whileHover={s.id ? { scale: 1.05 } : {}}
                                     transition={{ duration: 0.4 }}
@@ -86,7 +87,7 @@ export default function ServicesSection({ onTreatment }) {
                                             fontWeight: 600,
                                             padding: "3px 10px",
                                             borderRadius: 100,
-                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontFamily: "'Roboto', sans-serif",
                                             letterSpacing: "0.03em",
                                             textTransform: "uppercase"
                                         }}
@@ -120,14 +121,14 @@ export default function ServicesSection({ onTreatment }) {
                                     fontSize: 16,
                                     fontWeight: 700,
                                     color: "#071426",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     marginBottom: 3,
                                     lineHeight: 1.3
                                 }}>{s.t}</div>
                                 <div style={{
                                     fontSize: 11,
                                     color: "#0D9488",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     fontWeight: 500,
                                     marginBottom: 10,
                                     letterSpacing: "0.02em"
@@ -135,7 +136,7 @@ export default function ServicesSection({ onTreatment }) {
                                 <div style={{
                                     fontSize: 13,
                                     color: "rgba(7,20,38,0.55)",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     lineHeight: 1.65
                                 }}>{s.d}</div>
                                 {s.id && (
@@ -146,7 +147,7 @@ export default function ServicesSection({ onTreatment }) {
                                             fontSize: 13,
                                             fontWeight: 600,
                                             color: "#0D9488",
-                                            fontFamily: "'DM Sans', sans-serif"
+                                            fontFamily: "'Roboto', sans-serif"
                                         }}
                                     >Learn More →</motion.div>
                                 )}

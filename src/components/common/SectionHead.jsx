@@ -5,16 +5,16 @@ export default function SectionHead({ sup, title, desc }) {
                 <div style={{ width: 24, height: 1, background: "rgba(13,148,136,0.4)" }} />
                 <span style={{
                     fontSize: 11,
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontWeight: 600,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "#5EEAD4"
+                    color: "#2563EB"
                 }}>{sup}</span>
                 <div style={{ width: 24, height: 1, background: "rgba(13,148,136,0.4)" }} />
             </div>
             <h2 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Roboto Slab', serif",
                 fontSize: "clamp(26px, 3.8vw, 40px)",
                 fontWeight: 700,
                 color: "#071426",
@@ -24,7 +24,7 @@ export default function SectionHead({ sup, title, desc }) {
             }}>{title}</h2>
             {desc && (
                 <p style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: 15,
                     color: "rgba(7,20,38,0.5)",
                     maxWidth: 640,

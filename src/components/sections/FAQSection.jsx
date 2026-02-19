@@ -1,13 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHead from '../common/SectionHead';
 import { FAQS } from '../../config/data';
 
+/* ── FAQ Schema (FAQPage) for Google Rich Results ── */
+function useFAQSchema() {
+    useEffect(() => {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQS.map(f => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f.a
+                }
+            }))
+        };
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = 'faq-schema';
+        script.textContent = JSON.stringify(schema);
+        document.head.appendChild(script);
+        return () => document.getElementById('faq-schema')?.remove();
+    }, []);
+}
+
 export default function FAQSection() {
     const [open, setOpen] = useState(null);
+    useFAQSchema();
 
     return (
-        <section id="faq" style={{ background: "#FAFBFC", padding: "90px 0" }}>
+        <section id="faq" style={{ background: "#FAFBFC", padding: "clamp(40px, 8vw, 90px) 0" }}>
             <div style={{ maxWidth: 740, margin: "0 auto", padding: "0 24px" }}>
                 <SectionHead
                     light
@@ -67,7 +92,7 @@ export default function FAQSection() {
                                     fontSize: 14,
                                     fontWeight: 600,
                                     color: open === i ? "#0D9488" : "#071426",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     transition: "color 0.3s",
                                     paddingRight: 16
                                 }}>{f.q}</span>
@@ -116,7 +141,7 @@ export default function FAQSection() {
                                                 padding: "0 22px 18px",
                                                 fontSize: 13,
                                                 color: "rgba(7,20,38,0.6)",
-                                                fontFamily: "'DM Sans', sans-serif",
+                                                fontFamily: "'Roboto', sans-serif",
                                                 lineHeight: 1.7
                                             }}
                                         >

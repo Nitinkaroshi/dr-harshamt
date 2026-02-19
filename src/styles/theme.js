@@ -69,8 +69,8 @@ export const COLORS = {
 export const TYPOGRAPHY = {
     // Font Families
     fonts: {
-        heading: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        heading: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        body: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         mono: "'JetBrains Mono', 'Courier New', monospace",
     },
 

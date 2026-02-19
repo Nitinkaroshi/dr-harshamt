@@ -20,8 +20,8 @@ export default function IRSection() {
 
     return (
         <section style={{
-            background: "linear-gradient(135deg, #071426 0%, #0A1E3D 100%)",
-            padding: "80px 0 0",
+            background: "linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)",
+            padding: "clamp(40px, 8vw, 80px) 0 0",
             position: "relative",
             overflow: "hidden"
         }}>
@@ -29,7 +29,7 @@ export default function IRSection() {
             <div style={{
                 position: "absolute", top: "-20%", right: "-10%",
                 width: "50vw", height: "50vw", borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(13,148,136,0.06) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)",
                 pointerEvents: "none"
             }} />
 
@@ -39,40 +39,40 @@ export default function IRSection() {
                     <div style={{ textAlign: "center", marginBottom: 56 }}>
                         <div style={{
                             fontSize: 80, lineHeight: 0.8,
-                            color: "rgba(13,148,136,0.25)",
+                            color: "rgba(37,99,235,0.15)",
                             fontFamily: "Georgia, serif", marginBottom: 16
                         }}>"</div>
                         <h2 style={{
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSize: "clamp(22px, 3.5vw, 40px)",
-                            fontWeight: 800, color: "#FFFFFF",
+                            fontWeight: 800, color: "#1F2937",
                             lineHeight: 1.25, marginBottom: 24,
                             maxWidth: 780, margin: "0 auto 24px",
                             letterSpacing: "-0.02em"
                         }}>
                             Interventional radiology is the{" "}
-                            <span style={{ color: "#14B8A6" }}>quiet revolution</span>{" "}
+                            <span style={{ color: "#2563EB" }}>quiet revolution</span>{" "}
                             of the medical world.
                         </h2>
                         <p style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'Roboto', sans-serif",
                             fontSize: "clamp(15px, 1.8vw, 18px)",
-                            color: "rgba(255,255,255,0.6)", lineHeight: 1.8,
+                            color: "#6B7280", lineHeight: 1.8,
                             maxWidth: 680, margin: "0 auto 36px"
                         }}>
                             Often referred to as{" "}
-                            <strong style={{ color: "rgba(255,255,255,0.85)" }}>Surgery 2.0</strong>,
+                            <strong style={{ color: "#1F2937" }}>Surgery 2.0</strong>,
                             it is a specialised field that uses advanced medical imaging (CT, Ultrasound)
                             to perform complex procedures that once required open surgery — through just a pinhole.
                         </p>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10 }}>
                             {["No Large Incisions", "Local Anaesthesia", "Same Day Home", "No Scars", "Faster Recovery"].map((tag, i) => (
                                 <span key={i} style={{
-                                    background: "rgba(20,184,166,0.1)",
-                                    border: "1px solid rgba(20,184,166,0.25)",
-                                    color: "#5EEAD4", padding: "6px 16px",
-                                    borderRadius: 100, fontSize: 12, fontWeight: 600,
-                                    fontFamily: "'DM Sans', sans-serif"
+                                    background: "rgba(37,99,235,0.08)",
+                                    border: "1px solid rgba(37,99,235,0.15)",
+                                    color: "#2563EB", padding: "6px 16px",
+                                    borderRadius: 100, fontSize: 13, fontWeight: 600,
+                                    fontFamily: "'Roboto', sans-serif"
                                 }}>{tag}</span>
                             ))}
                         </div>
@@ -87,14 +87,15 @@ export default function IRSection() {
                             flex: "1 1 340px", position: "relative",
                             borderRadius: 20, overflow: "hidden",
                             aspectRatio: "3/4", maxHeight: 460,
-                            border: "1px solid rgba(13,148,136,0.2)",
-                            boxShadow: "0 20px 60px rgba(0,0,0,0.4)"
+                            border: "1px solid rgba(37,99,235,0.15)",
+                            boxShadow: "0 20px 60px rgba(37,99,235,0.15)"
                         }}>
                             <AnimatePresence mode="wait">
                                 <motion.img
                                     key={active}
                                     src={CAROUSEL_PHOTOS[active].img}
-                                    alt={CAROUSEL_PHOTOS[active].label}
+                                    alt={`Dr. Harsha M T — ${CAROUSEL_PHOTOS[active].label}`}
+                                    loading="lazy"
                                     initial={{ opacity: 0, scale: 1.04 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.97 }}
@@ -115,10 +116,10 @@ export default function IRSection() {
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.4 }}
                                     >
-                                        <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif", marginBottom: 4 }}>
+                                        <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", fontFamily: "'Roboto', sans-serif", marginBottom: 4 }}>
                                             {CAROUSEL_PHOTOS[active].label}
                                         </div>
-                                        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
+                                        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", fontFamily: "'Roboto', sans-serif" }}>
                                             {CAROUSEL_PHOTOS[active].desc}
                                         </div>
                                     </motion.div>
@@ -127,7 +128,7 @@ export default function IRSection() {
                                     {CAROUSEL_PHOTOS.map((_, i) => (
                                         <button key={i} onClick={() => setActive(i)} style={{
                                             width: i === active ? 24 : 8, height: 8, borderRadius: 4,
-                                            background: i === active ? "#14B8A6" : "rgba(255,255,255,0.3)",
+                                            background: i === active ? "#2563EB" : "#D1D5DB",
                                             border: "none", cursor: "pointer",
                                             transition: "all 0.3s ease", padding: 0
                                         }} />
@@ -146,32 +147,32 @@ export default function IRSection() {
                                     style={{
                                         display: "flex", alignItems: "center", gap: 14,
                                         borderRadius: 12, padding: "10px 14px", cursor: "pointer",
-                                        border: i === active ? "1px solid rgba(20,184,166,0.4)" : "1px solid rgba(255,255,255,0.06)",
-                                        background: i === active ? "rgba(20,184,166,0.08)" : "rgba(255,255,255,0.02)",
+                                        border: i === active ? "1px solid rgba(37,99,235,0.3)" : "1px solid rgba(0,0,0,0.06)",
+                                        background: i === active ? "rgba(37,99,235,0.06)" : "rgba(0,0,0,0.02)",
                                         transition: "all 0.3s ease"
                                     }}
                                 >
                                     <div style={{
                                         width: 50, height: 50, borderRadius: 10,
                                         overflow: "hidden", flexShrink: 0,
-                                        border: i === active ? "2px solid #14B8A6" : "2px solid transparent"
+                                        border: i === active ? "2px solid #2563EB" : "2px solid transparent"
                                     }}>
-                                        <img src={p.img} alt={p.label} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                                        <img src={p.img} alt={`Dr. Harsha M T — ${p.label}`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                                     </div>
                                     <div>
-                                        <div style={{ fontSize: 13, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: 2, color: i === active ? "#5EEAD4" : "rgba(255,255,255,0.7)" }}>
+                                        <div style={{ fontSize: 13, fontWeight: 600, fontFamily: "'Roboto', sans-serif", marginBottom: 2, color: i === active ? "#2563EB" : "#4B5563" }}>
                                             {p.label}
                                         </div>
-                                        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif" }}>{p.desc}</div>
+                                        <div style={{ fontSize: 11, color: "#9CA3AF", fontFamily: "'Roboto', sans-serif" }}>{p.desc}</div>
                                     </div>
                                 </motion.div>
                             ))}
 
                             {/* IR image */}
-                            <div style={{ borderRadius: 14, overflow: "hidden", flex: 1, minHeight: 160, position: "relative", border: "1px solid rgba(255,255,255,0.06)" }}>
-                                <img src={IMG.ir} alt="IR Procedure" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                            <div style={{ borderRadius: 14, overflow: "hidden", flex: 1, minHeight: 160, position: "relative", border: "1px solid rgba(0,0,0,0.06)" }}>
+                                <img src={IMG.ir} alt="Interventional Radiology procedure at SPARSH Hospital Bengaluru" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(7,20,38,0.9) 100%)" }} />
-                                <div style={{ position: "absolute", bottom: 14, left: 14, right: 14, fontSize: 12, fontWeight: 600, color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>
+                                <div style={{ position: "absolute", bottom: 14, left: 14, right: 14, fontSize: 12, fontWeight: 600, color: "#fff", fontFamily: "'Roboto', sans-serif" }}>
                                     Advanced Imaging Guidance — CT & Ultrasound
                                 </div>
                             </div>

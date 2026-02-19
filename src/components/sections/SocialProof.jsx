@@ -26,12 +26,12 @@ export default function SocialProof() {
                                     fontSize: 18,
                                     fontWeight: 700,
                                     color: "#071426",
-                                    fontFamily: "'Playfair Display', serif"
+                                    fontFamily: "'Roboto Slab', serif"
                                 }}>{s.val}</div>
                                 <div style={{
                                     fontSize: 11,
                                     color: "rgba(7,20,38,0.45)",
-                                    fontFamily: "'DM Sans', sans-serif"
+                                    fontFamily: "'Roboto', sans-serif"
                                 }}>{s.label}</div>
                             </div>
                         </div>

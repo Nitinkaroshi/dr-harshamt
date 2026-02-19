@@ -4,7 +4,7 @@ import { BEFORE_AFTER } from '../../config/data';
 
 export default function BeforeAfter() {
     return (
-        <section style={{ background: "#FAFBFC", padding: "80px 0" }}>
+        <section style={{ background: "#FAFBFC", padding: "clamp(40px, 8vw, 80px) 0" }}>
             <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px" }}>
                 <SectionHead
                     light
@@ -35,14 +35,14 @@ export default function BeforeAfter() {
                                     fontSize: 15,
                                     fontWeight: 700,
                                     color: "#071426",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     marginBottom: 6,
                                     textAlign: "center"
                                 }}>{item.condition}</div>
                                 <div style={{
                                     fontSize: 12,
                                     color: "rgba(7,20,38,0.5)",
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     marginBottom: 16,
                                     textAlign: "center",
                                     lineHeight: 1.5
@@ -60,7 +60,7 @@ export default function BeforeAfter() {
                                         fontSize: 10,
                                         fontWeight: 600,
                                         color: "#EF4444",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         marginBottom: 4,
                                         letterSpacing: "0.04em",
                                         textTransform: "uppercase"
@@ -68,7 +68,7 @@ export default function BeforeAfter() {
                                     <div style={{
                                         fontSize: 12,
                                         color: "rgba(7,20,38,0.6)",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.5
                                     }}>{item.before}</div>
                                 </div>
@@ -84,7 +84,7 @@ export default function BeforeAfter() {
                                         fontSize: 10,
                                         fontWeight: 600,
                                         color: "#0D9488",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         marginBottom: 4,
                                         letterSpacing: "0.04em",
                                         textTransform: "uppercase"
@@ -92,7 +92,7 @@ export default function BeforeAfter() {
                                     <div style={{
                                         fontSize: 12,
                                         color: "rgba(7,20,38,0.6)",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.5
                                     }}>{item.after}</div>
                                 </div>

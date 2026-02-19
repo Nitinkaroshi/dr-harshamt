@@ -1,50 +1,22 @@
 import FadeIn from '../common/FadeIn';
 import SectionHead from '../common/SectionHead';
-import { IMG } from '../../config/data';
-
-// Placeholder blog data - can be moved to config/blog.js later
-const BLOGS = [
-    {
-        id: "varicose-veins-guide",
-        title: "Complete Guide to Varicose Veins Treatment",
-        excerpt: "Everything you need to know about modern, non-surgical varicose vein treatments and what to expect.",
-        cat: "Vascular Health",
-        read: "2 min read",
-        img: IMG.blog1
-    },
-    {
-        id: "uterine-fibroids-ufe",
-        title: "UFE: A Surgery-Free Solution for Fibroids",
-        excerpt: "How Uterine Fibroid Embolisation offers an effective alternative to hysterectomy with faster recovery.",
-        cat: "Women's Health",
-        read: "2 min read",
-        img: IMG.blog2
-    },
-    {
-        id: "thyroid-nodule-ablation",
-        title: "Thyroid Nodule Ablation: No Surgery, No Scars",
-        excerpt: "Learn about radiofrequency ablation for thyroid nodules and how it preserves your thyroid function.",
-        cat: "Endocrine",
-        read: "2 min read",
-        img: IMG.blog3
-    },
-];
+import BLOGS from '../../config/blogs';
 
 export default function BlogSection({ onBlog }) {
     return (
         <section id="blog" style={{
-            background: "linear-gradient(180deg, #071426, #0A1E3D)",
-            padding: "90px 0"
+            background: "#F8FAFC",
+            padding: "clamp(40px, 8vw, 90px) 0"
         }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
                 <SectionHead
-                    label="Health Blog"
+                    sup="Health Blog"
                     title="Learn About Your Condition"
-                    sub="Expert articles on vascular health, treatments, and patient education"
+                    desc="Expert articles on vascular health, treatments, and patient education"
                 />
                 <div style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(min(300px, 100%), 1fr))",
                     gap: 18
                 }}>
                     {BLOGS.map((b, i) => (
@@ -52,8 +24,8 @@ export default function BlogSection({ onBlog }) {
                             <div
                                 onClick={() => onBlog?.(b.id)}
                                 style={{
-                                    background: "rgba(255,255,255,0.03)",
-                                    border: "1px solid rgba(255,255,255,0.06)",
+                                    background: "#FFFFFF",
+                                    border: "1px solid #E5E7EB",
                                     borderRadius: 14,
                                     overflow: "hidden",
                                     cursor: "pointer",
@@ -61,18 +33,19 @@ export default function BlogSection({ onBlog }) {
                                     height: "100%"
                                 }}
                                 onMouseEnter={e => {
-                                    e.currentTarget.style.borderColor = "rgba(13,148,136,0.3)";
+                                    e.currentTarget.style.borderColor = "rgba(37,99,235,0.3)";
                                     e.currentTarget.style.transform = "translateY(-3px)";
                                 }}
                                 onMouseLeave={e => {
-                                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+                                    e.currentTarget.style.borderColor = "#E5E7EB";
                                     e.currentTarget.style.transform = "translateY(0)";
                                 }}
                             >
                                 <div style={{ height: 180, overflow: "hidden" }}>
                                     <img
                                         src={b.img}
-                                        alt={b.title}
+                                        alt={`${b.title} — Dr. Harsha M T health blog`}
+                                        loading="lazy"
                                         style={{
                                             width: "100%",
                                             height: "100%",
@@ -84,11 +57,11 @@ export default function BlogSection({ onBlog }) {
                                 <div style={{ padding: "18px 20px 22px" }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                                         <span style={{
-                                            fontSize: 10,
+                                            fontSize: 11,
                                             fontWeight: 600,
-                                            color: "#5EEAD4",
-                                            fontFamily: "'DM Sans', sans-serif",
-                                            background: "rgba(13,148,136,0.12)",
+                                            color: "#2563EB",
+                                            fontFamily: "'Roboto', sans-serif",
+                                            background: "rgba(37,99,235,0.08)",
                                             padding: "3px 10px",
                                             borderRadius: 100,
                                             letterSpacing: "0.03em",
@@ -96,30 +69,30 @@ export default function BlogSection({ onBlog }) {
                                         }}>{b.cat}</span>
                                         <span style={{
                                             fontSize: 11,
-                                            color: "rgba(255,255,255,0.3)",
-                                            fontFamily: "'DM Sans', sans-serif"
+                                            color: "#9CA3AF",
+                                            fontFamily: "'Roboto', sans-serif"
                                         }}>{b.read}</span>
                                     </div>
                                     <div style={{
                                         fontSize: 16,
                                         fontWeight: 700,
-                                        color: "#fff",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        color: "#1F2937",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.35,
                                         marginBottom: 8
                                     }}>{b.title}</div>
                                     <div style={{
-                                        fontSize: 13,
-                                        color: "rgba(255,255,255,0.45)",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 14,
+                                        color: "#6B7280",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.6
                                     }}>{b.excerpt}</div>
                                     <div style={{
                                         marginTop: 14,
-                                        fontSize: 13,
+                                        fontSize: 14,
                                         fontWeight: 600,
-                                        color: "#14B8A6",
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        color: "#2563EB",
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>Read Article →</div>
                                 </div>
                             </div>

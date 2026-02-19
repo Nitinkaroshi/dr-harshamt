@@ -1,0 +1,11 @@
+# Dr. Harsha M T - Interventional Radiologist Website
+# https://drharshamt.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://drharshamt.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1

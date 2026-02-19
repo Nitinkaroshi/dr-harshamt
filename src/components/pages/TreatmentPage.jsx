@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VeinIllustration } from '../common/MedicalIllustrations';
 import { DOC } from '../../config/data';
+import usePageSEO from '../../hooks/usePageSEO';
 
 /* ─── Q&A per treatment ─── */
 const TREATMENT_QA = {
@@ -352,7 +353,7 @@ function QASection({ questions }) {
     return (
         <div style={{ marginBottom: 36 }}>
             <h2 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Roboto Slab', serif",
                 fontSize: 22, fontWeight: 700,
                 color: "#071426", marginBottom: 18
             }}>Patient Questions & Expert Answers</h2>
@@ -376,7 +377,7 @@ function QASection({ questions }) {
                             }}
                         >
                             <span style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: 14, fontWeight: 600,
                                 color: "#071426", lineHeight: 1.4, flex: 1
                             }}>{item.q}</span>
@@ -396,7 +397,7 @@ function QASection({ questions }) {
                                     style={{ overflow: "hidden" }}
                                 >
                                     <p style={{
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         fontSize: 14, color: "rgba(7,20,38,0.65)",
                                         lineHeight: 1.8, padding: "0 20px 18px",
                                         margin: 0
@@ -413,6 +414,46 @@ function QASection({ questions }) {
 
 export default function TreatmentPage({ id, onBack, onContact }) {
     const t = TREATMENTS[id];
+
+    /* ── Dynamic SEO per treatment ── */
+    usePageSEO(t ? {
+        title: `${t.title} | Dr. Harsha M T | Interventional Radiologist Bengaluru`,
+        description: `${t.title} (${t.sub}) — ${t.overview.slice(0, 155)}...`,
+        path: `/treatment/${id}`,
+        image: t.hero,
+        type: 'article',
+    } : undefined);
+
+    /* ── JSON-LD: MedicalWebPage schema ── */
+    useEffect(() => {
+        if (!t) return;
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "MedicalWebPage",
+            "name": t.title,
+            "description": t.overview,
+            "url": `https://drharshamt.com/treatment/${id}`,
+            "mainEntity": {
+                "@type": "MedicalProcedure",
+                "name": t.title,
+                "procedureType": "Minimally Invasive",
+                "description": t.why,
+                "howPerformed": t.how.join('. '),
+                "followup": t.recovery
+            },
+            "author": {
+                "@type": "Physician",
+                "name": "Dr. Harsha M T",
+                "medicalSpecialty": "Interventional Radiology"
+            }
+        };
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = 'treatment-schema';
+        script.textContent = JSON.stringify(schema);
+        document.head.appendChild(script);
+        return () => document.getElementById('treatment-schema')?.remove();
+    }, [id, t]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -438,7 +479,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
 
             {/* Hero */}
             <div style={{ position: "relative", height: 340, overflow: "hidden" }}>
-                <img src={t.hero} alt={t.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={t.hero} alt={`${t.title} — treatment in Bengaluru by Dr. Harsha M T`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div style={{
                     position: "absolute",
                     inset: 0,
@@ -455,7 +496,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 }}>
                     <span style={{ fontSize: 36, marginBottom: 8, display: "block" }}>{t.icon}</span>
                     <h1 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: "clamp(26px, 4vw, 36px)",
                         fontWeight: 700,
                         color: "#fff",
@@ -463,7 +504,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                         marginBottom: 6
                     }}>{t.title}</h1>
                     <p style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: 15,
                         color: "#5EEAD4",
                         fontWeight: 500
@@ -484,7 +525,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                         padding: "8px 16px",
                         borderRadius: 8,
                         fontSize: 13,
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         cursor: "pointer",
                         marginBottom: 36,
                         fontWeight: 500
@@ -505,14 +546,14 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                             }}
                         >
                             <div style={{
-                                fontFamily: "'Playfair Display', serif",
+                                fontFamily: "'Roboto Slab', serif",
                                 fontSize: 28,
                                 fontWeight: 700,
                                 color: "#14B8A6",
                                 lineHeight: 1
                             }}>{s.v}</div>
                             <div style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: 11,
                                 color: "rgba(255,255,255,0.45)",
                                 marginTop: 6,
@@ -526,14 +567,14 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 {/* Overview */}
                 <div style={{ marginBottom: 36 }}>
                     <h2 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: 22,
                         fontWeight: 700,
                         color: "#071426",
                         marginBottom: 14
                     }}>The Condition</h2>
                     <p style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: 15,
                         color: "rgba(7,20,38,0.65)",
                         lineHeight: 1.8
@@ -549,14 +590,14 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                     padding: 28
                 }}>
                     <h2 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: 22,
                         fontWeight: 700,
                         color: "#071426",
                         marginBottom: 14
                     }}>Why Pinhole Treatment?</h2>
                     <p style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: 15,
                         color: "rgba(7,20,38,0.65)",
                         lineHeight: 1.8
@@ -588,7 +629,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 {/* How it works */}
                 <div style={{ marginBottom: 36 }}>
                     <h2 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: 22,
                         fontWeight: 700,
                         color: "#071426",
@@ -616,11 +657,11 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                                     color: "#fff",
                                     fontSize: 13,
                                     fontWeight: 700,
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     flexShrink: 0
                                 }}>{i + 1}</div>
                                 <p style={{
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     fontSize: 14,
                                     color: "rgba(7,20,38,0.65)",
                                     lineHeight: 1.7,
@@ -644,14 +685,14 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 {/* Recovery */}
                 <div style={{ marginBottom: 36 }}>
                     <h2 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: 22,
                         fontWeight: 700,
                         color: "#071426",
                         marginBottom: 14
                     }}>Recovery & Aftercare</h2>
                     <p style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: 15,
                         color: "rgba(7,20,38,0.65)",
                         lineHeight: 1.8
@@ -668,14 +709,14 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                     boxShadow: "0 2px 12px rgba(0,0,0,0.03)"
                 }}>
                     <h2 style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Roboto Slab', serif",
                         fontSize: 22,
                         fontWeight: 700,
                         color: "#071426",
                         marginBottom: 14
                     }}>Who Is This For?</h2>
                     <p style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         fontSize: 15,
                         color: "rgba(7,20,38,0.65)",
                         lineHeight: 1.8
@@ -696,13 +737,13 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                         fontSize: 20,
                         fontWeight: 700,
                         color: "#fff",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         marginBottom: 8
                     }}>Ready to Explore This Treatment?</div>
                     <div style={{
                         fontSize: 14,
                         color: "rgba(255,255,255,0.5)",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', sans-serif",
                         marginBottom: 20
                     }}>Book a consultation to find out if this procedure is right for you.</div>
                     <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
@@ -717,7 +758,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                                 fontSize: 14,
                                 fontWeight: 600,
                                 cursor: "pointer",
-                                fontFamily: "'DM Sans', sans-serif"
+                                fontFamily: "'Roboto', sans-serif"
                             }}
                         >Book Appointment</button>
                         <a
@@ -731,7 +772,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                                 borderRadius: 10,
                                 fontSize: 14,
                                 fontWeight: 600,
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 textDecoration: "none",
                                 display: "inline-flex",
                                 alignItems: "center",

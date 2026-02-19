@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import usePageSEO from './hooks/usePageSEO';
 import Navbar from './components/common/Navbar';
 import Hero from './components/sections/Hero';
 import SocialProof from './components/sections/SocialProof';
@@ -22,56 +23,87 @@ import ScrollTop from './components/common/ScrollTop';
 import TreatmentPage from './components/pages/TreatmentPage';
 import BlogPage from './components/pages/BlogPage';
 
-function App() {
-    const [page, setPage] = useState("home");
-    const [blogId, setBlogId] = useState(null);
-    const [treatmentId, setTreatmentId] = useState(null);
+/* ── Parse initial URL on load ── */
+function parseURL(pathname) {
+    const parts = pathname.replace(/^\/+|\/+$/g, '').split('/');
+    if (parts[0] === 'treatment' && parts[1]) return { page: 'treatment', id: parts[1] };
+    if (parts[0] === 'blog' && parts[1]) return { page: 'blog', id: parts[1] };
+    return { page: 'home', id: null };
+}
 
-    const goToBlog = (id) => {
+function App() {
+    const initial = parseURL(window.location.pathname);
+    const [page, setPage] = useState(initial.page);
+    const [blogId, setBlogId] = useState(initial.page === 'blog' ? initial.id : null);
+    const [treatmentId, setTreatmentId] = useState(initial.page === 'treatment' ? initial.id : null);
+
+    /* ── Handle browser back / forward ── */
+    useEffect(() => {
+        const onPopState = () => {
+            const { page: p, id } = parseURL(window.location.pathname);
+            setPage(p);
+            setBlogId(p === 'blog' ? id : null);
+            setTreatmentId(p === 'treatment' ? id : null);
+        };
+        window.addEventListener('popstate', onPopState);
+        return () => window.removeEventListener('popstate', onPopState);
+    }, []);
+
+    /* ── Navigation helpers (update state + URL) ── */
+    const goToBlog = useCallback((id) => {
         setBlogId(id);
         setTreatmentId(null);
         setPage("blog");
-    };
+        window.history.pushState({}, '', `/blog/${id}`);
+    }, []);
 
-    const goToTreatment = (id) => {
+    const goToTreatment = useCallback((id) => {
         setTreatmentId(id);
         setBlogId(null);
         setPage("treatment");
-    };
+        window.history.pushState({}, '', `/treatment/${id}`);
+    }, []);
 
-    const goHome = () => {
+    const goHome = useCallback(() => {
         setPage("home");
         setBlogId(null);
         setTreatmentId(null);
+        window.history.pushState({}, '', '/');
         setTimeout(() => document.querySelector("#blog")?.scrollIntoView({ behavior: "smooth" }), 100);
-    };
+    }, []);
 
-    const goHomeTop = () => {
+    const goHomeTop = useCallback(() => {
         setPage("home");
         setBlogId(null);
         setTreatmentId(null);
+        window.history.pushState({}, '', '/');
         window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    }, []);
 
-    const goHomeServices = () => {
+    const goHomeServices = useCallback(() => {
         setPage("home");
         setBlogId(null);
         setTreatmentId(null);
+        window.history.pushState({}, '', '/');
         setTimeout(() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }), 100);
-    };
+    }, []);
 
-    const goContact = () => {
+    const goContact = useCallback(() => {
         setPage("home");
         setBlogId(null);
         setTreatmentId(null);
+        window.history.pushState({}, '', '/');
         setTimeout(() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }), 100);
-    };
+    }, []);
+
+    /* ── Default SEO for home page ── */
+    usePageSEO(page === 'home' ? { path: '/' } : undefined);
 
     return (
         <>
             <Navbar onNav={(p) => { if (p === "home") goHomeTop(); }} />
             {page === "home" ? (
-                <>
+                <main>
                     <Hero />
                     <SocialProof />
                     <About />
@@ -89,7 +121,7 @@ function App() {
                     <FAQSection />
                     <ContactSection />
                     <Footer />
-                </>
+                </main>
             ) : page === "treatment" ? (
                 <TreatmentPage id={treatmentId} onBack={goHomeServices} onContact={goContact} />
             ) : (

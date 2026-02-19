@@ -32,6 +32,7 @@ function Hexagon({ item, size = 140, delay = 0 }) {
 
     return (
         <motion.div
+            className="hex-item"
             initial={{ opacity: 0, scale: 0.7 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -54,7 +55,7 @@ function Hexagon({ item, size = 140, delay = 0 }) {
                 fontSize: item.isCenter ? 11 : 11,
                 fontWeight: 800, color: "#fff",
                 textAlign: "center", lineHeight: 1.3,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 letterSpacing: item.isCenter ? "0.08em" : "0.02em",
                 textTransform: "uppercase",
                 whiteSpace: "pre-line",
@@ -69,7 +70,7 @@ export default function IRAdvantages() {
     const hexSize = 130;
 
     return (
-        <section style={{ background: "#F8FAFC", padding: "80px 0" }}>
+        <section style={{ background: "#F8FAFC", padding: "clamp(40px, 8vw, 80px) 0" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
 
                 {/* Section heading */}
@@ -80,10 +81,10 @@ export default function IRAdvantages() {
                             letterSpacing: "0.12em", textTransform: "uppercase",
                             color: "#2563EB", background: "rgba(37,99,235,0.08)",
                             padding: "6px 16px", borderRadius: 100, marginBottom: 14,
-                            fontFamily: "'DM Sans', sans-serif"
+                            fontFamily: "'Roboto', sans-serif"
                         }}>Why Interventional Radiology</span>
                         <h2 style={{
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSize: "clamp(24px, 3.5vw, 38px)",
                             fontWeight: 800, color: "#071426",
                             lineHeight: 1.15, letterSpacing: "-0.02em"
@@ -98,19 +99,19 @@ export default function IRAdvantages() {
                     marginBottom: 56, padding: "20px 0"
                 }}>
                     {/* Row 1: 3 hexagons */}
-                    <div style={{ display: "flex", gap: 6, justifyContent: "center" }}>
+                    <div className="hex-row" style={{ display: "flex", gap: 6, justifyContent: "center" }}>
                         <Hexagon item={HEXAGONS[0]} size={hexSize} delay={0} />
                         <Hexagon item={HEXAGONS[1]} size={hexSize} delay={0.08} />
                         <Hexagon item={HEXAGONS[2]} size={hexSize} delay={0.16} />
                     </div>
                     {/* Row 2: 2 hexagons offset + center */}
-                    <div style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
+                    <div className="hex-row" style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
                         <Hexagon item={HEXAGONS[3]} size={hexSize} delay={0.24} />
                         <Hexagon item={HEXAGONS[4]} size={hexSize} delay={0.32} />
                         <Hexagon item={HEXAGONS[5]} size={hexSize} delay={0.40} />
                     </div>
                     {/* Row 3: 2 hexagons */}
-                    <div style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
+                    <div className="hex-row" style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
                         <Hexagon item={HEXAGONS[6]} size={hexSize} delay={0.48} />
                         <Hexagon item={HEXAGONS[7]} size={hexSize} delay={0.56} />
                     </div>
@@ -120,7 +121,7 @@ export default function IRAdvantages() {
                 <FadeIn>
                     <div style={{ textAlign: "center", marginBottom: 36 }}>
                         <h2 style={{
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSize: "clamp(22px, 3vw, 34px)",
                             fontWeight: 800, color: "#071426",
                             lineHeight: 1.2, marginBottom: 20,
@@ -142,7 +143,7 @@ export default function IRAdvantages() {
                                 border: "2px solid #2563EB",
                                 padding: "14px 32px", borderRadius: 12,
                                 fontSize: 15, fontWeight: 700,
-                                cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
+                                cursor: "pointer", fontFamily: "'Roboto', sans-serif",
                                 transition: "all 0.2s ease",
                                 display: "inline-flex", alignItems: "center", gap: 10,
                                 boxShadow: showTable ? "0 4px 14px rgba(37,99,235,0.3)" : "none"
@@ -164,10 +165,12 @@ export default function IRAdvantages() {
                             transition={{ duration: 0.4, ease: "easeInOut" }}
                             style={{ overflow: "hidden", marginBottom: 40 }}
                         >
+                            <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
                             <div style={{
                                 borderRadius: 16, overflow: "hidden",
                                 border: "1px solid #E5E7EB",
-                                boxShadow: "0 4px 24px rgba(0,0,0,0.06)"
+                                boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                                minWidth: 480
                             }}>
                                 {/* Header */}
                                 <div style={{
@@ -178,7 +181,7 @@ export default function IRAdvantages() {
                                         <div key={i} style={{
                                             padding: "16px 20px", fontSize: 12, fontWeight: 700,
                                             color: i === 2 ? "#5EEAD4" : i === 1 ? "#FCA5A5" : "rgba(255,255,255,0.6)",
-                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontFamily: "'Roboto', sans-serif",
                                             letterSpacing: "0.04em", textTransform: "uppercase",
                                             borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none"
                                         }}>{h}</div>
@@ -193,12 +196,12 @@ export default function IRAdvantages() {
                                     }}>
                                         <div style={{
                                             padding: "14px 20px", fontSize: 13, fontWeight: 600,
-                                            color: "#071426", fontFamily: "'DM Sans', sans-serif",
+                                            color: "#071426", fontFamily: "'Roboto', sans-serif",
                                             borderRight: "1px solid #F3F4F6"
                                         }}>{row.param}</div>
                                         <div style={{
                                             padding: "14px 20px", fontSize: 13,
-                                            color: "#EF4444", fontFamily: "'DM Sans', sans-serif",
+                                            color: "#EF4444", fontFamily: "'Roboto', sans-serif",
                                             borderRight: "1px solid #F3F4F6",
                                             display: "flex", alignItems: "center", gap: 8
                                         }}>
@@ -206,13 +209,14 @@ export default function IRAdvantages() {
                                         </div>
                                         <div style={{
                                             padding: "14px 20px", fontSize: 13,
-                                            color: "#0D9488", fontFamily: "'DM Sans', sans-serif",
+                                            color: "#0D9488", fontFamily: "'Roboto', sans-serif",
                                             fontWeight: 600, display: "flex", alignItems: "center", gap: 8
                                         }}>
                                             <span style={{ fontWeight: 700 }}>✓</span> {row.ir}
                                         </div>
                                     </div>
                                 ))}
+                            </div>
                             </div>
                         </motion.div>
                     )}
@@ -221,19 +225,19 @@ export default function IRAdvantages() {
                 {/* Bottom CTA */}
                 <FadeIn delay={0.1}>
                     <div style={{
-                        background: "linear-gradient(135deg, #071426, #0A1E3D)",
-                        borderRadius: 20, padding: "36px 40px",
+                        background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
+                        borderRadius: 20, padding: "clamp(24px, 4vw, 36px) clamp(20px, 4vw, 40px)",
                         display: "flex", flexWrap: "wrap",
                         alignItems: "center", justifyContent: "space-between", gap: 20
                     }}>
                         <div>
                             <div style={{
                                 fontSize: "clamp(17px, 2.2vw, 22px)", fontWeight: 700,
-                                color: "#fff", fontFamily: "'Inter', sans-serif", marginBottom: 6
+                                color: "#fff", fontFamily: "'Poppins', sans-serif", marginBottom: 6
                             }}>You don't have to choose between effectiveness and comfort.</div>
                             <div style={{
                                 fontSize: 14, color: "rgba(255,255,255,0.5)",
-                                fontFamily: "'DM Sans', sans-serif"
+                                fontFamily: "'Roboto', sans-serif"
                             }}>IR gives you both — expert treatment, minimal disruption to your life.</div>
                         </div>
                         <button
@@ -243,7 +247,7 @@ export default function IRAdvantages() {
                                 border: "none", color: "#fff",
                                 padding: "14px 32px", borderRadius: 10,
                                 fontSize: 15, fontWeight: 600,
-                                cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
+                                cursor: "pointer", fontFamily: "'Roboto', sans-serif",
                                 whiteSpace: "nowrap"
                             }}
                         >Book a Free Consultation</button>

@@ -20,11 +20,9 @@ export default function Hero() {
 
     return (
         <section style={{
-            minHeight: "100vh",
-            display: "flex",
-            alignItems: "center",
             position: "relative",
             overflow: "hidden",
+            padding: 0,
             background: "linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 50%, #DBEAFE 100%)"
         }}>
             {/* Decorative orb */}
@@ -37,10 +35,10 @@ export default function Hero() {
 
             <div style={{
                 maxWidth: 1200, margin: "0 auto",
-                padding: "120px 24px 80px",
+                padding: "76px 24px 40px",
                 width: "100%", position: "relative", zIndex: 1
             }}>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 48 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "clamp(24px, 4vw, 48px)" }}>
 
                     {/* ── LEFT: Content ── */}
                     <div style={{ flex: "1 1 480px", minWidth: 280 }}>
@@ -54,7 +52,7 @@ export default function Hero() {
                                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981" }} />
                                 <span style={{
                                     color: "#2563EB", fontSize: 14,
-                                    fontFamily: "'Inter', sans-serif",
+                                    fontFamily: "'Poppins', sans-serif",
                                     fontWeight: 600, letterSpacing: "0.02em"
                                 }}>Available for Appointments in Bengaluru</span>
                             </div>
@@ -62,7 +60,7 @@ export default function Hero() {
 
                         <FadeIn delay={0.08}>
                             <h1 style={{
-                                fontFamily: "'Inter', sans-serif",
+                                fontFamily: "'Poppins', sans-serif",
                                 fontSize: "clamp(42px, 6vw, 72px)",
                                 fontWeight: 800, color: "#1F2937",
                                 lineHeight: 1.1, marginBottom: 12,
@@ -72,7 +70,7 @@ export default function Hero() {
 
                         <FadeIn delay={0.12}>
                             <p style={{
-                                fontFamily: "'Inter', sans-serif",
+                                fontFamily: "'Poppins', sans-serif",
                                 fontSize: "clamp(15px, 1.6vw, 18px)",
                                 color: "#2563EB", marginBottom: 8,
                                 fontWeight: 600, letterSpacing: "0.01em",
@@ -82,17 +80,17 @@ export default function Hero() {
 
                         <FadeIn delay={0.14}>
                             <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: 13, color: "#6B7280",
                                 lineHeight: 1.7, marginBottom: 6, maxWidth: 520
                             }}>{DOC.qualsBadge}</p>
                             <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: 13, color: "#0D9488",
                                 fontWeight: 600, marginBottom: 6
                             }}>{DOC.training}</p>
                             <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: 14, color: "#1F2937",
                                 fontWeight: 700, marginBottom: 20
                             }}>{DOC.cofounder}</p>
@@ -100,7 +98,7 @@ export default function Hero() {
 
                         <FadeIn delay={0.18}>
                             <p style={{
-                                fontFamily: "'Inter', sans-serif",
+                                fontFamily: "'Poppins', sans-serif",
                                 fontSize: "clamp(22px, 2.6vw, 30px)",
                                 color: "#374151", lineHeight: 1.35,
                                 marginBottom: 14, fontWeight: 700
@@ -109,7 +107,7 @@ export default function Hero() {
 
                         <FadeIn delay={0.22}>
                             <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontSize: "clamp(15px, 1.5vw, 17px)",
                                 color: "#6B7280", lineHeight: 1.75,
                                 marginBottom: 32, maxWidth: 520
@@ -124,7 +122,7 @@ export default function Hero() {
                                         background: "#2563EB", border: "none", color: "#FFFFFF",
                                         padding: "16px 36px", borderRadius: 12,
                                         fontSize: 16, fontWeight: 600, cursor: "pointer",
-                                        fontFamily: "'Inter', sans-serif",
+                                        fontFamily: "'Poppins', sans-serif",
                                         boxShadow: "0 4px 14px rgba(37,99,235,0.25)",
                                         transition: "all 0.2s ease"
                                     }}
@@ -143,7 +141,7 @@ export default function Hero() {
                                         background: "#FFFFFF", border: "2px solid #2563EB",
                                         color: "#2563EB", padding: "14px 30px",
                                         borderRadius: 12, fontSize: 15, fontWeight: 600,
-                                        cursor: "pointer", fontFamily: "'Inter', sans-serif",
+                                        cursor: "pointer", fontFamily: "'Poppins', sans-serif",
                                         transition: "all 0.2s ease"
                                     }}
                                     onMouseEnter={(e) => e.target.style.background = "#EFF6FF"}
@@ -162,12 +160,12 @@ export default function Hero() {
                                 ].map((s, i) => (
                                     <div key={i} style={{ textAlign: "left" }}>
                                         <div style={{
-                                            fontFamily: "'Inter', sans-serif",
-                                            fontSize: 34, fontWeight: 800,
+                                            fontFamily: "'Poppins', sans-serif",
+                                            fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800,
                                             color: "#2563EB", lineHeight: 1, marginBottom: 4
                                         }}>{s.v}</div>
                                         <div style={{
-                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontFamily: "'Roboto', sans-serif",
                                             fontSize: 13, fontWeight: 500,
                                             color: "#6B7280"
                                         }}>{s.l}</div>
@@ -179,10 +177,10 @@ export default function Hero() {
 
                     {/* ── RIGHT: Photo Carousel ── */}
                     <FadeIn delay={0.15} className="hero-img-wrap">
-                        <div style={{ flex: "0 1 400px", position: "relative" }}>
+                        <div style={{ flex: "0 1 380px", position: "relative" }}>
                             {/* Main carousel image */}
                             <div style={{
-                                width: "100%", aspectRatio: "3/4",
+                                width: "100%", aspectRatio: "3/3.8",
                                 borderRadius: 24, overflow: "hidden",
                                 border: "3px solid #2563EB",
                                 boxShadow: "0 24px 50px rgba(37,99,235,0.18)",
@@ -222,7 +220,7 @@ export default function Hero() {
                                         style={{
                                             position: "absolute", bottom: 20, left: 20,
                                             fontSize: 14, fontWeight: 600,
-                                            color: "#fff", fontFamily: "'DM Sans', sans-serif"
+                                            color: "#fff", fontFamily: "'Roboto', sans-serif"
                                         }}
                                     >{HERO_PHOTOS[active].label}</motion.div>
                                 </AnimatePresence>

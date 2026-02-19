@@ -4,9 +4,9 @@ import { CREDS } from '../../config/data';
 export default function CredBar() {
     return (
         <section style={{
-            background: "#060F1F",
-            borderTop: "1px solid rgba(255,255,255,0.04)",
-            borderBottom: "1px solid rgba(255,255,255,0.04)"
+            background: "#F8FAFC",
+            borderTop: "1px solid rgba(0,0,0,0.06)",
+            borderBottom: "1px solid rgba(0,0,0,0.06)"
         }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "36px 24px" }}>
                 <FadeIn>
@@ -24,8 +24,8 @@ export default function CredBar() {
                                     maxWidth: 270,
                                     padding: "16px 20px",
                                     borderRadius: 12,
-                                    background: "rgba(255,255,255,0.02)",
-                                    border: "1px solid rgba(255,255,255,0.05)",
+                                    background: "#FFFFFF",
+                                    border: "1px solid #E5E7EB",
                                     display: "flex",
                                     alignItems: "center",
                                     gap: 14
@@ -36,26 +36,26 @@ export default function CredBar() {
                                     height: 40,
                                     borderRadius: 10,
                                     flexShrink: 0,
-                                    background: "linear-gradient(135deg, rgba(13,148,136,0.15), rgba(13,148,136,0.05))",
+                                    background: "linear-gradient(135deg, rgba(37,99,235,0.1), rgba(37,99,235,0.04))",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
                                     fontSize: 13,
                                     fontWeight: 700,
-                                    color: "#14B8A6",
-                                    fontFamily: "'DM Sans', sans-serif"
+                                    color: "#2563EB",
+                                    fontFamily: "'Roboto', sans-serif"
                                 }}>{c.inst.slice(0, 2)}</div>
                                 <div>
                                     <div style={{
-                                        color: "#fff",
-                                        fontSize: 13,
+                                        color: "#1F2937",
+                                        fontSize: 14,
                                         fontWeight: 600,
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>{c.inst}</div>
                                     <div style={{
-                                        color: "rgba(255,255,255,0.4)",
-                                        fontSize: 11,
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        color: "#6B7280",
+                                        fontSize: 13,
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>{c.desc}</div>
                                 </div>
                             </div>

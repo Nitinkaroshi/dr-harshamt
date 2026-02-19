@@ -61,7 +61,7 @@ export function AnimatedStat({ value, label }) {
     return (
         <div ref={ref}>
             <div style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Roboto Slab', serif",
                 fontSize: 30,
                 fontWeight: 700,
                 color: "#14B8A6",
@@ -70,7 +70,7 @@ export function AnimatedStat({ value, label }) {
                 {numericPart > 0 ? count : value}{suffix}
             </div>
             <div style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: 11,
                 color: "rgba(255,255,255,0.35)",
                 marginTop: 4,

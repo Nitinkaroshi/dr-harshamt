@@ -35,20 +35,20 @@ export default function LoadingScreen() {
                 fontSize: 26,
                 fontWeight: 700,
                 color: "#fff",
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Roboto Slab', serif",
                 animation: "pulse-load 1.5s ease-in-out infinite",
             }}>H</div>
             <div style={{
                 color: "#fff",
                 fontSize: 16,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontWeight: 600,
                 marginTop: 16
             }}>Dr. Harsha M T</div>
             <div style={{
                 color: "rgba(255,255,255,0.4)",
                 fontSize: 12,
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 marginTop: 4
             }}>Interventional Radiologist</div>
             <div style={{

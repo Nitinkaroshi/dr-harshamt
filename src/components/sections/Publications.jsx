@@ -5,8 +5,8 @@ import { AWARDS } from '../../config/data';
 export default function Publications() {
     return (
         <section style={{
-            background: "linear-gradient(180deg, #071426, #0A1E3D)",
-            padding: "80px 0"
+            background: "#FFFFFF",
+            padding: "clamp(40px, 8vw, 80px) 0"
         }}>
             <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px" }}>
                 <SectionHead
@@ -21,8 +21,8 @@ export default function Publications() {
                     {AWARDS.map((a, i) => (
                         <FadeIn key={i} delay={i * 0.06}>
                             <div style={{
-                                background: "rgba(255,255,255,0.02)",
-                                border: "1px solid rgba(255,255,255,0.06)",
+                                background: "#F9FAFB",
+                                border: "1px solid #E5E7EB",
                                 borderRadius: 14,
                                 padding: "22px 24px",
                                 display: "flex",
@@ -31,16 +31,16 @@ export default function Publications() {
                                 <span style={{ fontSize: 24, flexShrink: 0 }}>{a.icon}</span>
                                 <div>
                                     <div style={{
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         fontWeight: 700,
-                                        color: "#fff",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        color: "#1F2937",
+                                        fontFamily: "'Roboto', sans-serif",
                                         marginBottom: 4
                                     }}>{a.title}</div>
                                     <div style={{
-                                        fontSize: 12,
-                                        color: "rgba(255,255,255,0.45)",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 14,
+                                        color: "#6B7280",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.6
                                     }}>{a.desc}</div>
                                 </div>

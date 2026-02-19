@@ -77,7 +77,7 @@ const STEP_VISUALS = [
 
 export default function Journey() {
     return (
-        <section style={{ background: "#FAFBFC", padding: "80px 0" }}>
+        <section style={{ background: "#FAFBFC", padding: "clamp(40px, 8vw, 80px) 0" }}>
             <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px" }}>
                 {/* Section heading */}
                 <FadeIn>
@@ -87,17 +87,17 @@ export default function Journey() {
                             letterSpacing: "0.12em", textTransform: "uppercase",
                             color: "#2563EB", background: "rgba(37,99,235,0.08)",
                             padding: "6px 16px", borderRadius: 100, marginBottom: 14,
-                            fontFamily: "'DM Sans', sans-serif"
+                            fontFamily: "'Roboto', sans-serif"
                         }}>Your Visit</span>
                         <h2 style={{
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSize: "clamp(24px, 3.5vw, 38px)",
                             fontWeight: 800, color: "#071426",
                             lineHeight: 1.15, letterSpacing: "-0.02em",
                             marginBottom: 10
                         }}>What to Expect</h2>
                         <p style={{
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'Roboto', sans-serif",
                             fontSize: 15, color: "rgba(7,20,38,0.5)",
                             maxWidth: 480, margin: "0 auto"
                         }}>A simple, patient-first process from consultation to recovery</p>
@@ -106,8 +106,8 @@ export default function Journey() {
 
                 {/* ── Timeline Steps ── */}
                 <div style={{ position: "relative" }}>
-                    {/* Connecting line (desktop) */}
-                    <div style={{
+                    {/* Connecting line (desktop only) */}
+                    <div className="desk-nav" style={{
                         position: "absolute",
                         top: 56, left: "10%", right: "10%",
                         height: 2,
@@ -151,7 +151,7 @@ export default function Journey() {
                                             display: "flex", alignItems: "center",
                                             justifyContent: "center",
                                             fontSize: 12, fontWeight: 800,
-                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontFamily: "'Roboto', sans-serif",
                                             boxShadow: `0 2px 8px ${v.color}40`
                                         }}>{step.s}</div>
 
@@ -167,7 +167,7 @@ export default function Journey() {
                                         <div style={{
                                             fontSize: 17, fontWeight: 700,
                                             color: "#071426",
-                                            fontFamily: "'Inter', sans-serif",
+                                            fontFamily: "'Poppins', sans-serif",
                                             marginBottom: 8
                                         }}>{step.t}</div>
 
@@ -175,13 +175,13 @@ export default function Journey() {
                                         <div style={{
                                             fontSize: 13,
                                             color: "rgba(7,20,38,0.5)",
-                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontFamily: "'Roboto', sans-serif",
                                             lineHeight: 1.6
                                         }}>{step.d}</div>
 
-                                        {/* Arrow connector (except last) */}
+                                        {/* Arrow connector — hidden on mobile via desk-nav class */}
                                         {i < STEPS.length - 1 && (
-                                            <div style={{
+                                            <div className="desk-nav" style={{
                                                 position: "absolute",
                                                 right: -14, top: "50%",
                                                 transform: "translateY(-50%)",
@@ -200,7 +200,7 @@ export default function Journey() {
                 <FadeIn delay={0.4}>
                     <div style={{
                         marginTop: 40,
-                        background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                        background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
                         borderRadius: 16, padding: "24px 32px",
                         display: "flex", flexWrap: "wrap",
                         alignItems: "center", justifyContent: "center",
@@ -219,7 +219,7 @@ export default function Journey() {
                                 <span style={{
                                     fontSize: 13, fontWeight: 600,
                                     color: "rgba(255,255,255,0.7)",
-                                    fontFamily: "'DM Sans', sans-serif"
+                                    fontFamily: "'Roboto', sans-serif"
                                 }}>{item.text}</span>
                             </div>
                         ))}

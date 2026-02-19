@@ -14,6 +14,10 @@ export default function Navbar({ onNav }) {
     const navigate = (href) => {
         setMobileOpen(false);
         if (href.startsWith("#")) {
+            // If we're on a sub-page, go home first then scroll
+            if (window.location.pathname !== '/') {
+                window.history.pushState({}, '', '/' + href);
+            }
             onNav("home");
             setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 100);
         }
@@ -44,7 +48,7 @@ export default function Navbar({ onNav }) {
                 {/* Logo */}
                 <div
                     style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
-                    onClick={() => { onNav("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    onClick={() => { window.history.pushState({}, '', '/'); onNav("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 >
                     <div style={{
                         width: 36,
@@ -57,20 +61,20 @@ export default function Navbar({ onNav }) {
                         fontSize: 15,
                         fontWeight: 700,
                         color: "#fff",
-                        fontFamily: "'Playfair Display', serif"
+                        fontFamily: "'Roboto Slab', serif"
                     }}>H</div>
                     <div>
                         <div style={{
                             color: "#1F2937",
                             fontSize: 16,
                             fontWeight: 700,
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             lineHeight: 1.2
                         }}>Dr. Harsha M T</div>
                         <div style={{
                             color: "#6B7280",
                             fontSize: 11,
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             letterSpacing: "0.05em",
                             textTransform: "uppercase",
                             fontWeight: 500
@@ -89,7 +93,7 @@ export default function Navbar({ onNav }) {
                                 border: "none",
                                 color: "#4B5563",
                                 fontSize: 15,
-                                fontFamily: "'Inter', sans-serif",
+                                fontFamily: "'Poppins', sans-serif",
                                 cursor: "pointer",
                                 fontWeight: 500,
                                 transition: "color 0.2s ease"
@@ -109,7 +113,7 @@ export default function Navbar({ onNav }) {
                             fontSize: 15,
                             fontWeight: 600,
                             cursor: "pointer",
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             boxShadow: "0 2px 8px rgba(37,99,235,0.25)",
                             transition: "all 0.2s ease"
                         }}
@@ -134,9 +138,12 @@ export default function Navbar({ onNav }) {
                         display: "none",
                         background: "none",
                         border: "none",
-                        color: "#fff",
+                        color: "#1F2937",
                         fontSize: 24,
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        padding: 10,
+                        minWidth: 44,
+                        minHeight: 44
                     }}
                 >{mobileOpen ? "✕" : "☰"}</button>
             </div>
@@ -166,7 +173,7 @@ export default function Navbar({ onNav }) {
                                 color: "rgba(255,255,255,0.8)",
                                 fontSize: 15,
                                 padding: "12px 0",
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 cursor: "pointer",
                                 borderBottom: "1px solid rgba(255,255,255,0.05)"
                             }}
@@ -185,7 +192,7 @@ export default function Navbar({ onNav }) {
                             fontSize: 15,
                             fontWeight: 600,
                             cursor: "pointer",
-                            fontFamily: "'DM Sans', sans-serif"
+                            fontFamily: "'Roboto', sans-serif"
                         }}
                     >Book Appointment</button>
                 </div>

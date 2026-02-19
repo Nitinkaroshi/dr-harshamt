@@ -3,8 +3,8 @@
    Blue + White Theme - Clean, Trustworthy, Professional
    ═══════════════════════════════════════════════════════════ */
 
-/* Import Inter font for professional medical aesthetic */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Import fonts for professional medical aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;600;700&display=swap');
 
 /* ═══════════════════════════════════════════════════════════
    CSS VARIABLES - Medical Color System
@@ -82,7 +82,7 @@
   --spacing-3xl: 4rem;
 
   /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -406,4 +406,49 @@ section {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-400);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEXAGONAL GRID RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .hex-row {
+    margin-top: -30px !important;
+    gap: 6px !important;
+  }
+  .hex-row:first-child {
+    margin-top: 0 !important;
+  }
+  .hex-item {
+    width: 120px !important;
+    height: 138px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hex-row {
+    margin-top: 0 !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .hex-item {
+    width: 100px !important;
+    height: 115px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE FORM & LAYOUT FIXES
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .hex-item {
+    width: 85px !important;
+    height: 98px !important;
+  }
+  .hex-item span {
+    font-size: 9px !important;
+  }
 }

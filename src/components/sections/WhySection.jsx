@@ -1,23 +1,22 @@
 import FadeIn from '../common/FadeIn';
 import SectionHead from '../common/SectionHead';
-import { VeinIllustration } from '../common/MedicalIllustrations';
 import { WHY, IMG } from '../../config/data';
 
 export default function WhySection() {
     return (
         <>
             {/* Procedure Visual Gallery Strip */}
-            <section style={{ background: "#071426", padding: "48px 0", overflow: "hidden" }}>
+            <section style={{ background: "#F8FAFC", padding: "clamp(32px, 6vw, 48px) 0", overflow: "hidden" }}>
                 <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
                     <FadeIn>
                         <div style={{ textAlign: "center", marginBottom: 24 }}>
                             <span style={{
                                 fontSize: 11,
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 fontWeight: 600,
                                 letterSpacing: "0.12em",
                                 textTransform: "uppercase",
-                                color: "#5EEAD4"
+                                color: "#2563EB"
                             }}>Our Procedures</span>
                         </div>
                         <div style={{
@@ -40,13 +39,15 @@ export default function WhySection() {
                                         position: "relative",
                                         borderRadius: 12,
                                         overflow: "hidden",
-                                        flex: "0 0 200px",
+                                        flex: "1 1 160px",
+                                        maxWidth: 220,
                                         height: 130
                                     }}
                                 >
                                     <img
                                         src={p.img}
-                                        alt={p.label}
+                                        alt={`${p.label} — Interventional Radiology procedure by Dr. Harsha M T`}
+                                        loading="lazy"
                                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                                     />
                                     <div style={{
@@ -62,15 +63,10 @@ export default function WhySection() {
                                         color: "#fff",
                                         fontSize: 11,
                                         fontWeight: 600,
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>{p.label}</div>
                                 </div>
                             ))}
-                        </div>
-                    </FadeIn>
-                    <FadeIn delay={0.1}>
-                        <div style={{ marginTop: 32, padding: "20px 0" }}>
-                            <VeinIllustration type="embolisation" />
                         </div>
                     </FadeIn>
                 </div>
@@ -78,44 +74,44 @@ export default function WhySection() {
 
             {/* Why Choose Section */}
             <section id="why" style={{
-                background: "linear-gradient(180deg, #071426, #0C2440)",
-                padding: "90px 0"
+                background: "#FFFFFF",
+                padding: "clamp(40px, 8vw, 90px) 0"
             }}>
                 <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-                    <SectionHead label="Differentiators" title="Why Choose Dr. Harsha?" />
+                    <SectionHead sup="Differentiators" title="Why Choose Dr. Harsha?" />
                     <div style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(min(250px, 100%), 1fr))",
                         gap: 14
                     }}>
                         {WHY.map((w, i) => (
                             <FadeIn key={i} delay={i * 0.06}>
                                 <div style={{
-                                    background: "rgba(255,255,255,0.03)",
-                                    border: "1px solid rgba(255,255,255,0.06)",
+                                    background: "#F9FAFB",
+                                    border: "1px solid #E5E7EB",
                                     borderRadius: 14,
                                     padding: 28,
                                     height: "100%"
                                 }}>
                                     <div style={{
                                         fontSize: 32,
-                                        fontFamily: "'Playfair Display', serif",
+                                        fontFamily: "'Roboto Slab', serif",
                                         fontWeight: 700,
-                                        color: "rgba(13,148,136,0.2)",
+                                        color: "rgba(37,99,235,0.15)",
                                         marginBottom: 14,
                                         lineHeight: 1
                                     }}>{w.n}</div>
                                     <div style={{
                                         fontSize: 17,
                                         fontWeight: 700,
-                                        color: "#fff",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        color: "#1F2937",
+                                        fontFamily: "'Roboto', sans-serif",
                                         marginBottom: 8
                                     }}>{w.t}</div>
                                     <div style={{
-                                        fontSize: 13,
-                                        color: "rgba(255,255,255,0.45)",
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 15,
+                                        color: "#6B7280",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.7
                                     }}>{w.d}</div>
                                 </div>

@@ -94,7 +94,7 @@ export default function HeroEnhanced() {
                                 fontSize: 11,
                                 fontWeight: 600,
                                 color: '#5EEAD4',
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 letterSpacing: '0.05em',
                                 textTransform: 'uppercase'
                             }}>
@@ -108,7 +108,7 @@ export default function HeroEnhanced() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                             style={{
-                                fontFamily: "'Playfair Display', serif",
+                                fontFamily: "'Roboto Slab', serif",
                                 fontSize: 'clamp(36px, 6vw, 56px)',
                                 fontWeight: 700,
                                 color: '#fff',
@@ -130,7 +130,7 @@ export default function HeroEnhanced() {
                                 background: 'linear-gradient(135deg, #5EEAD4, #14B8A6)',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 marginBottom: 20
                             }}
                         >
@@ -145,7 +145,7 @@ export default function HeroEnhanced() {
                                 fontSize: 'clamp(24px, 3vw, 32px)',
                                 fontWeight: 700,
                                 color: '#fff',
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 lineHeight: 1.3,
                                 marginBottom: 16
                             }}
@@ -159,7 +159,7 @@ export default function HeroEnhanced() {
                             style={{
                                 fontSize: 'clamp(14px, 1.5vw, 16px)',
                                 color: 'rgba(255,255,255,0.7)',
-                                fontFamily: "'DM Sans', sans-serif",
+                                fontFamily: "'Roboto', sans-serif",
                                 lineHeight: 1.7,
                                 marginBottom: 36,
                                 maxWidth: 540
@@ -186,7 +186,7 @@ export default function HeroEnhanced() {
                                     fontSize: 15,
                                     fontWeight: 600,
                                     cursor: 'pointer',
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     boxShadow: '0 4px 20px rgba(13,148,136,0.3)'
                                 }}
                             >
@@ -204,7 +204,7 @@ export default function HeroEnhanced() {
                                     fontSize: 15,
                                     fontWeight: 600,
                                     cursor: 'pointer',
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     backdropFilter: 'blur(10px)'
                                 }}
                             >
@@ -244,7 +244,7 @@ export default function HeroEnhanced() {
                                     }}
                                 >
                                     <div style={{
-                                        fontFamily: "'Playfair Display', serif",
+                                        fontFamily: "'Roboto Slab', serif",
                                         fontSize: 32,
                                         fontWeight: 700,
                                         color: '#14B8A6',
@@ -259,7 +259,7 @@ export default function HeroEnhanced() {
                                     <div style={{
                                         fontSize: 12,
                                         color: 'rgba(255,255,255,0.5)',
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         marginTop: 6,
                                         letterSpacing: '0.03em'
                                     }}>
@@ -358,7 +358,7 @@ export default function HeroEnhanced() {
                                     style={{
                                         fontSize: 11,
                                         color: 'rgba(255,255,255,0.6)',
-                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontFamily: "'Roboto', sans-serif",
                                         lineHeight: 1.5
                                     }}
                                 >
@@ -415,7 +415,7 @@ export default function HeroEnhanced() {
                 <span style={{
                     fontSize: 11,
                     color: 'rgba(255,255,255,0.4)',
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     letterSpacing: '0.05em'
                 }}>
                     Scroll

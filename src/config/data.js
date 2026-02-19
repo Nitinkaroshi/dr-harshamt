@@ -1,23 +1,23 @@
 /* ─── DOCTOR INFORMATION ─── */
 export const DOC = {
     name: "Dr. Harsha M T",
-    title: "Consultant Interventional Radiologist",
-    titleFull: "Consultant Interventional Radiologist & Vascular Interventionist",
+    title: "Consultant Vascular & Interventional Radiologist",
+    titleFull: "Vascular & Interventional Radiologist | Vein Specialist | Endovascular Surgeon",
     tagline: "Minimally Invasive. Maximally Effective.",
-    sub: "Pinhole procedures that replace complex surgeries — so you heal faster, with no scars and no stitches.",
-    quals: "MBBS • MD (PGI Chandigarh) • FVIR (AIIMS) • FVIR (SNUH, South Korea) • EBIR • EDiR • DICRI",
-    qualsBadge: "MBBS, MD (PGI Chandigarh), FVIR (AIIMS), FVIR (SNUH, South Korea) EBIR, EDiR, DICRI",
+    sub: "He combines the precision of radiology with the clinical expertise of a surgeon to treat conditions like Varicose Veins, Uterine Fibroids, and Thyroid Nodules — without open surgery.",
+    quals: "MBBS • MD (PGIMER Chandigarh) • FVIR (AIIMS Rishikesh) • FVIR (SNUH, South Korea) • EBIR • EDiR • Dip. ICRI",
+    qualsBadge: "MBBS, MD (PGIMER Chandigarh), FVIR (AIIMS Rishikesh), FVIR (SNUH, South Korea), EBIR, EDiR, Dip. ICRI",
     training: "Trained in thyroid thermal ablation at European Institute of Oncology (IEO), Milan, Italy",
     cofounder: "Co-founder, VENUVA VASCULAR CENTER",
     exp: "8+",
-    procs: "2500+",
+    procs: "8500+",
     certs: "6",
     countries: "3",
-    phone: "+91 98765 43210",
-    wa: "919876543210",
+    phone: "+91 85533 85938",
+    wa: "918553385938",
     email: "dr.harsha.mt@email.com",
-    loc: "SPARSH Hospital, Infantry Road & Yelahanka, Bengaluru",
-    time: "Mon – Sat, 10:00 AM – 7:00 PM",
+    loc: "SPARSH Hospital & Venuva Vascular Center, Bengaluru",
+    time: "Mon – Sat",
     reg: "KMC 120648",
     photo: "https://www.sparshhospital.com/wp-content/uploads/2024/05/Dr.-Harsha-M-T.jpg",
     photoApron: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=800&fit=crop",
@@ -63,12 +63,13 @@ export const NAV = [
 
 /* ─── CREDENTIALS ─── */
 export const CREDS = [
-    { inst: "PGIMER", desc: "MD Radiodiagnosis", loc: "Chandigarh" },
-    { inst: "AIIMS", desc: "Fellowship VIR", loc: "Rishikesh" },
-    { inst: "SNUH", desc: "Fellowship VIR", loc: "South Korea" },
-    { inst: "IEO Milan", desc: "Thyroid Thermal Ablation", loc: "Italy" },
-    { inst: "EBIR", desc: "European Board IR", loc: "Certified" },
-    { inst: "EDiR", desc: "European Diploma", loc: "Radiology" },
+    { inst: "PGIMER Chandigarh", desc: "MD Radio-diagnosis & IR" },
+    { inst: "AIIMS Rishikesh", desc: "Fellowship VIR" },
+    { inst: "SNUH, South Korea", desc: "Fellowship VIR" },
+    { inst: "IEO Milan, Italy", desc: "Thyroid Thermal Ablation" },
+    { inst: "EBIR", desc: "European Board of IR" },
+    { inst: "EDiR", desc: "European Diploma in Radiology" },
+    { inst: "Dip. ICRI", desc: "Indian College of Radiology" },
 ];
 
 /* ─── SERVICES ─── */
@@ -186,18 +187,22 @@ export const SERVICES = [
 /* ─── LOCATIONS ─── */
 export const LOCATIONS = [
     {
-        name: "SPARSH Hospital, Infantry Road",
+        name: "SPARSH Hospital",
         address: "No. 29, Infantry Road, Tasker Town, Bengaluru - 560001",
         phone: "080 4969 4969",
+        time: "10:00 AM – 4:00 PM",
+        days: "Mon – Sat",
         primary: true,
         mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8252551!2d77.6069!3d12.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU5JzAwLjAiTiA3N8KwMzYnMjUuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin",
     },
     {
-        name: "SPARSH Hospital, Yelahanka",
-        address: "No. 146/1, Bellary Road, Yelahanka, Bengaluru - 560064",
-        phone: "080 4969 4969",
+        name: "Venuva Vascular Center",
+        address: "Bengaluru",
+        phone: DOC.phone,
+        time: "5:00 PM – 8:00 PM",
+        days: "Mon – Sat",
         primary: false,
-        mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5!2d77.5969!3d13.1033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA2JzEyLjAiTiA3N8KwMzUnNDguMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin",
+        mapUrl: "",
     },
 ];
 
@@ -279,23 +284,33 @@ export const FAQS = [
 export const WHY = [
     {
         n: "01",
-        t: "Elite Indian & International Training",
-        d: "Trained at PGIMER Chandigarh, AIIMS Rishikesh, SNUH South Korea — topped the national VIR fellowship examination",
+        t: "Triple-Board Qualified",
+        d: "Validated by Indian and European Boards — EBIR, EDiR & Dip. ICRI. One of very few Indian IR specialists holding all three global gold-standard certifications.",
     },
     {
         n: "02",
-        t: "European Triple Board Certified",
-        d: "One of very few Indian IR specialists holding EBIR, EDiR & DICRI certifications — the global gold standard in interventional radiology",
+        t: "Pinhole Precision",
+        d: "As an Endovascular Surgeon, Dr. Harsha performs procedures through a tiny pinhole — ensuring no ugly scars, minimal pain, and faster recovery compared to open surgery.",
     },
     {
         n: "03",
-        t: "Thyroid Ablation Specialist",
-        d: "Exclusively trained in thyroid thermal ablation at the European Institute of Oncology (IEO), Milan, Italy",
+        t: "Comprehensive Vascular Care",
+        d: "From aesthetic vein treatments to complex tumour embolisations, Dr. Harsha offers a complete spectrum of vascular and interventional care under one roof.",
     },
     {
         n: "04",
+        t: "Elite Training, Global Standards",
+        d: "Trained at PGIMER Chandigarh, AIIMS Rishikesh, SNUH South Korea & IEO Milan — topped the national VIR fellowship entrance examination.",
+    },
+    {
+        n: "05",
+        t: "Thyroid Ablation Specialist",
+        d: "Exclusively trained in thyroid thermal ablation at the European Institute of Oncology (IEO), Milan, Italy — one of the world's premier cancer centres.",
+    },
+    {
+        n: "06",
         t: "Pioneer & Co-Founder",
-        d: "Co-founder of Venuva Vascular Center — bringing advanced IR to patients who previously had no alternative to surgery",
+        d: "Co-founder of Venuva Vascular Center — bringing advanced IR accessible to patients in Bengaluru who previously had no alternative to surgery.",
     },
 ];
 
@@ -312,27 +327,37 @@ export const AWARDS = [
     {
         icon: "🏆",
         title: "EBIR Certified",
-        desc: "European Board of Interventional Radiology — International gold standard certification",
-    },
-    {
-        icon: "🥇",
-        title: "AIR #1 — AIIMS Fellowship",
-        desc: "Topped the All India entrance exam for Vascular & Interventional Radiology fellowship",
-    },
-    {
-        icon: "🎓",
-        title: "PGIMER Top Rank",
-        desc: "Secured top rank in MD Radiodiagnosis entrance at PGIMER Chandigarh",
+        desc: "European Board of Interventional Radiology — international gold standard for IR specialists",
     },
     {
         icon: "📜",
         title: "EDiR Certified",
-        desc: "European Diploma in Radiology — demonstrating comprehensive diagnostic expertise",
+        desc: "European Diploma in Radiology — comprehensive diagnostic and clinical radiology expertise",
+    },
+    {
+        icon: "🎓",
+        title: "Dip. ICRI",
+        desc: "Diploma of the Indian College of Radiology & Imaging — national board certification",
+    },
+    {
+        icon: "🥇",
+        title: "AIR #1 — AIIMS Fellowship",
+        desc: "Topped the national entrance exam for Vascular & Interventional Radiology fellowship at AIIMS Rishikesh",
     },
     {
         icon: "🏥",
-        title: "AIIMS & PGIMER Trained",
-        desc: "Fellowship and residency at India's two most prestigious medical institutions",
+        title: "PGIMER Chandigarh",
+        desc: "MD Radio-diagnosis & Senior Residency at India's most prestigious medical institute",
+    },
+    {
+        icon: "🌏",
+        title: "SNUH, South Korea",
+        desc: "Fellowship in Vascular & Interventional Radiology at Seoul National University Hospital",
+    },
+    {
+        icon: "🇮🇹",
+        title: "IEO Milan, Italy",
+        desc: "Trained in thyroid thermal ablation at the European Institute of Oncology — a world-premier cancer centre",
     },
     {
         icon: "📚",

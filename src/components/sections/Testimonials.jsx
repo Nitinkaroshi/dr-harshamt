@@ -25,8 +25,8 @@ export default function Testimonials() {
 
     return (
         <section style={{
-            background: "linear-gradient(180deg, #071426 0%, #0A1E3D 100%)",
-            padding: "80px 0",
+            background: "#FFFFFF",
+            padding: "clamp(40px, 8vw, 80px) 0",
             position: "relative",
             overflow: "hidden"
         }}>
@@ -34,7 +34,7 @@ export default function Testimonials() {
             <div style={{
                 position: "absolute", top: "-15%", left: "-10%",
                 width: "40vw", height: "40vw", borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(13,148,136,0.05) 0%, transparent 70%)",
+                background: "radial-gradient(circle, rgba(37,99,235,0.05) 0%, transparent 70%)",
                 pointerEvents: "none"
             }} />
 
@@ -45,21 +45,21 @@ export default function Testimonials() {
                         <span style={{
                             display: "inline-block", fontSize: 11, fontWeight: 700,
                             letterSpacing: "0.12em", textTransform: "uppercase",
-                            color: "#5EEAD4", background: "rgba(20,184,166,0.1)",
+                            color: "#2563EB", background: "rgba(37,99,235,0.08)",
                             padding: "6px 16px", borderRadius: 100, marginBottom: 14,
-                            fontFamily: "'DM Sans', sans-serif",
-                            border: "1px solid rgba(20,184,166,0.2)"
+                            fontFamily: "'Roboto', sans-serif",
+                            border: "1px solid rgba(37,99,235,0.15)"
                         }}>Patient Stories</span>
                         <h2 style={{
-                            fontFamily: "'Inter', sans-serif",
+                            fontFamily: "'Poppins', sans-serif",
                             fontSize: "clamp(24px, 3.5vw, 38px)",
-                            fontWeight: 800, color: "#FFFFFF",
+                            fontWeight: 800, color: "#1F2937",
                             lineHeight: 1.15, letterSpacing: "-0.02em",
                             marginBottom: 10
                         }}>What Our Patients Say</h2>
                         <p style={{
-                            fontFamily: "'DM Sans', sans-serif",
-                            fontSize: 15, color: "rgba(255,255,255,0.45)",
+                            fontFamily: "'Roboto', sans-serif",
+                            fontSize: 15, color: "#6B7280",
                             maxWidth: 500, margin: "0 auto"
                         }}>Real experiences from patients treated by Dr. Harsha</p>
                     </div>
@@ -76,10 +76,10 @@ export default function Testimonials() {
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
                                 style={{
-                                    background: "linear-gradient(135deg, rgba(20,184,166,0.08), rgba(20,184,166,0.02))",
-                                    border: "1px solid rgba(20,184,166,0.2)",
+                                    background: "linear-gradient(135deg, rgba(37,99,235,0.04), rgba(37,99,235,0.02))",
+                                    border: "1px solid rgba(37,99,235,0.15)",
                                     borderRadius: 20,
-                                    padding: "36px 40px",
+                                    padding: "clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px)",
                                     position: "relative",
                                     overflow: "hidden"
                                 }}
@@ -88,7 +88,7 @@ export default function Testimonials() {
                                 <div style={{
                                     position: "absolute", top: 16, right: 28,
                                     fontSize: 100, lineHeight: 0.8,
-                                    color: "rgba(20,184,166,0.08)",
+                                    color: "rgba(37,99,235,0.06)",
                                     fontFamily: "Georgia, serif",
                                     pointerEvents: "none"
                                 }}>"</div>
@@ -102,9 +102,9 @@ export default function Testimonials() {
 
                                 {/* Testimonial text */}
                                 <p style={{
-                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontFamily: "'Roboto', sans-serif",
                                     fontSize: "clamp(16px, 1.8vw, 19px)",
-                                    color: "rgba(255,255,255,0.8)",
+                                    color: "#374151",
                                     lineHeight: 1.8, marginBottom: 28,
                                     fontStyle: "italic", maxWidth: 800,
                                     position: "relative", zIndex: 1
@@ -120,27 +120,27 @@ export default function Testimonials() {
                                         display: "flex", alignItems: "center",
                                         justifyContent: "center", fontSize: 20,
                                         fontWeight: 700, color: "#fff",
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>
                                         {TESTIMONIALS[active].name.charAt(0)}
                                     </div>
                                     <div>
                                         <div style={{
                                             fontSize: 16, fontWeight: 700,
-                                            color: "#fff", fontFamily: "'DM Sans', sans-serif"
+                                            color: "#1F2937", fontFamily: "'Roboto', sans-serif"
                                         }}>{TESTIMONIALS[active].name}</div>
                                         <div style={{
-                                            fontSize: 13, color: "rgba(255,255,255,0.4)",
-                                            fontFamily: "'DM Sans', sans-serif"
+                                            fontSize: 13, color: "#6B7280",
+                                            fontFamily: "'Roboto', sans-serif"
                                         }}>Age {TESTIMONIALS[active].age} • {TESTIMONIALS[active].condition}</div>
                                     </div>
                                     <div style={{
                                         marginLeft: "auto",
-                                        background: "rgba(20,184,166,0.15)",
-                                        border: "1px solid rgba(20,184,166,0.3)",
+                                        background: "rgba(13,148,136,0.08)",
+                                        border: "1px solid rgba(13,148,136,0.2)",
                                         padding: "6px 14px", borderRadius: 100,
                                         fontSize: 12, fontWeight: 600,
-                                        color: "#5EEAD4", fontFamily: "'DM Sans', sans-serif"
+                                        color: "#0D9488", fontFamily: "'Roboto', sans-serif"
                                     }}>Verified Patient</div>
                                 </div>
                             </motion.div>
@@ -151,7 +151,7 @@ export default function Testimonials() {
                 {/* ── Grid of smaller cards ── */}
                 <div style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))",
                     gap: 14
                 }}>
                     {TESTIMONIALS.map((t, i) => (
@@ -162,11 +162,11 @@ export default function Testimonials() {
                             whileTap={{ scale: 0.98 }}
                             style={{
                                 background: i === active
-                                    ? "rgba(20,184,166,0.12)"
-                                    : "rgba(255,255,255,0.03)",
+                                    ? "rgba(37,99,235,0.06)"
+                                    : "#F9FAFB",
                                 border: i === active
-                                    ? "1px solid rgba(20,184,166,0.35)"
-                                    : "1px solid rgba(255,255,255,0.06)",
+                                    ? "1px solid rgba(37,99,235,0.2)"
+                                    : "1px solid #E5E7EB",
                                 borderRadius: 14,
                                 padding: "20px 22px",
                                 cursor: "pointer",
@@ -182,9 +182,9 @@ export default function Testimonials() {
 
                             {/* Text preview */}
                             <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
-                                fontSize: 13,
-                                color: i === active ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.45)",
+                                fontFamily: "'Roboto', sans-serif",
+                                fontSize: 14,
+                                color: i === active ? "#374151" : "#6B7280",
                                 lineHeight: 1.6, marginBottom: 14,
                                 display: "-webkit-box",
                                 WebkitLineClamp: 3,
@@ -200,25 +200,25 @@ export default function Testimonials() {
                                     width: 32, height: 32, borderRadius: "50%",
                                     background: i === active
                                         ? "linear-gradient(135deg, #0D9488, #14B8A6)"
-                                        : "rgba(255,255,255,0.08)",
+                                        : "#E5E7EB",
                                     display: "flex", alignItems: "center",
                                     justifyContent: "center", fontSize: 13,
                                     fontWeight: 700,
-                                    color: i === active ? "#fff" : "rgba(255,255,255,0.4)",
-                                    fontFamily: "'DM Sans', sans-serif"
+                                    color: i === active ? "#fff" : "#9CA3AF",
+                                    fontFamily: "'Roboto', sans-serif"
                                 }}>
                                     {t.name.charAt(0)}
                                 </div>
                                 <div>
                                     <div style={{
                                         fontSize: 13, fontWeight: 600,
-                                        color: i === active ? "#5EEAD4" : "rgba(255,255,255,0.6)",
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        color: i === active ? "#2563EB" : "#4B5563",
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>{t.name}</div>
                                     <div style={{
-                                        fontSize: 11,
-                                        color: "rgba(255,255,255,0.3)",
-                                        fontFamily: "'DM Sans', sans-serif"
+                                        fontSize: 12,
+                                        color: "#9CA3AF",
+                                        fontFamily: "'Roboto', sans-serif"
                                     }}>{t.condition}</div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@ export default function Testimonials() {
                             style={{
                                 width: i === active ? 24 : 8,
                                 height: 8, borderRadius: 4,
-                                background: i === active ? "#14B8A6" : "rgba(255,255,255,0.15)",
+                                background: i === active ? "#2563EB" : "#D1D5DB",
                                 border: "none", cursor: "pointer",
                                 transition: "all 0.3s ease", padding: 0
                             }}
@@ -251,27 +251,27 @@ export default function Testimonials() {
                     <div style={{
                         marginTop: 40, textAlign: "center",
                         padding: "24px 0",
-                        borderTop: "1px solid rgba(255,255,255,0.06)"
+                        borderTop: "1px solid rgba(0,0,0,0.06)"
                     }}>
                         <div style={{
                             display: "flex", flexWrap: "wrap",
                             justifyContent: "center", gap: 32
                         }}>
                             {[
-                                { v: "2500+", l: "Procedures Done" },
+                                { v: "8500+", l: "Procedures Done" },
                                 { v: "98%", l: "Patient Satisfaction" },
                                 { v: "4.9★", l: "Average Rating" },
                                 { v: "6+", l: "Conditions Treated" },
                             ].map((s, i) => (
                                 <div key={i}>
                                     <div style={{
-                                        fontFamily: "'Inter', sans-serif",
+                                        fontFamily: "'Poppins', sans-serif",
                                         fontSize: 22, fontWeight: 800,
-                                        color: "#14B8A6", marginBottom: 2
+                                        color: "#2563EB", marginBottom: 2
                                     }}>{s.v}</div>
                                     <div style={{
-                                        fontFamily: "'DM Sans', sans-serif",
-                                        fontSize: 11, color: "rgba(255,255,255,0.35)",
+                                        fontFamily: "'Roboto', sans-serif",
+                                        fontSize: 11, color: "#6B7280",
                                         letterSpacing: "0.04em", textTransform: "uppercase"
                                     }}>{s.l}</div>
                                 </div>
