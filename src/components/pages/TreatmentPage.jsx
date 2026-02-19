@@ -1,6 +1,83 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { VeinIllustration } from '../common/MedicalIllustrations';
 import { DOC } from '../../config/data';
+
+/* ─── Q&A per treatment ─── */
+const TREATMENT_QA = {
+    "varicose-veins": [
+        { q: "Will my varicose veins come back after treatment?", a: "Treated veins are permanently sealed and do not return. However, new veins can develop over time. Wearing compression stockings and staying active significantly reduces recurrence." },
+        { q: "Is the procedure painful?", a: "Most patients experience minimal discomfort. Local anaesthesia is applied before the laser fibre insertion. You may feel a slight pressure, but no sharp pain." },
+        { q: "Can I walk immediately after the procedure?", a: "Yes — walking is actively encouraged right after the procedure. This helps circulation and reduces clot risk. You can resume your daily routine the next day." },
+        { q: "How long do I need to wear compression stockings?", a: "Typically 1-2 weeks post-procedure. Stockings help the treated area heal faster and reduce swelling." },
+    ],
+    "thyroid-nodule": [
+        { q: "Will my thyroid function be affected?", a: "No. Unlike surgery, RFA precisely targets the nodule while preserving healthy thyroid tissue. Most patients retain full thyroid function after the procedure." },
+        { q: "How much will the nodule shrink?", a: "On average, thyroid nodules shrink by 60-90% within 6-12 months after radiofrequency ablation. Results are gradual and progressive." },
+        { q: "Is this safe for benign nodules causing no symptoms?", a: "Yes, especially when the nodule is growing or causing cosmetic concern. A biopsy is performed first to confirm benign nature before proceeding." },
+        { q: "Will I need repeat procedures?", a: "Most nodules respond well to a single session. In rare cases of large nodules, a second treatment may be recommended." },
+    ],
+    "uterine-fibroid": [
+        { q: "Can I still get pregnant after UFE?", a: "UFE is generally not recommended for women who wish to conceive in the future, as it may affect the uterine lining. Discuss your family planning goals with Dr. Harsha before deciding." },
+        { q: "How soon will my heavy bleeding stop?", a: "Most patients notice significant improvement within 1-3 menstrual cycles. Complete resolution typically occurs within 3-6 months as the fibroid shrinks." },
+        { q: "Is the procedure covered by insurance?", a: "Yes, UFE is recognised by most insurance providers in India as a standard treatment for uterine fibroids. Our team can assist with your documentation." },
+        { q: "What is the recovery like at home?", a: "Expect mild to moderate cramping for the first 1-3 days, similar to a heavy period. Most women return to normal activities within 1-2 weeks." },
+    ],
+    "varicocele": [
+        { q: "How long before I see improvement in sperm count?", a: "Sperm parameters typically improve 3-6 months after the procedure, as it takes one spermatogenesis cycle (approximately 72-90 days) to see changes." },
+        { q: "Is embolisation better than surgery for varicocele?", a: "Studies show similar success rates, but embolisation has a faster recovery (3-5 days vs 2-3 weeks), no groin incision, and lower recurrence risk." },
+        { q: "Can varicocele cause infertility in all men?", a: "Not all varicoceles cause infertility. Treatment is recommended when semen analysis shows abnormalities or when the varicocele causes significant pain." },
+        { q: "Will I feel the coils or materials used inside?", a: "No. The tiny coils or glue used to block the abnormal vein are not felt. They permanently seal the vessel and are safe long-term." },
+    ],
+    "prostate-embolisation": [
+        { q: "How is PAE different from TURP surgery?", a: "TURP requires anaesthesia, hospital stay and carries a risk of retrograde ejaculation. PAE is done through a pinhole in the wrist, with same-day discharge and no effect on sexual function." },
+        { q: "When will I notice improvement in urination?", a: "Some improvement occurs within the first month. Significant improvement is typically seen 3-6 months after the procedure as the prostate gradually shrinks." },
+        { q: "Is PAE suitable for all men with BPH?", a: "PAE works best for moderate to severe BPH. A prostate MRI and urine flow study are done beforehand. Very small prostates may be better suited to other treatments." },
+        { q: "Will this affect my sexual function?", a: "PAE does not cause retrograde ejaculation (a common side effect of TURP surgery). Most studies show no negative impact on sexual function." },
+    ],
+    "peripheral-vascular": [
+        { q: "What happens if I don't treat peripheral vascular disease?", a: "Untreated PVD can progress to critical limb ischaemia, non-healing wounds, and in severe cases, may lead to amputation. Early treatment is strongly advised." },
+        { q: "Will I need stents, and are they permanent?", a: "Stents are placed only when necessary to keep the artery open. They are permanent, biocompatible devices that become part of the vessel wall." },
+        { q: "Can PVD come back after angioplasty?", a: "Arteries can re-narrow over time (restenosis). Lifestyle changes, medication, and follow-up imaging help monitor and manage this risk." },
+        { q: "Is this safe for diabetic patients?", a: "Yes. Diabetics with PVD benefit greatly from angioplasty. Restoring blood flow helps heal diabetic foot wounds and prevents amputation." },
+    ],
+    "musculoskeletal-pain": [
+        { q: "What conditions does transarterial microembolisation treat?", a: "It is used for chronic knee pain (osteoarthritis), shoulder pain, tennis elbow, plantar fasciitis, and other conditions where abnormal neovascularisation causes pain." },
+        { q: "How does embolisation relieve joint pain?", a: "Chronic pain is fed by abnormal blood vessels (neovascularisation). Microembolisation blocks these vessels, cutting off the pain signal source without harming healthy tissue." },
+        { q: "How many sessions are required?", a: "Most patients require just one session. Effects are gradual, with significant improvement seen over 4-12 weeks as inflammation reduces." },
+        { q: "Is this an alternative to knee replacement?", a: "For early to moderate osteoarthritis, yes. It delays or avoids the need for joint replacement. For severe end-stage arthritis, it may still provide pain relief." },
+    ],
+    "deep-vein-thrombosis": [
+        { q: "What are the signs of DVT?", a: "Leg swelling, redness, warmth, and pain — especially in the calf — after prolonged rest or travel. DVT can be dangerous if the clot travels to the lungs." },
+        { q: "Can DVT resolve on its own with blood thinners?", a: "Mild DVT can. However, large or extensive clots benefit from catheter-directed thrombolysis to dissolve the clot faster and prevent long-term vein damage." },
+        { q: "What is post-thrombotic syndrome?", a: "A long-term complication of untreated DVT causing chronic leg pain, swelling, and skin changes. Early clot removal significantly reduces this risk." },
+        { q: "How soon after diagnosis should I seek treatment?", a: "As soon as possible. Clots are easier to dissolve when fresh. Delayed treatment increases risk of permanent vein damage and pulmonary embolism." },
+    ],
+    "liver-cancer": [
+        { q: "Is TACE a cure for liver cancer?", a: "TACE is primarily a treatment to control tumour growth and extend survival, particularly for patients not suitable for surgery. In some cases, it bridges patients to transplant." },
+        { q: "What is the difference between TACE and TARE?", a: "TACE uses chemotherapy-loaded particles. TARE (radioembolisation) uses radioactive microspheres. The choice depends on tumour size, location, and liver function." },
+        { q: "How many TACE sessions will I need?", a: "Typically 2-4 sessions at 4-8 week intervals, depending on tumour response on follow-up imaging." },
+        { q: "Are there side effects after TACE?", a: "Post-embolisation syndrome — fever, fatigue, and mild abdominal discomfort — is common for 3-5 days. Serious complications are uncommon in experienced hands." },
+    ],
+    "dialysis-access": [
+        { q: "My fistula is not working — what are the options?", a: "Fistuloplasty (balloon dilation) can reopen a narrowed fistula. If a clot is present, thrombolysis or thrombectomy may be needed — all done minimally invasively." },
+        { q: "What is a permacath and when is it needed?", a: "A permacath is a tunnelled catheter placed in the neck vein for dialysis when a fistula is not yet ready or has failed. It provides immediate vascular access." },
+        { q: "How long does fistuloplasty last?", a: "Results vary. Many patients have patency for 6-12 months, sometimes longer. Regular monitoring and timely intervention extend fistula life significantly." },
+        { q: "Is this procedure done under general anaesthesia?", a: "No. Dialysis access procedures are done under local anaesthesia with mild sedation. They typically take 30-60 minutes with immediate post-procedure access use." },
+    ],
+    "gi-intervention": [
+        { q: "What GI conditions can be treated without surgery?", a: "Gastrointestinal bleeding, bowel ischaemia, portal hypertension, biliary obstruction, and enteral feeding access can all be managed with IR procedures." },
+        { q: "What is a TIPS procedure?", a: "Transjugular Intrahepatic Portosystemic Shunt — a procedure to reduce pressure in liver veins, treating complications of cirrhosis like bleeding varices and ascites." },
+        { q: "Can GI bleeding be stopped without surgery?", a: "Yes. Embolisation of the bleeding vessel through a catheter can stop acute GI bleeding effectively, avoiding emergency surgery in most cases." },
+        { q: "How is a feeding tube placed interventionally?", a: "Under ultrasound and fluoroscopic guidance, a feeding tube (gastrostomy or jejunostomy) is placed through a small puncture in the abdomen — no surgical incision needed." },
+    ],
+    "emergency-intervention": [
+        { q: "What kind of emergencies does IR handle?", a: "Trauma haemorrhage, post-surgical bleeding, ruptured aneurysms, pelvic trauma, liver/splenic injuries, and acute limb ischaemia are common emergency IR cases." },
+        { q: "How fast can an IR procedure be performed in an emergency?", a: "IR teams are available round the clock. Once imaging confirms the bleeding source, embolisation can be performed within minutes, often faster than reaching the operating theatre." },
+        { q: "Is IR used alongside surgery in emergencies?", a: "Yes. Often IR is the first line — stopping the bleeding — after which surgical repair follows if needed. This staged approach saves lives in complex trauma." },
+        { q: "What is endovascular aneurysm repair (EVAR)?", a: "EVAR is a minimally invasive procedure where a stent-graft is placed inside a ruptured or at-risk aortic aneurysm through a small groin puncture, avoiding open abdominal surgery." },
+    ],
+};
 
 // Placeholder treatment data - move to config/treatments.js later
 const TREATMENTS = {
@@ -137,6 +214,70 @@ const TREATMENTS = {
         suitable: "PAE is ideal for men with moderate to severe BPH symptoms who wish to avoid surgery. A prostate MRI and flow study are performed beforehand."
     }
 };
+
+function QASection({ questions }) {
+    const [open, setOpen] = useState(null);
+    return (
+        <div style={{ marginBottom: 36 }}>
+            <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: 22, fontWeight: 700,
+                color: "#071426", marginBottom: 18
+            }}>Patient Questions & Expert Answers</h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {questions.map((item, i) => (
+                    <div key={i} style={{
+                        border: "1px solid",
+                        borderColor: open === i ? "rgba(13,148,136,0.3)" : "rgba(0,0,0,0.07)",
+                        borderRadius: 12,
+                        overflow: "hidden",
+                        background: open === i ? "rgba(13,148,136,0.02)" : "#fff",
+                        transition: "all 0.2s ease"
+                    }}>
+                        <button
+                            onClick={() => setOpen(open === i ? null : i)}
+                            style={{
+                                width: "100%", textAlign: "left",
+                                display: "flex", justifyContent: "space-between", alignItems: "center",
+                                padding: "16px 20px", background: "none", border: "none",
+                                cursor: "pointer", gap: 12
+                            }}
+                        >
+                            <span style={{
+                                fontFamily: "'DM Sans', sans-serif",
+                                fontSize: 14, fontWeight: 600,
+                                color: "#071426", lineHeight: 1.4, flex: 1
+                            }}>{item.q}</span>
+                            <span style={{
+                                fontSize: 18, color: "#0D9488", flexShrink: 0,
+                                transform: open === i ? "rotate(45deg)" : "rotate(0deg)",
+                                transition: "transform 0.2s ease", display: "block"
+                            }}>+</span>
+                        </button>
+                        <AnimatePresence>
+                            {open === i && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    style={{ overflow: "hidden" }}
+                                >
+                                    <p style={{
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 14, color: "rgba(7,20,38,0.65)",
+                                        lineHeight: 1.8, padding: "0 20px 18px",
+                                        margin: 0
+                                    }}>{item.a}</p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
 
 export default function TreatmentPage({ id, onBack, onContact }) {
     const t = TREATMENTS[id];
@@ -408,6 +549,9 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                         lineHeight: 1.8
                     }}>{t.suitable}</p>
                 </div>
+
+                {/* Q&A Section */}
+                {TREATMENT_QA[id] && <QASection questions={TREATMENT_QA[id]} />}
 
                 {/* CTA */}
                 <div style={{

@@ -9,7 +9,7 @@ const BLOGS = [
         title: "Complete Guide to Varicose Veins Treatment",
         excerpt: "Everything you need to know about modern, non-surgical varicose vein treatments and what to expect.",
         cat: "Vascular Health",
-        read: "5 min read",
+        read: "2 min read",
         img: IMG.blog1
     },
     {
@@ -17,7 +17,7 @@ const BLOGS = [
         title: "UFE: A Surgery-Free Solution for Fibroids",
         excerpt: "How Uterine Fibroid Embolisation offers an effective alternative to hysterectomy with faster recovery.",
         cat: "Women's Health",
-        read: "6 min read",
+        read: "2 min read",
         img: IMG.blog2
     },
     {
@@ -25,7 +25,7 @@ const BLOGS = [
         title: "Thyroid Nodule Ablation: No Surgery, No Scars",
         excerpt: "Learn about radiofrequency ablation for thyroid nodules and how it preserves your thyroid function.",
         cat: "Endocrine",
-        read: "4 min read",
+        read: "2 min read",
         img: IMG.blog3
     },
 ];

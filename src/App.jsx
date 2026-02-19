@@ -5,7 +5,9 @@ import SocialProof from './components/sections/SocialProof';
 import CredBar from './components/sections/CredBar';
 import About from './components/sections/About';
 import IRSection from './components/sections/IRSection';
+import ConditionsCollage from './components/sections/ConditionsCollage';
 import ServicesSection from './components/sections/ServicesSection';
+import IRAdvantages from './components/sections/IRAdvantages';
 import AnatomyViewer3D from './components/sections/AnatomyViewer3D';
 import BeforeAfter from './components/sections/BeforeAfter';
 import WhySection from './components/sections/WhySection';
@@ -76,7 +78,9 @@ function App() {
                     <CredBar />
                     <About />
                     <IRSection />
+                    <ConditionsCollage onTreatment={goToTreatment} />
                     <ServicesSection onTreatment={goToTreatment} />
+                    <IRAdvantages />
                     <AnatomyViewer3D />
                     <BeforeAfter />
                     <WhySection />

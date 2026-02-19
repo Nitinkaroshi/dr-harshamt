@@ -4,16 +4,6 @@ import { AnimatedCard } from '../common/Animated';
 import { SERVICES } from '../../config/data';
 
 export default function ServicesSection({ onTreatment }) {
-    const treatmentIds = [
-        "varicose-veins",
-        "uterine-fibroid",
-        "thyroid-nodule",
-        "varicocele",
-        "peripheral-vascular",
-        "prostate-embolisation",
-        null,
-        null
-    ];
 
     return (
         <section id="services" style={{ background: "#FAFBFC", padding: "90px 0" }}>
@@ -54,13 +44,13 @@ export default function ServicesSection({ onTreatment }) {
                                     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
                                 }
                             }}
-                            whileHover={treatmentIds[i] ? {
+                            whileHover={s.id ? {
                                 y: -8,
                                 boxShadow: "0 12px 40px rgba(13, 148, 136, 0.15)",
                                 transition: { duration: 0.3 }
                             } : {}}
-                            whileTap={treatmentIds[i] ? { scale: 0.98 } : {}}
-                            onClick={() => treatmentIds[i] && onTreatment?.(treatmentIds[i])}
+                            whileTap={s.id ? { scale: 0.98 } : {}}
+                            onClick={() => s.id && onTreatment?.(s.id)}
                             style={{
                                 background: "#fff",
                                 borderRadius: 14,
@@ -68,7 +58,7 @@ export default function ServicesSection({ onTreatment }) {
                                 height: "100%",
                                 border: s.hl ? "1px solid rgba(13,148,136,0.2)" : "1px solid rgba(0,0,0,0.04)",
                                 boxShadow: s.hl ? "0 4px 20px rgba(13,148,136,0.06)" : "0 1px 3px rgba(0,0,0,0.02)",
-                                cursor: treatmentIds[i] ? "pointer" : "default",
+                                cursor: s.id ? "pointer" : "default",
                                 position: "relative"
                             }}
                         >
@@ -78,7 +68,7 @@ export default function ServicesSection({ onTreatment }) {
                                     src={s.img}
                                     alt={s.t}
                                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                                    whileHover={treatmentIds[i] ? { scale: 1.05 } : {}}
+                                    whileHover={s.id ? { scale: 1.05 } : {}}
                                     transition={{ duration: 0.4 }}
                                 />
                                 {s.hl && (
@@ -148,7 +138,7 @@ export default function ServicesSection({ onTreatment }) {
                                     fontFamily: "'DM Sans', sans-serif",
                                     lineHeight: 1.65
                                 }}>{s.d}</div>
-                                {treatmentIds[i] && (
+                                {s.id && (
                                     <motion.div
                                         whileHover={{ x: 5 }}
                                         style={{
