@@ -212,6 +212,138 @@ const TREATMENTS = {
         ],
         recovery: "Patients go home the same day. Mild urinary symptoms may persist for a few weeks. Improvement is gradual over 3-6 months.",
         suitable: "PAE is ideal for men with moderate to severe BPH symptoms who wish to avoid surgery. A prostate MRI and flow study are performed beforehand."
+    },
+    "musculoskeletal-pain": {
+        icon: "💊",
+        title: "Chronic Musculoskeletal Pain Treatment",
+        sub: "Transarterial Microembolisation",
+        hero: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "80%", l: "Pain Relief" },
+            { v: "45min", l: "Procedure Time" },
+            { v: "Same Day", l: "Discharge" }
+        ],
+        overview: "Chronic musculoskeletal pain — including knee osteoarthritis, frozen shoulder, tennis elbow, and plantar fasciitis — is often driven by abnormal blood vessel growth (neovascularisation) around joints and tendons. These new vessels bring inflammatory cells that perpetuate pain.",
+        why: "Traditional treatments like steroid injections, painkillers, or surgery offer temporary relief or carry risks. Transarterial microembolisation targets the root cause — abnormal vessels — through a tiny wrist puncture, providing long-lasting pain relief without surgery or steroids.",
+        how: [
+            "A microcatheter is inserted through a small wrist puncture under local anaesthesia",
+            "Using real-time imaging, the catheter navigates to the abnormal vessels around the painful joint",
+            "Tiny particles (microspheres) are injected to block these abnormal vessels",
+            "Inflammation reduces as the abnormal blood supply is cut off",
+            "The procedure takes 30-60 minutes"
+        ],
+        recovery: "Patients go home the same day. Mild soreness at the treated area may last 1-2 days. Pain relief is gradual, with significant improvement seen over 4-12 weeks as inflammation subsides.",
+        suitable: "This treatment is ideal for patients with chronic joint or tendon pain that hasn't responded to physiotherapy, painkillers, or steroid injections. An MRI and clinical assessment are done beforehand."
+    },
+    "deep-vein-thrombosis": {
+        icon: "🩸",
+        title: "Deep Vein Thrombosis Treatment",
+        sub: "Catheter-Directed Thrombolysis",
+        hero: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "90%", l: "Clot Clearance" },
+            { v: "2-4hrs", l: "Procedure Time" },
+            { v: "2-3 Days", l: "Hospital Stay" }
+        ],
+        overview: "Deep Vein Thrombosis (DVT) is a blood clot in the deep veins of the leg. It can cause severe leg swelling, pain, and if untreated, the clot can travel to the lungs causing a life-threatening pulmonary embolism. Long-term complications include post-thrombotic syndrome with chronic pain and swelling.",
+        why: "While blood thinners prevent clot extension, they don't actively remove the clot. Catheter-directed thrombolysis dissolves the clot directly, restoring vein patency and significantly reducing the risk of long-term post-thrombotic syndrome.",
+        how: [
+            "A catheter is inserted into the affected vein through a small puncture behind the knee or groin",
+            "The catheter is positioned directly within the blood clot using ultrasound and X-ray guidance",
+            "Clot-dissolving medication (thrombolytic) is infused directly into the clot over several hours",
+            "In some cases, mechanical thrombectomy devices are used to physically break up the clot",
+            "An IVC filter may be placed temporarily to prevent clot fragments from reaching the lungs"
+        ],
+        recovery: "Patients typically stay in hospital for 2-3 days for monitoring. Blood thinners are continued for 3-6 months. Compression stockings are worn to prevent recurrence. Most patients resume normal activities within 1-2 weeks.",
+        suitable: "Catheter-directed treatment is recommended for extensive DVT of the thigh (iliofemoral DVT), especially in young, active patients. A Doppler ultrasound confirms the diagnosis."
+    },
+    "liver-cancer": {
+        icon: "🔬",
+        title: "Liver Cancer Intervention",
+        sub: "TACE / TARE / Ablation",
+        hero: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "75%", l: "Tumour Response" },
+            { v: "60min", l: "Procedure Time" },
+            { v: "Next Day", l: "Discharge" }
+        ],
+        overview: "Liver cancer (hepatocellular carcinoma) and liver metastases are common conditions where surgery may not be feasible due to tumour location, liver function, or patient fitness. Interventional radiology offers targeted treatments that attack the tumour directly while preserving healthy liver tissue.",
+        why: "Open liver surgery carries significant risk and long recovery. IR treatments like TACE and TARE deliver treatment directly to the tumour through its blood supply — through a tiny wrist or groin puncture — with minimal damage to surrounding liver tissue.",
+        how: [
+            "A catheter is inserted through a small groin or wrist puncture under local anaesthesia",
+            "Using X-ray guidance, the catheter is navigated to the specific artery feeding the tumour",
+            "For TACE: chemotherapy-loaded beads are injected to block the tumour's blood supply and deliver drugs directly",
+            "For TARE: radioactive microspheres are injected for targeted internal radiation therapy",
+            "For Ablation: a needle is inserted under CT/ultrasound guidance to destroy the tumour with heat (RFA) or microwave energy"
+        ],
+        recovery: "Most patients stay overnight. Post-embolisation syndrome (mild fever, fatigue, abdominal discomfort) is common for 3-5 days. Follow-up CT/MRI is done at 4-6 weeks to assess tumour response.",
+        suitable: "These treatments are suitable for patients with liver cancer who are not candidates for surgery, as a bridge to liver transplant, or for those with liver metastases from other cancers. A multidisciplinary tumour board review determines the best approach."
+    },
+    "dialysis-access": {
+        icon: "💉",
+        title: "Dialysis Access Care",
+        sub: "Fistuloplasty, Thrombectomy & Permacath",
+        hero: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "95%", l: "Success Rate" },
+            { v: "30min", l: "Procedure Time" },
+            { v: "Same Day", l: "Discharge" }
+        ],
+        overview: "For patients on dialysis, vascular access is their lifeline. AV fistulas and grafts can develop narrowing (stenosis) or clotting over time, leading to poor dialysis adequacy. Maintaining functioning vascular access is critical for quality of life and survival.",
+        why: "Surgical revision of dialysis access is complex and may sacrifice the existing access. IR procedures like fistuloplasty (balloon dilation) and thrombectomy can salvage and restore the existing access through a small needle puncture — preserving this precious lifeline.",
+        how: [
+            "The access site is punctured under ultrasound guidance using local anaesthesia",
+            "A fistulogram (contrast study) maps the entire access circuit to identify stenosis or clots",
+            "For stenosis: a balloon catheter is used to dilate the narrowed segment",
+            "For clotted access: thrombolytic drugs and/or mechanical devices remove the clot",
+            "A permacath (tunnelled catheter) can be placed in the neck vein for immediate dialysis access if the fistula has failed"
+        ],
+        recovery: "Patients can use their access for dialysis immediately or within 24 hours after the procedure. There is minimal downtime. Regular surveillance with Doppler ultrasound helps detect problems early.",
+        suitable: "Any dialysis patient with a malfunctioning fistula, graft, or catheter. Signs include poor dialysis flow, arm swelling, prolonged bleeding after needle removal, or elevated venous pressures during dialysis."
+    },
+    "gi-intervention": {
+        icon: "🏥",
+        title: "GI Intervention",
+        sub: "Gastrointestinal IR Procedures",
+        hero: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "88%", l: "Success Rate" },
+            { v: "45min", l: "Avg Procedure Time" },
+            { v: "1-2 Days", l: "Hospital Stay" }
+        ],
+        overview: "Gastrointestinal (GI) conditions — including acute GI bleeding, biliary obstruction, portal hypertension, and feeding access needs — can be effectively managed through minimally invasive IR procedures, often avoiding the need for complex open abdominal surgery.",
+        why: "Emergency GI surgery on unstable patients carries high risk. IR provides targeted, image-guided treatment through tiny punctures — stopping bleeding, draining collections, placing stents, and creating feeding access with significantly less trauma.",
+        how: [
+            "A catheter is inserted through a small puncture (groin, wrist, or abdomen) under imaging guidance",
+            "For GI bleeding: the bleeding vessel is identified and embolised with coils or particles",
+            "For biliary obstruction: a drainage catheter or stent is placed to relieve jaundice",
+            "For portal hypertension: TIPS (Transjugular Intrahepatic Portosystemic Shunt) reduces pressure in liver veins",
+            "For feeding access: gastrostomy or jejunostomy tubes are placed under fluoroscopic guidance"
+        ],
+        recovery: "Recovery varies by procedure. GI bleeding embolisation patients stay 2-3 days. Biliary drainage and feeding tube patients may go home within 1-2 days. TIPS patients are monitored for 3-5 days.",
+        suitable: "Patients with acute GI bleeding, obstructive jaundice, cirrhosis with portal hypertension complications, or those needing enteral feeding access who are not suitable for surgical intervention."
+    },
+    "emergency-intervention": {
+        icon: "🚨",
+        title: "Emergency IR Intervention",
+        sub: "Trauma & Haemorrhage Control",
+        hero: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&h=600&fit=crop",
+        stats: [
+            { v: "Life-Saving", l: "Procedures" },
+            { v: "24/7", l: "Availability" },
+            { v: "Minutes", l: "Response Time" }
+        ],
+        overview: "In life-threatening emergencies involving internal bleeding — from trauma, post-surgical complications, ruptured aneurysms, or obstetric haemorrhage — Interventional Radiology provides rapid, minimally invasive solutions that can stop bleeding within minutes, often faster than traditional surgery.",
+        why: "Emergency surgery on a bleeding, unstable patient is high-risk. IR allows precise identification and treatment of the bleeding source through a small puncture, minimising surgical trauma. In many cases, IR is the first-line treatment, stabilising patients before any surgical intervention.",
+        how: [
+            "Urgent CT angiography identifies the bleeding source and guides treatment planning",
+            "A catheter is inserted through the groin or wrist artery under local anaesthesia",
+            "The catheter is navigated to the bleeding vessel using real-time X-ray guidance",
+            "Embolisation materials (coils, particles, or glue) are deployed to seal the bleeding vessel",
+            "For aortic emergencies: an endovascular stent-graft (EVAR) is deployed to seal the aneurysm"
+        ],
+        recovery: "Depends on the underlying condition. Post-embolisation recovery is significantly faster than open surgical repair. Most patients are monitored in ICU for 24-48 hours before transfer to a ward.",
+        suitable: "Any patient with acute internal bleeding from trauma, post-operative haemorrhage, ruptured aneurysms, pelvic fracture bleeding, liver or splenic injuries, or obstetric emergencies. IR is available round-the-clock."
     }
 };
 

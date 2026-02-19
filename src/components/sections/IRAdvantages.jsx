@@ -2,65 +2,134 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
 
-const ADVANTAGES = [
-    { icon: "🎯", title: "Minimally Invasive,\nMaximally Effective", desc: "Treats the condition at its source using imaging precision — no exploratory cuts." },
-    { icon: "📍", title: "Just a Needle\nPuncture", desc: "Entry point is 2-3mm — smaller than a pen tip. No stitches required." },
-    { icon: "🚫", title: "No Scar /\nLarge Incision", desc: "Walk out with no visible marks. The skin heals on its own." },
-    { icon: "💉", title: "Done Under Local\nAnaesthesia", desc: "No risks of general anaesthesia. You stay awake, comfortable and aware." },
-    { icon: "⚡", title: "Rapid Recovery", desc: "Return to daily life within 1-3 days. Not weeks like after open surgery." },
-    { icon: "🔍", title: "Extreme Accuracy", desc: "Real-time CT, Ultrasound and X-ray guidance ensures pinpoint precision." },
-    { icon: "🩹", title: "Less Pain", desc: "Minimal post-procedure discomfort. Most patients need only mild pain relief." },
-    { icon: "🏠", title: "Same Day\nDischarge", desc: "Most procedures are daycare — home within hours of the procedure." },
+const HEXAGONS = [
+    { label: "Just a Needle\nPuncture", icon: "📍", color: "#2563EB" },
+    { label: "No Scar /\nLarge Incision", icon: "🚫", color: "#1E40AF" },
+    { label: "Done Under\nLocal Anaesthesia", icon: "💉", color: "#1D4ED8" },
+    { label: "Same Day\nDischarge", icon: "🏠", color: "#2563EB" },
+    { label: "MINIMALLY\nINVASIVE\nMAXIMALLY\nEFFECTIVE", icon: "", color: "#1E3A5F", isCenter: true },
+    { label: "Less Pain", icon: "🩹", color: "#1E40AF" },
+    { label: "Rapid\nRecovery", icon: "⚡", color: "#1D4ED8" },
+    { label: "Extreme\nAccuracy", icon: "🔍", color: "#2563EB" },
 ];
 
 const TABLE_ROWS = [
-    { param: "Incision Size", surgery: "5–15 cm cut", ir: "2–3 mm needle", better: "ir" },
-    { param: "Anaesthesia", surgery: "General (full sedation)", ir: "Local only", better: "ir" },
-    { param: "Hospital Stay", surgery: "3–7 days", ir: "Same day / overnight", better: "ir" },
-    { param: "Recovery Time", surgery: "4–8 weeks", ir: "1–3 days", better: "ir" },
-    { param: "Visible Scars", surgery: "Yes — permanent", ir: "None", better: "ir" },
-    { param: "Pain Level", surgery: "Moderate to severe", ir: "Minimal", better: "ir" },
-    { param: "Risk of Infection", surgery: "Higher (open wound)", ir: "Very low", better: "ir" },
-    { param: "Blood Loss", surgery: "Significant", ir: "Near zero", better: "ir" },
-    { param: "Return to Work", surgery: "Weeks", ir: "Days", better: "ir" },
+    { param: "Incision Size", surgery: "5–15 cm cut", ir: "2–3 mm needle" },
+    { param: "Anaesthesia", surgery: "General (full sedation)", ir: "Local only" },
+    { param: "Hospital Stay", surgery: "3–7 days", ir: "Same day / overnight" },
+    { param: "Recovery Time", surgery: "4–8 weeks", ir: "1–3 days" },
+    { param: "Visible Scars", surgery: "Yes — permanent", ir: "None" },
+    { param: "Pain Level", surgery: "Moderate to severe", ir: "Minimal" },
+    { param: "Risk of Infection", surgery: "Higher (open wound)", ir: "Very low" },
+    { param: "Blood Loss", surgery: "Significant", ir: "Near zero" },
+    { param: "Return to Work", surgery: "Weeks", ir: "Days" },
 ];
+
+function Hexagon({ item, size = 140, delay = 0 }) {
+    const w = size;
+    const h = size * 1.1547; // hex ratio
+    const clipPath = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay, duration: 0.5, type: "spring", stiffness: 120 }}
+            whileHover={{ scale: 1.08, zIndex: 5 }}
+            style={{
+                width: w, height: h,
+                clipPath,
+                background: item.isCenter
+                    ? "linear-gradient(135deg, #0B1D33, #1E3A5F)"
+                    : `linear-gradient(135deg, ${item.color}, ${item.color}dd)`,
+                display: "flex", flexDirection: "column",
+                alignItems: "center", justifyContent: "center",
+                cursor: "default", transition: "transform 0.3s ease",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
+            }}
+        >
+            {item.icon && <span style={{ fontSize: item.isCenter ? 0 : 28, marginBottom: 6 }}>{item.icon}</span>}
+            <span style={{
+                fontSize: item.isCenter ? 11 : 11,
+                fontWeight: 800, color: "#fff",
+                textAlign: "center", lineHeight: 1.3,
+                fontFamily: "'DM Sans', sans-serif",
+                letterSpacing: item.isCenter ? "0.08em" : "0.02em",
+                textTransform: "uppercase",
+                whiteSpace: "pre-line",
+                padding: "0 8px"
+            }}>{item.label}</span>
+        </motion.div>
+    );
+}
 
 export default function IRAdvantages() {
     const [showTable, setShowTable] = useState(false);
+    const hexSize = 130;
 
     return (
         <section style={{ background: "#F8FAFC", padding: "80px 0" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
 
-                {/* Heading */}
+                {/* Section heading */}
                 <FadeIn>
-                    <div style={{ textAlign: "center", marginBottom: 52 }}>
+                    <div style={{ textAlign: "center", marginBottom: 20 }}>
                         <span style={{
-                            display: "inline-block",
-                            fontSize: 11, fontWeight: 700,
+                            display: "inline-block", fontSize: 11, fontWeight: 700,
                             letterSpacing: "0.12em", textTransform: "uppercase",
-                            color: "#2563EB",
-                            background: "rgba(37,99,235,0.08)",
+                            color: "#2563EB", background: "rgba(37,99,235,0.08)",
                             padding: "6px 16px", borderRadius: 100, marginBottom: 14,
                             fontFamily: "'DM Sans', sans-serif"
                         }}>Why Interventional Radiology</span>
                         <h2 style={{
                             fontFamily: "'Inter', sans-serif",
-                            fontSize: "clamp(26px, 3.5vw, 40px)",
+                            fontSize: "clamp(24px, 3.5vw, 38px)",
                             fontWeight: 800, color: "#071426",
-                            lineHeight: 1.15, marginBottom: 14,
+                            lineHeight: 1.15, letterSpacing: "-0.02em"
+                        }}>The IR Advantage</h2>
+                    </div>
+                </FadeIn>
+
+                {/* ── Hexagonal Honeycomb ── */}
+                <div style={{
+                    display: "flex", flexDirection: "column",
+                    alignItems: "center", gap: 0,
+                    marginBottom: 56, padding: "20px 0"
+                }}>
+                    {/* Row 1: 3 hexagons */}
+                    <div style={{ display: "flex", gap: 6, justifyContent: "center" }}>
+                        <Hexagon item={HEXAGONS[0]} size={hexSize} delay={0} />
+                        <Hexagon item={HEXAGONS[1]} size={hexSize} delay={0.08} />
+                        <Hexagon item={HEXAGONS[2]} size={hexSize} delay={0.16} />
+                    </div>
+                    {/* Row 2: 2 hexagons offset + center */}
+                    <div style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
+                        <Hexagon item={HEXAGONS[3]} size={hexSize} delay={0.24} />
+                        <Hexagon item={HEXAGONS[4]} size={hexSize} delay={0.32} />
+                        <Hexagon item={HEXAGONS[5]} size={hexSize} delay={0.40} />
+                    </div>
+                    {/* Row 3: 2 hexagons */}
+                    <div style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: -20 }}>
+                        <Hexagon item={HEXAGONS[6]} size={hexSize} delay={0.48} />
+                        <Hexagon item={HEXAGONS[7]} size={hexSize} delay={0.56} />
+                    </div>
+                </div>
+
+                {/* ── Pinhole vs Surgery heading ── */}
+                <FadeIn>
+                    <div style={{ textAlign: "center", marginBottom: 36 }}>
+                        <h2 style={{
+                            fontFamily: "'Inter', sans-serif",
+                            fontSize: "clamp(22px, 3vw, 34px)",
+                            fontWeight: 800, color: "#071426",
+                            lineHeight: 1.2, marginBottom: 20,
                             letterSpacing: "-0.02em"
                         }}>
                             <span style={{ color: "#2563EB" }}>PINHOLE</span> Procedure (IR){" "}
                             <span style={{ color: "#9CA3AF", fontWeight: 400 }}>Vs</span>{" "}
                             Traditional Surgery
                         </h2>
-                        <p style={{
-                            fontFamily: "'DM Sans', sans-serif", fontSize: 16,
-                            color: "#6B7280", maxWidth: 540, margin: "0 auto 28px", lineHeight: 1.7
-                        }}>
-                            The same result. A fraction of the trauma. Interventional radiology changes what surgery means for patients.
-                        </p>
 
                         {/* Toggle table button */}
                         <motion.button
@@ -71,17 +140,16 @@ export default function IRAdvantages() {
                                 background: showTable ? "#2563EB" : "#fff",
                                 color: showTable ? "#fff" : "#2563EB",
                                 border: "2px solid #2563EB",
-                                padding: "12px 28px",
-                                borderRadius: 10,
-                                fontSize: 14, fontWeight: 600,
-                                cursor: "pointer",
-                                fontFamily: "'DM Sans', sans-serif",
+                                padding: "14px 32px", borderRadius: 12,
+                                fontSize: 15, fontWeight: 700,
+                                cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
                                 transition: "all 0.2s ease",
-                                display: "inline-flex", alignItems: "center", gap: 8
+                                display: "inline-flex", alignItems: "center", gap: 10,
+                                boxShadow: showTable ? "0 4px 14px rgba(37,99,235,0.3)" : "none"
                             }}
                         >
-                            <span>{showTable ? "▲" : "▼"}</span>
-                            {showTable ? "Hide" : "Click to view"} Differences Table
+                            <span style={{ fontSize: 14 }}>{showTable ? "▲" : "▼"}</span>
+                            Click to view Differences table
                         </motion.button>
                     </div>
                 </FadeIn>
@@ -94,34 +162,32 @@ export default function IRAdvantages() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.4, ease: "easeInOut" }}
-                            style={{ overflow: "hidden", marginBottom: 48 }}
+                            style={{ overflow: "hidden", marginBottom: 40 }}
                         >
                             <div style={{
                                 borderRadius: 16, overflow: "hidden",
                                 border: "1px solid #E5E7EB",
                                 boxShadow: "0 4px 24px rgba(0,0,0,0.06)"
                             }}>
-                                {/* Table header */}
+                                {/* Header */}
                                 <div style={{
-                                    display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+                                    display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr",
                                     background: "#071426"
                                 }}>
-                                    {["", "Traditional Surgery ✕", "Pinhole IR ✓"].map((h, i) => (
+                                    {["Parameter", "Traditional Surgery", "Pinhole IR"].map((h, i) => (
                                         <div key={i} style={{
-                                            padding: "16px 20px",
-                                            fontSize: 12, fontWeight: 700,
-                                            color: i === 2 ? "#5EEAD4" : i === 1 ? "#FCA5A5" : "rgba(255,255,255,0.5)",
+                                            padding: "16px 20px", fontSize: 12, fontWeight: 700,
+                                            color: i === 2 ? "#5EEAD4" : i === 1 ? "#FCA5A5" : "rgba(255,255,255,0.6)",
                                             fontFamily: "'DM Sans', sans-serif",
-                                            letterSpacing: "0.04em",
-                                            textTransform: "uppercase",
+                                            letterSpacing: "0.04em", textTransform: "uppercase",
                                             borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none"
                                         }}>{h}</div>
                                     ))}
                                 </div>
-                                {/* Table rows */}
+                                {/* Rows */}
                                 {TABLE_ROWS.map((row, i) => (
                                     <div key={i} style={{
-                                        display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+                                        display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr",
                                         background: i % 2 === 0 ? "#fff" : "#F9FAFB",
                                         borderBottom: i < TABLE_ROWS.length - 1 ? "1px solid #F3F4F6" : "none"
                                     }}>
@@ -136,15 +202,14 @@ export default function IRAdvantages() {
                                             borderRight: "1px solid #F3F4F6",
                                             display: "flex", alignItems: "center", gap: 8
                                         }}>
-                                            <span style={{ fontSize: 11, fontWeight: 700 }}>✕</span> {row.surgery}
+                                            <span style={{ fontWeight: 700 }}>✕</span> {row.surgery}
                                         </div>
                                         <div style={{
                                             padding: "14px 20px", fontSize: 13,
                                             color: "#0D9488", fontFamily: "'DM Sans', sans-serif",
-                                            fontWeight: 600,
-                                            display: "flex", alignItems: "center", gap: 8
+                                            fontWeight: 600, display: "flex", alignItems: "center", gap: 8
                                         }}>
-                                            <span style={{ fontSize: 11, fontWeight: 700 }}>✓</span> {row.ir}
+                                            <span style={{ fontWeight: 700 }}>✓</span> {row.ir}
                                         </div>
                                     </div>
                                 ))}
@@ -153,65 +218,23 @@ export default function IRAdvantages() {
                     )}
                 </AnimatePresence>
 
-                {/* Advantages Grid */}
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-                    gap: 16
-                }}>
-                    {ADVANTAGES.map((a, i) => (
-                        <FadeIn key={i} delay={i * 0.05}>
-                            <motion.div
-                                whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(37,99,235,0.10)" }}
-                                style={{
-                                    background: "#fff",
-                                    border: "1px solid #E5E7EB",
-                                    borderRadius: 16, padding: "26px 24px",
-                                    height: "100%",
-                                    transition: "all 0.3s ease"
-                                }}
-                            >
-                                <div style={{ fontSize: 36, marginBottom: 14 }}>{a.icon}</div>
-                                <div style={{
-                                    fontSize: 15, fontWeight: 700,
-                                    color: "#071426", fontFamily: "'DM Sans', sans-serif",
-                                    lineHeight: 1.35, marginBottom: 10,
-                                    whiteSpace: "pre-line"
-                                }}>{a.title}</div>
-                                <div style={{
-                                    fontSize: 13, color: "#6B7280",
-                                    fontFamily: "'DM Sans', sans-serif",
-                                    lineHeight: 1.7
-                                }}>{a.desc}</div>
-                                <div style={{
-                                    marginTop: 14, height: 3, width: 40, borderRadius: 2,
-                                    background: "linear-gradient(90deg, #2563EB, #0D9488)"
-                                }} />
-                            </motion.div>
-                        </FadeIn>
-                    ))}
-                </div>
-
-                {/* Bottom banner */}
-                <FadeIn delay={0.2}>
+                {/* Bottom CTA */}
+                <FadeIn delay={0.1}>
                     <div style={{
-                        marginTop: 40,
                         background: "linear-gradient(135deg, #071426, #0A1E3D)",
                         borderRadius: 20, padding: "36px 40px",
                         display: "flex", flexWrap: "wrap",
-                        alignItems: "center", justifyContent: "space-between",
-                        gap: 20
+                        alignItems: "center", justifyContent: "space-between", gap: 20
                     }}>
                         <div>
                             <div style={{
-                                fontSize: "clamp(18px, 2.5vw, 24px)", fontWeight: 700,
+                                fontSize: "clamp(17px, 2.2vw, 22px)", fontWeight: 700,
                                 color: "#fff", fontFamily: "'Inter', sans-serif", marginBottom: 6
-                            }}>
-                                You don't have to choose between effectiveness and comfort.
-                            </div>
-                            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif" }}>
-                                IR gives you both — expert treatment, minimal disruption to your life.
-                            </div>
+                            }}>You don't have to choose between effectiveness and comfort.</div>
+                            <div style={{
+                                fontSize: 14, color: "rgba(255,255,255,0.5)",
+                                fontFamily: "'DM Sans', sans-serif"
+                            }}>IR gives you both — expert treatment, minimal disruption to your life.</div>
                         </div>
                         <button
                             onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
