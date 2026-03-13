@@ -1,4 +1,5 @@
 import { DOC, NAV, LOCATIONS } from '../../config/data';
+import { Phone, MessageCircle, Building2 } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -53,17 +54,23 @@ export default function Footer() {
                     <div>
                         <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 16, fontFamily: "'Roboto', sans-serif" }}>Contact</h4>
                         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                            <a href={`tel:${DOC.phone.replace(/\\s/g, '')}`} style={{
+                            <a href={`tel:${DOC.phone.replace(/\s/g, '')}`} style={{
                                 fontSize: 13, color: "rgba(255,255,255,0.5)", fontFamily: "'Roboto', sans-serif",
-                                textDecoration: "none"
+                                textDecoration: "none",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 8
                             }}>
-                                📞 {DOC.phone}
+                                <Phone size={14} /> {DOC.phone}
                             </a>
                             <a href={`https://wa.me/${DOC.wa}`} target="_blank" rel="noopener noreferrer" style={{
                                 fontSize: 13, color: "rgba(255,255,255,0.5)", fontFamily: "'Roboto', sans-serif",
-                                textDecoration: "none"
+                                textDecoration: "none",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 8
                             }}>
-                                💬 Chat on WhatsApp
+                                <MessageCircle size={14} /> Chat on WhatsApp
                             </a>
                         </div>
                     </div>
@@ -75,8 +82,11 @@ export default function Footer() {
                             <div key={i} style={{ marginBottom: i < LOCATIONS.length - 1 ? 14 : 0 }}>
                                 <div style={{
                                     fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.7)",
-                                    fontFamily: "'Roboto', sans-serif", marginBottom: 3
-                                }}>🏥 {loc.name}</div>
+                                    fontFamily: "'Roboto', sans-serif", marginBottom: 3,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 8
+                                }}><Building2 size={14} /> {loc.name}</div>
                                 <div style={{
                                     fontSize: 12, color: "rgba(255,255,255,0.4)",
                                     fontFamily: "'Roboto', sans-serif", paddingLeft: 22

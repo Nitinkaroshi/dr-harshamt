@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import BLOGS from '../../config/blogs';
 import usePageSEO from '../../hooks/usePageSEO';
+import { ArrowLeft } from 'lucide-react';
 
 export default function BlogPage({ id, onBack }) {
     const blog = BLOGS.find(b => b.id === id);
@@ -72,7 +73,7 @@ export default function BlogPage({ id, onBack }) {
 
             {/* Hero */}
             <div style={{ position: "relative", height: 380, overflow: "hidden" }}>
-                <img src={blog.hero} alt={`${blog.title} — Dr. Harsha M T health blog`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={blog.hero} alt={`${blog.title} — Dr. Harsha M T health blog`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 <div style={{
                     position: "absolute",
                     inset: 0,
@@ -144,7 +145,7 @@ export default function BlogPage({ id, onBack }) {
                         marginBottom: 36,
                         fontWeight: 500
                     }}
-                >← Back to Blog</button>
+                > <ArrowLeft size={14} /> Back to Blog</button>
 
                 <article>
                     {blog.content.map((section, i) => {

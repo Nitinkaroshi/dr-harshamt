@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function FadeIn({ children, delay = 0, style: extraStyle }) {
-    const [isVisible, setIsVisible] = useState(false);
+export default function FadeIn({ children, delay = 0, immediate = false, style: extraStyle }) {
+    const [isVisible, setIsVisible] = useState(immediate);
     const ref = useRef(null);
 
     useEffect(() => {
+        if (immediate) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {

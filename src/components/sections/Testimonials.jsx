@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
-import { TESTIMONIALS } from '../../config/data';
+import { TESTIMONIALS, DOC } from '../../config/data';
+import { Star } from 'lucide-react';
 
 export default function Testimonials() {
     const [active, setActive] = useState(0);
 
     useEffect(() => {
-        const t = setInterval(() => setActive(p => (p + 1) % TESTIMONIALS.length), 5000);
+        if (active >= TESTIMONIALS.length) setActive(0);
+    }, [TESTIMONIALS.length]);
+
+    useEffect(() => {
+        const t = setInterval(() => setActive(p => (p + 1) % (TESTIMONIALS.length || 1)), 5000);
         return () => clearInterval(t);
-    }, []);
+    }, [TESTIMONIALS.length]);
 
     // Show 3 cards on desktop, 1 on mobile — we render all and use CSS-like logic
     const getVisibleIndices = () => {
@@ -65,22 +70,26 @@ export default function Testimonials() {
                     </div>
                 </FadeIn>
 
-                {/* ── Featured Testimonial (large card) ── */}
+                {/* ── Featured Testimonial (compacted large card) ── */}
                 <FadeIn delay={0.08}>
-                    <div style={{ marginBottom: 32 }}>
-                        <AnimatePresence mode="wait">
+                    <div style={{ marginBottom: 32, minHeight: 300, position: "relative" }}>
+                        <AnimatePresence initial={false}>
                             <motion.div
                                 key={active}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                                 style={{
                                     background: "linear-gradient(135deg, rgba(37,99,235,0.04), rgba(37,99,235,0.02))",
                                     border: "1px solid rgba(37,99,235,0.15)",
                                     borderRadius: 20,
-                                    padding: "clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px)",
-                                    position: "relative",
+                                    padding: "clamp(20px, 3vw, 32px)",
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100%",
+                                    height: "100%",
                                     overflow: "hidden"
                                 }}
                             >
@@ -95,21 +104,21 @@ export default function Testimonials() {
 
                                 {/* Stars */}
                                 <div style={{ display: "flex", gap: 3, marginBottom: 16 }}>
-                                    {[...Array(TESTIMONIALS[active].rating)].map((_, i) => (
-                                        <span key={i} style={{ color: "#F59E0B", fontSize: 16 }}>★</span>
+                                    {[...Array(TESTIMONIALS[active]?.r || 0)].map((_, i) => (
+                                        <Star key={i} size={16} fill="#F59E0B" color="#F59E0B" />
                                     ))}
                                 </div>
 
                                 {/* Testimonial text */}
                                 <p style={{
                                     fontFamily: "'Roboto', sans-serif",
-                                    fontSize: "clamp(16px, 1.8vw, 19px)",
+                                    fontSize: "clamp(15px, 1.6vw, 17px)",
                                     color: "#374151",
-                                    lineHeight: 1.8, marginBottom: 28,
+                                    lineHeight: 1.7, marginBottom: 24,
                                     fontStyle: "italic", maxWidth: 800,
                                     position: "relative", zIndex: 1
                                 }}>
-                                    "{TESTIMONIALS[active].text}"
+                                    "{TESTIMONIALS[active]?.q}"
                                 </p>
 
                                 {/* Author row */}
@@ -122,17 +131,17 @@ export default function Testimonials() {
                                         fontWeight: 700, color: "#fff",
                                         fontFamily: "'Roboto', sans-serif"
                                     }}>
-                                        {TESTIMONIALS[active].name.charAt(0)}
+                                        {TESTIMONIALS[active]?.a?.charAt(0)}
                                     </div>
                                     <div>
                                         <div style={{
                                             fontSize: 16, fontWeight: 700,
                                             color: "#1F2937", fontFamily: "'Roboto', sans-serif"
-                                        }}>{TESTIMONIALS[active].name}</div>
+                                        }}>{TESTIMONIALS[active]?.a}</div>
                                         <div style={{
                                             fontSize: 13, color: "#6B7280",
                                             fontFamily: "'Roboto', sans-serif"
-                                        }}>Age {TESTIMONIALS[active].age} • {TESTIMONIALS[active].condition}</div>
+                                        }}>{TESTIMONIALS[active]?.p}</div>
                                     </div>
                                     <div style={{
                                         marginLeft: "auto",
@@ -175,8 +184,8 @@ export default function Testimonials() {
                         >
                             {/* Stars */}
                             <div style={{ display: "flex", gap: 2, marginBottom: 10 }}>
-                                {[...Array(t.rating)].map((_, j) => (
-                                    <span key={j} style={{ color: "#F59E0B", fontSize: 12 }}>★</span>
+                                {[...Array(t.r || 0)].map((_, j) => (
+                                    <Star key={j} size={12} fill="#F59E0B" color="#F59E0B" />
                                 ))}
                             </div>
 
@@ -191,7 +200,7 @@ export default function Testimonials() {
                                 WebkitBoxOrient: "vertical",
                                 overflow: "hidden"
                             }}>
-                                "{t.text}"
+                                "{t.q}"
                             </p>
 
                             {/* Author */}
@@ -207,19 +216,19 @@ export default function Testimonials() {
                                     color: i === active ? "#fff" : "#9CA3AF",
                                     fontFamily: "'Roboto', sans-serif"
                                 }}>
-                                    {t.name.charAt(0)}
+                                    {t.a?.charAt(0)}
                                 </div>
                                 <div>
                                     <div style={{
                                         fontSize: 13, fontWeight: 600,
                                         color: i === active ? "#2563EB" : "#4B5563",
                                         fontFamily: "'Roboto', sans-serif"
-                                    }}>{t.name}</div>
+                                    }}>{t.a}</div>
                                     <div style={{
                                         fontSize: 12,
                                         color: "#9CA3AF",
                                         fontFamily: "'Roboto', sans-serif"
-                                    }}>{t.condition}</div>
+                                    }}>{t.p}</div>
                                 </div>
                             </div>
                         </motion.div>
@@ -247,7 +256,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Trust bar */}
-                <FadeIn delay={0.15}>
+                {/* <FadeIn delay={0.15}>
                     <div style={{
                         marginTop: 40, textAlign: "center",
                         padding: "24px 0",
@@ -258,10 +267,10 @@ export default function Testimonials() {
                             justifyContent: "center", gap: 32
                         }}>
                             {[
-                                { v: "8500+", l: "Procedures Done" },
+                                { v: DOC.procs, l: "Procedures Done" },
                                 { v: "98%", l: "Patient Satisfaction" },
-                                { v: "4.9★", l: "Average Rating" },
-                                { v: "6+", l: "Conditions Treated" },
+                                { v: <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>4.9<Star size={18} fill="#2563EB" color="#2563EB" style={{ marginLeft: 3 }} /></span>, l: "Average Rating" },
+                                { v: "12+", l: "Conditions Treated" },
                             ].map((s, i) => (
                                 <div key={i}>
                                     <div style={{
@@ -278,7 +287,7 @@ export default function Testimonials() {
                             ))}
                         </div>
                     </div>
-                </FadeIn>
+                </FadeIn> */}
             </div>
         </section>
     );

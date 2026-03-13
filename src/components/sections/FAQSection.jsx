@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHead from '../common/SectionHead';
 import { FAQS } from '../../config/data';
+import { Plus, Minus } from 'lucide-react';
 
 /* ── FAQ Schema (FAQPage) for Google Rich Results ── */
 function useFAQSchema() {
@@ -98,16 +99,15 @@ export default function FAQSection() {
                                 }}>{f.q}</span>
 
                                 <motion.span
-                                    animate={{ rotate: open === i ? 45 : 0 }}
+                                    animate={{ rotate: open === i ? 90 : 0 }}
                                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                     style={{
-                                        fontSize: 18,
                                         color: open === i ? "#0D9488" : "rgba(0,0,0,0.25)",
                                         transition: "color 0.3s",
                                         flexShrink: 0,
-                                        fontWeight: 300
+                                        display: "flex"
                                     }}
-                                >+</motion.span>
+                                >{open === i ? <Minus size={18} /> : <Plus size={18} />}</motion.span>
                             </motion.button>
 
                             <AnimatePresence initial={false}>

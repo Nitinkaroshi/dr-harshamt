@@ -36,12 +36,24 @@ function setCanonical(url) {
     el.setAttribute('href', url);
 }
 
+function setSchema(schema) {
+    let el = document.querySelector('script[type="application/ld+json"]');
+    if (el) el.remove();
+    if (schema) {
+        el = document.createElement('script');
+        el.setAttribute('type', 'application/ld+json');
+        el.text = JSON.stringify(schema);
+        document.head.appendChild(el);
+    }
+}
+
 export default function usePageSEO({
     title,
     description,
     path = '/',
     image,
     type = 'website',
+    schema,
 } = {}) {
     useEffect(() => {
         const pageTitle = title || DEFAULT_TITLE;
@@ -72,5 +84,10 @@ export default function usePageSEO({
 
         // Canonical
         setCanonical(pageUrl);
-    }, [title, description, path, image, type]);
+
+        // JSON-LD Schema
+        setSchema(schema);
+
+        return () => setSchema(null);
+    }, [title, description, path, image, type, schema]);
 }
