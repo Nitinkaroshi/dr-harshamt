@@ -1,4 +1,19 @@
 import { useState, useEffect, useRef } from "react";
+import { 
+  Activity, 
+  Thermometer, 
+  Stethoscope, 
+  HeartPulse, 
+  Baby, 
+  Microscope, 
+  Crosshair, 
+  Play, 
+  Move, 
+  MousePointerClick, 
+  BookOpen, 
+  Lightbulb,
+  X
+} from "lucide-react";
 
 /* ─── 3D ANATOMY VIEWER WITH INTERACTIVE HOTSPOTS ─── */
 
@@ -9,7 +24,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 45, y: 72 }, // leg area
     label: "Varicose Veins",
     color: "#7C3AED",
-    icon: "🦵",
+    icon: Activity,
     description: "Enlarged, twisted veins in the legs",
     procedure: "EVLA / Venaseal",
     steps: [
@@ -26,7 +41,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 50, y: 18 }, // neck area
     label: "Thyroid Nodules",
     color: "#14B8A6",
-    icon: "🦋",
+    icon: Thermometer,
     description: "Lumps in the thyroid gland",
     procedure: "Radiofrequency Ablation",
     steps: [
@@ -43,7 +58,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 50, y: 58 }, // pelvic area
     label: "Uterine Fibroids",
     color: "#F59E0B",
-    icon: "🩺",
+    icon: Stethoscope,
     description: "Non-cancerous growths in the uterus",
     procedure: "Uterine Fibroid Embolisation",
     steps: [
@@ -60,7 +75,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 55, y: 80 }, // lower leg
     label: "Peripheral Artery Disease",
     color: "#EF4444",
-    icon: "🫀",
+    icon: HeartPulse,
     description: "Blocked arteries in the legs",
     procedure: "Angioplasty & Stenting",
     steps: [
@@ -77,7 +92,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 48, y: 62 }, // groin area
     label: "Varicocele",
     color: "#8B5CF6",
-    icon: "👶",
+    icon: Baby,
     description: "Enlarged veins in the scrotum",
     procedure: "Varicocele Embolisation",
     steps: [
@@ -94,7 +109,7 @@ const ANATOMY_HOTSPOTS = {
     position: { x: 50, y: 60 }, // lower pelvic
     label: "Enlarged Prostate",
     color: "#06B6D4",
-    icon: "🔬",
+    icon: Microscope,
     description: "Benign prostatic hyperplasia (BPH)",
     procedure: "Prostate Artery Embolisation",
     steps: [
@@ -259,15 +274,28 @@ export function AnatomyViewer3D() {
                 position: "absolute",
                 top: "50%",
                 left: "50%",
-                width: "100%",
-                height: "100%",
+                height: "90%", 
+                width: "auto",
+                maxWidth: "90%",
+                filter: "drop-shadow(0 0 40px rgba(37,99,235,0.15))",
                 transform: `translate(-50%, -50%) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
                 transformStyle: "preserve-3d",
                 transition: isDragging ? "none" : "transform 0.1s ease-out"
               }}>
-                
-                {/* Human Body SVG */}
-                <HumanBodySVG activeHotspot={activeHotspot} />
+                {/* High-Quality 3D Human Body Image */}
+                <img 
+                  src="/body-3d.png" 
+                  alt="3D Human Anatomy" 
+                  style={{
+                    height: "100%",
+                    width: "auto",
+                    objectFit: "contain",
+                    filter: "drop-shadow(0 0 20px rgba(13,148,136,0.3))",
+                    display: "block",
+                    userSelect: "none",
+                    pointerEvents: "none"
+                  }}
+                />
 
                 {/* Interactive Hotspots */}
                 {Object.entries(ANATOMY_HOTSPOTS).map(([key, hotspot]) => (
@@ -278,9 +306,11 @@ export function AnatomyViewer3D() {
                       position: "absolute",
                       left: `${hotspot.position.x}%`,
                       top: `${hotspot.position.y}%`,
-                      transform: "translate(-50%, -50%)",
+                      transform: `translate(-50%, -50%) rotateY(${-rotation.y}deg) rotateX(${-rotation.x}deg)`,
+                      transformStyle: "preserve-3d",
                       cursor: "pointer",
-                      zIndex: activeHotspot === key ? 100 : 10
+                      zIndex: activeHotspot === key ? 100 : 10,
+                      transition: isDragging ? "none" : "transform 0.1s ease-out"
                     }}
                   >
                     {/* Pulsing Hotspot */}
@@ -329,7 +359,7 @@ export function AnatomyViewer3D() {
                         transition: "all 0.3s ease",
                         transform: activeHotspot === key ? "scale(1.3)" : "scale(1)"
                       }}>
-                        {hotspot.icon}
+                        <hotspot.icon size={18} color="#fff" strokeWidth={2} />
                       </div>
                     </div>
 
@@ -376,7 +406,7 @@ export function AnatomyViewer3D() {
                 alignItems: "center",
                 gap: 8
               }}>
-                <span>🖱️</span>
+                <Move size={12} />
                 <span>Drag to rotate • Click hotspots to explore</span>
               </div>
             </div>
@@ -420,130 +450,6 @@ export function AnatomyViewer3D() {
   );
 }
 
-// Human Body SVG Component
-function HumanBodySVG({ activeHotspot }) {
-  return (
-    <svg 
-      viewBox="0 0 200 400" 
-      style={{ 
-        width: "100%", 
-        height: "100%",
-        filter: "drop-shadow(0 0 20px rgba(13,148,136,0.2))"
-      }}
-    >
-      {/* Head */}
-      <ellipse cx="100" cy="40" rx="25" ry="30" fill="rgba(94,234,212,0.15)" stroke="#5EEAD4" strokeWidth="1.5" />
-      
-      {/* Neck */}
-      <rect x="90" y="65" width="20" height="15" fill="rgba(94,234,212,0.12)" stroke="#5EEAD4" strokeWidth="1" />
-      
-      {/* Thyroid highlight */}
-      <ellipse 
-        cx="100" 
-        cy="72" 
-        rx="12" 
-        ry="6" 
-        fill={activeHotspot === "thyroid" ? "rgba(20,184,166,0.3)" : "rgba(20,184,166,0.1)"} 
-        stroke="#14B8A6" 
-        strokeWidth={activeHotspot === "thyroid" ? "2" : "1"}
-        style={{ transition: "all 0.3s" }}
-      />
-      
-      {/* Torso */}
-      <path 
-        d="M 75 80 Q 70 150 75 220 L 75 280 L 125 280 L 125 220 Q 130 150 125 80 Z" 
-        fill="rgba(94,234,212,0.1)" 
-        stroke="#5EEAD4" 
-        strokeWidth="1.5"
-      />
-      
-      {/* Heart/Chest */}
-      <path 
-        d="M 90 100 Q 85 95 85 90 Q 85 85 90 85 Q 95 85 100 90 Q 105 85 110 85 Q 115 85 115 90 Q 115 95 110 100 L 100 110 Z"
-        fill="rgba(239,68,68,0.2)"
-        stroke="#EF4444"
-        strokeWidth="1"
-      />
-      
-      {/* Uterine/Pelvic area */}
-      <ellipse 
-        cx="100" 
-        cy="230" 
-        rx="20" 
-        ry="15" 
-        fill={activeHotspot === "uterine-fibroids" ? "rgba(245,158,11,0.3)" : "rgba(245,158,11,0.1)"} 
-        stroke="#F59E0B" 
-        strokeWidth={activeHotspot === "uterine-fibroids" ? "2" : "1"}
-        style={{ transition: "all 0.3s" }}
-      />
-      
-      {/* Prostate area */}
-      <rect 
-        x="90" 
-        y="235" 
-        width="20" 
-        height="12" 
-        rx="3"
-        fill={activeHotspot === "prostate" ? "rgba(6,182,212,0.3)" : "rgba(6,182,212,0.1)"} 
-        stroke="#06B6D4" 
-        strokeWidth={activeHotspot === "prostate" ? "2" : "1"}
-        style={{ transition: "all 0.3s" }}
-      />
-      
-      {/* Varicocele area */}
-      <circle 
-        cx="95" 
-        cy="250" 
-        r="6" 
-        fill={activeHotspot === "varicocele" ? "rgba(139,92,246,0.3)" : "rgba(139,92,246,0.1)"} 
-        stroke="#8B5CF6" 
-        strokeWidth={activeHotspot === "varicocele" ? "2" : "1"}
-        style={{ transition: "all 0.3s" }}
-      />
-      
-      {/* Arms */}
-      <rect x="50" y="90" width="15" height="100" rx="7" fill="rgba(94,234,212,0.1)" stroke="#5EEAD4" strokeWidth="1" />
-      <rect x="135" y="90" width="15" height="100" rx="7" fill="rgba(94,234,212,0.1)" stroke="#5EEAD4" strokeWidth="1" />
-      
-      {/* Legs */}
-      <rect x="80" y="280" width="18" height="110" rx="9" fill="rgba(94,234,212,0.1)" stroke="#5EEAD4" strokeWidth="1.5" />
-      <rect x="102" y="280" width="18" height="110" rx="9" fill="rgba(94,234,212,0.1)" stroke="#5EEAD4" strokeWidth="1.5" />
-      
-      {/* Varicose veins visualization */}
-      <path 
-        d="M 85 290 Q 83 310 85 330 Q 87 350 85 370"
-        fill="none"
-        stroke={activeHotspot === "varicose-veins" ? "#7C3AED" : "rgba(124,58,237,0.3)"}
-        strokeWidth={activeHotspot === "varicose-veins" ? "3" : "2"}
-        strokeDasharray="3 2"
-        style={{ transition: "all 0.3s" }}
-      />
-      <path 
-        d="M 115 290 Q 113 310 115 330 Q 117 350 115 370"
-        fill="none"
-        stroke={activeHotspot === "varicose-veins" ? "#7C3AED" : "rgba(124,58,237,0.3)"}
-        strokeWidth={activeHotspot === "varicose-veins" ? "3" : "2"}
-        strokeDasharray="3 2"
-        style={{ transition: "all 0.3s" }}
-      />
-      
-      {/* Peripheral arteries */}
-      <path 
-        d="M 89 320 L 89 380"
-        stroke={activeHotspot === "peripheral-vascular" ? "#EF4444" : "rgba(239,68,68,0.3)"}
-        strokeWidth={activeHotspot === "peripheral-vascular" ? "2.5" : "1.5"}
-        style={{ transition: "all 0.3s" }}
-      />
-      <path 
-        d="M 111 320 L 111 380"
-        stroke={activeHotspot === "peripheral-vascular" ? "#EF4444" : "rgba(239,68,68,0.3)"}
-        strokeWidth={activeHotspot === "peripheral-vascular" ? "2.5" : "1.5"}
-        style={{ transition: "all 0.3s" }}
-      />
-    </svg>
-  );
-}
-
 // Procedure Panel Component
 function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) {
   return (
@@ -560,7 +466,18 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ fontSize: 32 }}>{hotspot.icon}</span>
+            <div style={{ 
+              width: 50, 
+              height: 50, 
+              borderRadius: 14, 
+              background: `${hotspot.color}22`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: `1px solid ${hotspot.color}44`
+            }}>
+              <hotspot.icon size={28} color={hotspot.color} />
+            </div>
             <div>
               <h3 style={{
                 fontFamily: "'Playfair Display', serif",
@@ -582,26 +499,27 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 8,
+              borderRadius: 10,
               width: 32,
               height: 32,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               color: "rgba(255,255,255,0.5)",
-              fontSize: 18,
               cursor: "pointer",
               transition: "all 0.2s"
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+              e.currentTarget.style.background = "rgba(255,255,255,0.2)";
               e.currentTarget.style.color = "#fff";
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = "rgba(255,255,255,0.05)";
               e.currentTarget.style.color = "rgba(255,255,255,0.5)";
             }}
-          >×</button>
+          >
+            <X size={18} />
+          </button>
         </div>
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
@@ -637,7 +555,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
             opacity: isPlaying ? 0.6 : 1
           }}
         >
-          <span style={{ fontSize: 16 }}>{isPlaying ? "▶️" : "▶️"}</span>
+          <Play size={16} fill={isPlaying ? "none" : "currentColor"} />
           {isPlaying ? "Playing Animation..." : "Play Procedure Animation"}
         </button>
       </div>
@@ -762,10 +680,10 @@ function InstructionsPanel() {
       
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {[
-          { icon: "🖱️", title: "Rotate the Model", desc: "Click and drag to rotate the 3D body model in any direction" },
-          { icon: "👆", title: "Click Hotspots", desc: "Click on the pulsing colored circles to explore different conditions" },
-          { icon: "▶️", title: "Watch Animations", desc: "Play step-by-step animated explanations of each procedure" },
-          { icon: "📚", title: "Learn Details", desc: "Read about each minimally invasive treatment approach" }
+          { icon: Move, title: "Rotate the Model", desc: "Click and drag to rotate the 3D body model in any direction" },
+          { icon: MousePointerClick, title: "Click Hotspots", desc: "Click on the pulsing colored circles to explore different conditions" },
+          { icon: Play, title: "Watch Animations", desc: "Play step-by-step animated explanations of each procedure" },
+          { icon: BookOpen, title: "Learn Details", desc: "Read about each minimally invasive treatment approach" }
         ].map((item, i) => (
           <div key={i} style={{
             padding: 20,
@@ -774,7 +692,7 @@ function InstructionsPanel() {
             borderRadius: 12
           }}>
             <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-              <span style={{ fontSize: 28, flexShrink: 0 }}>{item.icon}</span>
+              <item.icon size={28} color="#5EEAD4" style={{ flexShrink: 0 }} />
               <div>
                 <div style={{
                   fontFamily: "'DM Sans', sans-serif",
@@ -809,7 +727,7 @@ function InstructionsPanel() {
           textAlign: "center",
           lineHeight: 1.6
         }}>
-          💡 <strong>Tip:</strong> Each procedure is performed through a tiny pinhole — 
+          <Lightbulb size={14} style={{ marginBottom: -2, marginRight: 4 }} /> <strong>Tip:</strong> Each procedure is performed through a tiny pinhole — 
           no large incisions, faster recovery, and no visible scars!
         </div>
       </div>

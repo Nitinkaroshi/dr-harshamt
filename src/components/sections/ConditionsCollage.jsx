@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SERVICES } from '../../config/data';
+import { ArrowRight } from 'lucide-react';
 
 const hexClip = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
 
@@ -13,12 +14,20 @@ const ROWS = [
     { start: 10, count: 2 },
 ];
 
-const HEX_W = 175;
-const HEX_H = Math.round(HEX_W * 1.15);
-const OVERLAP = Math.round(HEX_H * 0.25);
-
 export default function ConditionsCollage({ onTreatment }) {
     const [hovered, setHovered] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 768);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
+
+    const HEX_W = isMobile ? 105 : 175;
+    const HEX_H = Math.round(HEX_W * 1.1547);
+    const OVERLAP = Math.round(HEX_H * 0.25);
 
     return (
         <section style={{
@@ -149,7 +158,7 @@ export default function ConditionsCollage({ onTreatment }) {
                                                                 textAlign: "center"
                                                             }}
                                                         >
-                                                            <div style={{ fontSize: 28, marginBottom: 4 }}>{s.icon}</div>
+                                                            <div style={{ marginBottom: 4 }}><s.icon size={28} strokeWidth={1.5} color="#fff" /></div>
                                                             <div style={{
                                                                 fontSize: 13,
                                                                 fontWeight: 600,
@@ -169,8 +178,11 @@ export default function ConditionsCollage({ onTreatment }) {
                                                                 fontSize: 11,
                                                                 color: "#5EEAD4",
                                                                 fontWeight: 600,
-                                                                fontFamily: "'Poppins', sans-serif"
-                                                            }}>Learn More →</div>
+                                                                fontFamily: "'Poppins', sans-serif",
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                gap: 4
+                                                            }}>Learn More <ArrowRight size={12} /></div>
                                                         </motion.div>
                                                     )}
                                                 </AnimatePresence>

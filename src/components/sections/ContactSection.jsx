@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
 import { DOC, SERVICES } from '../../config/data';
+import { CheckCircle2, AlertTriangle } from 'lucide-react';
 
 const inputStyle = {
     width: "100%",
@@ -97,12 +98,12 @@ export default function ContactSection() {
                             fontWeight: 800, color: "#1F2937",
                             lineHeight: 1.15, letterSpacing: "-0.02em",
                             marginBottom: 10
-                        }}>Book Consultation</h2>
+                        }}>Book Appointment</h2>
                         <p style={{
                             fontFamily: "'Roboto', sans-serif",
                             fontSize: 15, color: "#6B7280",
                             maxWidth: 500, margin: "0 auto"
-                        }}>Fill in your details and our team will get back to you shortly</p>
+                        }}>Consult Dr. Harsha M T – Interventional Radiologist in Bengaluru for advanced minimally invasive treatments.</p>
                     </div>
                 </FadeIn>
 
@@ -124,7 +125,7 @@ export default function ContactSection() {
                                     borderRadius: 14
                                 }}
                             >
-                                <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+                                <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}><CheckCircle2 size={48} color="#0D9488" /></div>
                                 <div style={{
                                     fontSize: 18, fontWeight: 700, color: "#0D9488",
                                     fontFamily: "'Poppins', sans-serif", marginBottom: 8
@@ -147,7 +148,7 @@ export default function ContactSection() {
                                     borderRadius: 14
                                 }}
                             >
-                                <div style={{ fontSize: 48, marginBottom: 16 }}>⚠️</div>
+                                <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}><AlertTriangle size={48} color="#EF4444" /></div>
                                 <div style={{
                                     fontSize: 18, fontWeight: 700, color: "#EF4444",
                                     fontFamily: "'Poppins', sans-serif", marginBottom: 8

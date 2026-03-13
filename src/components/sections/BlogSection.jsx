@@ -1,6 +1,7 @@
 import FadeIn from '../common/FadeIn';
 import SectionHead from '../common/SectionHead';
 import BLOGS from '../../config/blogs';
+import { ArrowRight } from 'lucide-react';
 
 export default function BlogSection({ onBlog }) {
     return (
@@ -50,6 +51,7 @@ export default function BlogSection({ onBlog }) {
                                             width: "100%",
                                             height: "100%",
                                             objectFit: "cover",
+                                            objectPosition: "top",
                                             transition: "transform 0.4s"
                                         }}
                                     />
@@ -92,8 +94,11 @@ export default function BlogSection({ onBlog }) {
                                         fontSize: 14,
                                         fontWeight: 600,
                                         color: "#2563EB",
-                                        fontFamily: "'Roboto', sans-serif"
-                                    }}>Read Article →</div>
+                                        fontFamily: "'Roboto', sans-serif",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 4
+                                    }}>Read Article <ArrowRight size={14} /></div>
                                 </div>
                             </div>
                         </FadeIn>

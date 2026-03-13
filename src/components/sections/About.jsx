@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
+import Counter from '../common/Counter';
 import { DOC, IMG } from '../../config/data';
+import { Building2, GraduationCap, Globe, MapPin } from 'lucide-react';
 
 const GALLERY = [
     { img: DOC.photo, label: "Dr. Harsha M T" },
@@ -13,10 +15,10 @@ const GALLERY = [
 ];
 
 const TRAINING = [
-    { inst: "PGIMER", loc: "Chandigarh", icon: "🏛️", degree: "MD Radio-diagnosis & IR" },
-    { inst: "AIIMS", loc: "Rishikesh", icon: "🎓", degree: "Fellowship VIR" },
-    { inst: "SNUH", loc: "South Korea", icon: "🌏", degree: "Fellowship VIR" },
-    { inst: "IEO", loc: "Milan, Italy", icon: "🇮🇹", degree: "Thyroid Thermal Ablation" },
+    { inst: "PGIMER", loc: "Chandigarh", icon: <Building2 size={32} strokeWidth={1.5} color="#2563EB" />, degree: "MD Radio-diagnosis & IR" },
+    { inst: "AIIMS", loc: "Rishikesh", icon: <GraduationCap size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Fellowship VIR" },
+    { inst: "SNUH", loc: "South Korea", icon: <Globe size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Fellowship VIR" },
+    { inst: "IEO", loc: "Milan, Italy", icon: <MapPin size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Thyroid Thermal Ablation" },
 ];
 
 const shieldClip = "polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%)";
@@ -76,7 +78,7 @@ export default function About() {
     const [galleryIdx, setGalleryIdx] = useState(0);
 
     return (
-        <section id="about" style={{ background: "#FAFBFC", padding: "clamp(28px, 5vw, 56px) 0" }}>
+        <section id="about" style={{ background: "#FAFBFC", padding: "clamp(28px, 5vw, 56px) 0", scrollMarginTop: 80 }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
 
                 {/* ── Section title ── */}
@@ -96,7 +98,7 @@ export default function About() {
                             fontSize: "clamp(26px, 3.5vw, 38px)",
                             fontWeight: 800, color: "#071426",
                             lineHeight: 1.15, letterSpacing: "-0.02em"
-                        }}>Dr. Harsha M T</h2>
+                        }}>About Dr. Harsha M T</h2>
                     </div>
                 </FadeIn>
 
@@ -129,33 +131,78 @@ export default function About() {
 
                     {/* Bio text */}
                     <FadeIn delay={0.2} style={{ flex: "1 1 400px", minWidth: 280 }}>
-                        <p style={{
+                        <div style={{
                             fontFamily: "'Roboto', sans-serif",
-                            fontSize: 15, color: "rgba(7,20,38,0.65)",
-                            lineHeight: 1.85, marginBottom: 16
+                            fontSize: 16, color: "rgba(7,20,38,0.7)",
+                            lineHeight: 1.8, marginBottom: 24
                         }}>
-                            Dr. Harsha M T is a highly credentialed Consultant Vascular & Interventional Radiologist and Endovascular Specialist. With a career built on training from the absolute best medical institutions in India and the world, Dr. Harsha brings cutting-edge, minimally invasive solutions to complex vascular problems.
-                        </p>
-                        <p style={{
-                            fontFamily: "'Roboto', sans-serif",
-                            fontSize: 15, color: "rgba(7,20,38,0.65)",
-                            lineHeight: 1.85, marginBottom: 24
-                        }}>
-                            He combines the precision of radiology with the clinical expertise of a surgeon to treat conditions like Varicose Veins, Uterine Fibroids, and Thyroid Nodules without the need for open surgery.
-                        </p>
+                            <p style={{ marginBottom: 16 }}>
+                                Dr Harsha M T is a highly experienced <strong>Vascular and Interventional Radiologist in Bengaluru</strong>, known for performing advanced minimally invasive image-guided procedures that replace traditional open surgeries.
+                            </p>
+                            <p style={{ marginBottom: 16 }}>
+                                With extensive international training and experience, Dr Harsha specializes in treating complex vascular and non-vascular conditions using advanced imaging technologies such as CT, Ultrasound, and Fluoroscopy.
+                            </p>
+                            <p>
+                                His patient-focused approach combines the precision of radiology with the expertise of a surgeon to deliver effective treatments with minimal pain, faster recovery, and no large surgical scars.
+                            </p>
+                        </div>
 
                         {/* Director card */}
                         <div style={{
-                            background: "#2563EB", borderRadius: 12,
-                            padding: "18px 20px", color: "#fff"
+                            background: "linear-gradient(135deg, #2563EB, #1E40AF)", 
+                            borderRadius: 16,
+                            padding: "24px", color: "#fff",
+                            boxShadow: "0 10px 30px rgba(37,99,235,0.2)"
                         }}>
-                            <div style={{ fontSize: 15, fontWeight: 700, fontFamily: "'Poppins', sans-serif", marginBottom: 4 }}>Director, VENUVA VASCULAR CENTER</div>
-                            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontFamily: "'Roboto', sans-serif", lineHeight: 1.6 }}>
-                                Bringing advanced Interventional Radiology accessible to patients in Bengaluru who previously had no alternative to surgery.
+                            <div style={{ fontSize: 18, fontWeight: 800, fontFamily: "'Poppins', sans-serif", marginBottom: 8 }}>Director – Venuva Vascular Center</div>
+                            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontFamily: "'Roboto', sans-serif", lineHeight: 1.7 }}>
+                                Dr Harsha M T leads Venuva Vascular Center, a specialized facility focused on minimally invasive vascular and interventional radiology treatments through pinhole-sized access.
                             </div>
                         </div>
                     </FadeIn>
                 </div>
+
+                {/* ── Areas of Expertise ── */}
+                <FadeIn>
+                    <div style={{ 
+                        background: "#fff", 
+                        borderRadius: 20, 
+                        padding: "40px", 
+                        marginBottom: 56,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
+                        border: "1px solid #F1F5F9"
+                    }}>
+                        <h3 style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: 24, fontWeight: 800, color: "#071426",
+                            marginBottom: 24, textAlign: "center"
+                        }}>Areas of Expertise</h3>
+                        <div style={{ 
+                            display: "grid", 
+                            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", 
+                            gap: "16px 32px" 
+                        }}>
+                            {[
+                                "Varicose Veins Treatment", "Thyroid Nodule Ablation", 
+                                "Uterine Fibroid Embolisation", "Varicocele Embolisation",
+                                "Prostate Artery Embolisation", "Peripheral Vascular Disease Treatment",
+                                "Deep Vein Thrombosis Treatment", "Liver Cancer Interventions",
+                                "Dialysis Access Procedures"
+                            ].map((item, i) => (
+                                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#2563EB" }} />
+                                    <span style={{ fontSize: 15, color: "#4B5563", fontFamily: "'Roboto', sans-serif" }}>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <p style={{ 
+                            marginTop: 32, textAlign: "center", fontStyle: "italic", 
+                            color: "#6B7280", fontSize: 14, fontFamily: "'Roboto', sans-serif" 
+                        }}>
+                            Dr Harsha has helped thousands of patients avoid major surgery by offering safe, minimally invasive alternatives.
+                        </p>
+                    </div>
+                </FadeIn>
 
                 {/* ── World-Class Qualifications & Training — Shield Badges ── */}
                 <FadeIn>
@@ -163,7 +210,7 @@ export default function About() {
                         fontFamily: "'Poppins', sans-serif",
                         fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 700, color: "#1F2937",
                         textAlign: "center", marginBottom: 32
-                    }}>World-Class Qualifications & Training</h3>
+                    }}>His international training includes:</h3>
                 </FadeIn>
 
                 <div style={{
@@ -174,6 +221,8 @@ export default function About() {
                         <ShieldBadge key={i} item={t} delay={i * 0.1} />
                     ))}
                 </div>
+
+
 
                 {/* ── Global Board Certifications ── */}
                 <FadeIn>
@@ -186,12 +235,12 @@ export default function About() {
 
                 <div style={{
                     display: "flex", flexWrap: "wrap", gap: 14,
-                    justifyContent: "center", marginBottom: 36
+                    justifyContent: "center", marginBottom: 64
                 }}>
                     {[
                         { abbr: "EBIR", full: "European Board of Interventional Radiology" },
                         { abbr: "EDiR", full: "European Diploma in Radiology" },
-                        { abbr: "Dip. ICRI", full: "Diploma — Indian College of Radiology & Imaging" },
+                        { abbr: "Dip. ICRI", full: "Indian College of Radiology & Imaging" },
                     ].map((c, i) => (
                         <FadeIn key={i} delay={i * 0.08}>
                             <div style={{
@@ -214,29 +263,35 @@ export default function About() {
                     ))}
                 </div>
 
-                {/* ── Numericals (Stats) ── */}
-                <FadeIn delay={0.1}>
-                    <div className="about-stats-row" style={{
-                        display: "flex", gap: 14, flexWrap: "wrap",
-                        justifyContent: "center", maxWidth: 720, margin: "0 auto 36px"
-                    }}>
-                        {[
-                            { v: DOC.exp, l: "Years Experience" },
-                            { v: DOC.procs, l: "Procedures Done" },
-                            { v: DOC.certs, l: "Certifications" },
-                            { v: DOC.countries, l: "Countries Trained" },
-                        ].map((s, i) => (
-                            <div key={i} style={{
-                                flex: "1 1 140px", minWidth: 140,
-                                background: "#fff", border: "1px solid #E5E7EB",
-                                borderRadius: 12, padding: "20px 18px", textAlign: "center"
-                            }}>
-                                <div style={{ fontSize: 30, fontWeight: 800, color: "#2563EB", fontFamily: "'Poppins', sans-serif", lineHeight: 1 }}>{s.v}</div>
-                                <div style={{ fontSize: 13, color: "#6B7280", fontFamily: "'Roboto', sans-serif", marginTop: 6 }}>{s.l}</div>
-                            </div>
-                        ))}
+                {/* ── Commitment to Patient Care ── */}
+                <FadeIn>
+                    <div style={{ textAlign: "center", maxWidth: 800, margin: "0 auto 64px" }}>
+                        <h3 style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: 24, fontWeight: 800, color: "#071426",
+                            marginBottom: 20
+                        }}>Commitment to Patient Care</h3>
+                        <p style={{
+                            fontFamily: "'Roboto', sans-serif",
+                            fontSize: 16, color: "#4B5563",
+                            lineHeight: 1.8, marginBottom: 16
+                        }}>
+                            Dr Harsha believes in providing treatments that are effective, safe, and patient-friendly. By combining modern medical technology with a compassionate approach, he ensures every patient receives the highest standard of care.
+                        </p>
+                        <p style={{
+                            fontFamily: "'Roboto', sans-serif",
+                            fontSize: 16, color: "#4B5563",
+                            lineHeight: 1.8
+                        }}>
+                            His mission is to make advanced interventional radiology treatments accessible to patients in Bengaluru who are looking for alternatives to traditional surgery.
+                        </p>
                     </div>
                 </FadeIn>
+            </div>
+
+
+
+            <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
 
                 {/* ── Gallery ── */}
                 <FadeIn>
@@ -264,7 +319,7 @@ export default function About() {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.4 }}
-                                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
                                     />
                                 </AnimatePresence>
                                 <div style={{

@@ -7,6 +7,18 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- Static Pages -->
+    <url>
+        <loc>https://drharshamt.com/about</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drharshamt.com/services</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Treatment Pages -->
     <url>
         <loc>https://drharshamt.com/treatment/varicose-veins</loc>

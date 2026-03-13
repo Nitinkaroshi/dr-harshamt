@@ -1,5 +1,7 @@
 import FadeIn from '../common/FadeIn';
-import { CREDS } from '../../config/data';
+import Counter from '../common/Counter';
+import { CREDS, DOC } from '../../config/data';
+import '../../styles/Hero.css';
 
 export default function CredBar() {
     return (
@@ -8,6 +10,24 @@ export default function CredBar() {
             borderTop: "1px solid rgba(0,0,0,0.06)",
             borderBottom: "1px solid rgba(0,0,0,0.06)"
         }}>
+            <FadeIn delay={0.1}>
+                <div className="hero-stats">
+                    {[
+                        { v: DOC.exp, l: "Years Experience" },
+                        { v: DOC.procs, l: "Procedures" },
+                        { v: DOC.certs, l: "Certifications" }
+                    ].map((s, i) => (
+                        <div key={i} className="hero-stat-item">
+                            <div className="hero-stat-val">
+                                <Counter value={s.v} />
+                            </div>
+                            <div className="hero-stat-lbl">{s.l}</div>
+                        </div>
+                    ))}
+                </div>
+            </FadeIn>
+
+
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "36px 24px" }}>
                 <FadeIn>
                     <div style={{

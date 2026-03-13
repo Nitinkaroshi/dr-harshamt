@@ -20,43 +20,35 @@ export default function IRSection() {
                 {/* ── Revolution Quote ── */}
                 <FadeIn>
                     <div style={{ textAlign: "center" }}>
-                        <div style={{
-                            fontSize: 80, lineHeight: 0.8,
-                            color: "rgba(37,99,235,0.15)",
-                            fontFamily: "Georgia, serif", marginBottom: 16
-                        }}>"</div>
+
                         <h2 style={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontSize: "clamp(22px, 3.5vw, 40px)",
+                            fontSize: "clamp(22px, 3.5vw, 36px)",
                             fontWeight: 800, color: "#1F2937",
                             lineHeight: 1.25, marginBottom: 24,
-                            maxWidth: 780, margin: "0 auto 24px",
+                            maxWidth: 850, margin: "0 auto 24px",
                             letterSpacing: "-0.02em"
                         }}>
-                            Interventional radiology is the{" "}
-                            <span style={{ color: "#2563EB" }}>quiet revolution</span>{" "}
-                            of the medical world.
+                            Advanced Interventional Radiology Treatments in Bengaluru
                         </h2>
-                        <p style={{
+                        <div style={{
                             fontFamily: "'Roboto', sans-serif",
                             fontSize: "clamp(15px, 1.8vw, 18px)",
                             color: "#6B7280", lineHeight: 1.8,
-                            maxWidth: 680, margin: "0 auto 36px"
+                            maxWidth: 750, margin: "0 auto 36px"
                         }}>
-                            Often referred to as{" "}
-                            <strong style={{ color: "#1F2937" }}>Surgery 2.0</strong>,
-                            it is a specialised field that uses advanced medical imaging (CT, Ultrasound)
-                            to perform complex procedures that once required open surgery — through just a pinhole.
-                        </p>
+                            <p style={{ marginBottom: 16 }}>Dr. Harsha M T performs advanced image-guided procedures that replace complex open surgeries with minimally invasive techniques.</p>
+                            <p>Using technologies such as CT, Ultrasound, and Fluoroscopy, treatments are performed through a tiny pinhole puncture rather than large surgical incisions.</p>
+                        </div>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10 }}>
-                            {["No Large Incisions", "Local Anaesthesia", "Same Day Home", "No Scars", "Faster Recovery"].map((tag, i) => (
+                            {["No large surgical cuts", "Local anesthesia procedures", "Same-day discharge", "Faster recovery", "Minimal pain and scarring"].map((tag, i) => (
                                 <span key={i} style={{
                                     background: "rgba(37,99,235,0.08)",
                                     border: "1px solid rgba(37,99,235,0.15)",
                                     color: "#2563EB", padding: "6px 16px",
                                     borderRadius: 100, fontSize: 13, fontWeight: 600,
                                     fontFamily: "'Roboto', sans-serif"
-                                }}>{tag}</span>
+                                }}>✔ {tag}</span>
                             ))}
                         </div>
                     </div>

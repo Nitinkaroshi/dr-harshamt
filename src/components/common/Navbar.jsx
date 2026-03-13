@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NAV } from '../../config/data';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ onNav }) {
     const [scrolled, setScrolled] = useState(false);
@@ -13,12 +14,25 @@ export default function Navbar({ onNav }) {
 
     const navigate = (href) => {
         setMobileOpen(false);
-        if (href.startsWith("#")) {
-            // If we're on a sub-page, go home first then scroll
-            if (window.location.pathname !== '/') {
-                window.history.pushState({}, '', '/' + href);
+        if (href.startsWith("/")) {
+            const p = href.substring(1); // 'about' or 'services'
+            const isTargetPage = window.location.pathname === href;
+            
+            if (!isTargetPage) {
+                window.history.pushState({}, '', href);
+                onNav(p);
+            } else {
+                // If already on the page, force a scroll
+                document.querySelector("#" + p)?.scrollIntoView({ behavior: "smooth" });
             }
-            onNav("home");
+        } else if (href.startsWith("#")) {
+            // If we're on a sub-page, go home first then scroll
+            const isHomePage = window.location.pathname === '/' || window.location.pathname === '/about' || window.location.pathname === '/services';
+            if (!isHomePage) {
+                window.history.pushState({}, '', '/' + href);
+                onNav("home");
+            }
+            // Always attempt scroll if the element exists
             setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 100);
         }
     };
@@ -135,7 +149,7 @@ export default function Navbar({ onNav }) {
                         minWidth: 44,
                         minHeight: 44
                     }}
-                >{mobileOpen ? "✕" : "☰"}</button>
+                >{mobileOpen ? <X size={24} /> : <Menu size={24} />}</button>
             </div>
 
             {/* Mobile Menu */}
