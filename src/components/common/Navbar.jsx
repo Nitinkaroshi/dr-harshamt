@@ -48,9 +48,11 @@ export default function Navbar({ onNav }) {
         timeoutRef.current = setTimeout(() => setShowMegaMenu(false), 200);
     };
 
-    const navigate = (href) => {
-        setMobileOpen(false);
-        setMobileServicesOpen(false);
+    const navigate = (href, keepMobile = false) => {
+        if (!keepMobile) {
+            setMobileOpen(false);
+            setMobileServicesOpen(false);
+        }
         
         if (href.startsWith("/")) {
             const p = href.substring(1);
@@ -267,8 +269,8 @@ export default function Navbar({ onNav }) {
                                             setMobileServicesOpen(!mobileServicesOpen);
                                             // Scroll to services but don't close the menu if opening submenu
                                             if (!mobileServicesOpen) {
-                                               navigate(n.href);
-                                               setMobileOpen(true); // Re-open because navigate closes it
+                                               navigate(n.href, true);
+                                               setMobileOpen(true); // Re-open because navigate might have closed if logic changed
                                             }
                                         } else {
                                             navigate(n.href);
