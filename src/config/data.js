@@ -16,26 +16,23 @@ import {
     Search,
     Sparkles,
     Home,
-    Trophy,
-    FileText,
-    GraduationCap,
-    Medal,
-    Building2,
-    Globe,
-    MapPin,
-    BookOpen
+
 } from 'lucide-react';
+
+import doc1 from '../assets/doctor-images/Dr harsha-lab-img.webp'
+import doc2 from '../assets/doctor-images/doc-with-collegues.webp'
+import drHarshaMain from '../assets/doctor-images/Dr.-Harsha-M-T.webp'
 
 /* ─── DOCTOR INFORMATION ─── */
 export const DOC = {
-    name: "Dr. Harsha M T – Interventional Radiologist in Bengaluru",
-    title: "Vascular & Interventional Radiologist | Vein Specialist | Endovascular Surgeon",
+    name: "Dr. Harsha M T ",
+    title: "Vascular & Interventional Radiologist | Veins Specialist | Endovascular Surgeon",
     tagline: "Minimally Invasive. Maximally Effective.",
     miniSub:"",
-    sub: "Dr Harsha M T is a highly experienced Vascular and Interventional Radiologist in Bengaluru, known for performing advanced minimally invasive image-guided procedures that replace traditional open surgeries. With extensive international training and experience, Dr Harsha specializes in treating complex vascular and non-vascular conditions using advanced imaging technologies such as CT, Ultrasound, and Fluoroscopy.",
-    quals: "MBBS, MD – Radio-Diagnosis (PGIMER Chandigarh), FVIR (AIIMS Rishikesh), FVIR (SNUH, South Korea), EBIR, EDiR, Dip. ICRI",
+    sub: "Dr Harsha M T is a highly experienced Vascular and Interventional Radiologist in Bengaluru, known for performing advanced minimally invasive image-guided procedures that replace traditional open surgeries. With extensive international training and experience, Dr Harsha specializes in treating complex vascular and non-vascular conditions using advanced imaging technologies.",
+    quals: "MBBS, MD – Radio-Diagnosis (PGIMER Chandigarh), FVIR (AIIMS RK), FVIR (SNUH, South Korea), EBIR(Veinna), EDiR, Dip. ICRI",
     qualsBadge: "MBBS, MD, FVIR (AIIMS), FVIR (SNUH), EBIR, EDiR, Dip. ICRI",
-    director: "Dr Harsha M T is the Director of Venuva Vascular Center, a specialized center focused on minimally invasive vascular and interventional radiology treatments. The center offers advanced procedures designed to treat conditions through pinhole-sized access instead of large surgical incisions, allowing patients to return to normal life quickly.",
+    // director: "Dr Harsha M T is the Director of Venuva Vascular Center, a specialized center focused on minimally invasive vascular and interventional radiology treatments. The center offers advanced procedures designed to treat conditions through pinhole-sized access instead of large surgical incisions, allowing patients to return to normal life quickly.",
     shortBio: "His patient-focused approach combines the precision of radiology with the expertise of a surgeon to deliver effective treatments with minimal pain, faster recovery, and no large surgical scars. Dr Harsha has helped thousands of patients avoid major surgery by offering safe, minimally invasive alternatives.",
     h2: "Advanced Interventional Radiology Treatments in Bengaluru",
     exp: "8+",
@@ -46,36 +43,64 @@ export const DOC = {
     wa: "917483749378",
     loc: "SPARSH Hospital & Venuva Vascular Center, Bengaluru",
     time: "Mon – Sat",
-    photo: "https://www.sparshhospital.com/wp-content/uploads/2024/05/Dr.-Harsha-M-T.jpg",
-    // photoApron: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=800&fit=crop",
-    // photoScrubs: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&h=800&fit=crop",
-    // photoSuit: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=600&h=800&fit=crop",
-};
+    photo: drHarshaMain,
+    photoApron:doc1,
+    photoScrubs:doc2,
+    photoSuit:drHarshaMain,
+}
+
+/* ─── IMPORTED SERVICE IMAGES ─── */
+import imgVaricose from '../assets/services/VARICOSE VEINS.webp';
+import imgFibroid from '../assets/services/UTERINE FIBROID EMBOLISATION.webp';
+// import imgThyroid from '../assets/services/THYROID NODULE ABLATION.webp';
+import imgThyroid from '../assets/services/Thyroid-RFA-Procedure-Saint-Johns-Cancer-Institute.jpg.jpeg';
+
+import imgVascular1 from '../assets/services/PERIPHERAL VASCULAR DISEASE 1.webp';
+import imgVascular2 from '../assets/services/PERIPHERAL VASCULAR DISEASE 2.webp';
+import imgLiver from '../assets/services/LIVER CANCER INTERVENTION.webp';
+import imgDialysis from '../assets/services/DIALYSIS ACCESS CARE.webp';
+import imgProstate from '../assets/services/PROSTATE ARTERY EMBOLISATION.webp';
+import imgVaricocele from '../assets/services/Varicocele-Embolisation.webp';
+import imgMusculoskeletal from '../assets/services/CHRONIC MUSCULOSKELETAL PAIN.webp';
+import imgMicroembolisation from '../assets/services/TRANSARTERIAL MICROEMBOLISATION.webp';
+import imgDvt from '../assets/services/DEEP VEIN THROMBOSIS.webp';
+import imgGi from '../assets/services/GI INTERVENTION.webp';
+import imgEmergency from '../assets/services/EMERGENCY INTERVENTION.webp';
+
+
+//Gallery Images
+import gallery1 from '../assets/doctor-images/d1.webp'
+import gallery2 from '../assets/doctor-images/d2.webp'
+import gallery3 from '../assets/doctor-images/d3.webp'
+import gallery4 from '../assets/doctor-images/d4.webp'
+import gallery5 from '../assets/doctor-images/d5.webp'
+import gallery6 from '../assets/doctor-images/d6.webp'
+import gallery7 from '../assets/doctor-images/d7.webp'
+import gallery8 from '../assets/doctor-images/d8.webp'
+import gallery9 from '../assets/doctor-images/doc-with-collegues.webp'
+// import gallery10 from '../assets/doctor-images/dr-harsha-lab-img.webp'
+
 
 /* ─── IMAGES ─── */
 export const IMG = {
     hero: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=1400&h=900&fit=crop",
-    varicose: "/services/VARICOSE VEINS.webp",
-    fibroid: "/services/UTERINE FIBROID EMBOLISATION.webp",
-    thyroid: "/services/THYROID NODULE ABLATION.webp",
-    vascular: "/services/PERIPHERAL VASCULAR DISEASE 1.webp",
-    vascular2: "/services/PERIPHERAL VASCULAR DISEASE 2.webp",
-    liver: "/services/LIVER CANCER INTERVENTION.webp",
-    dialysis: "/services/DIALYSIS ACCESS CARE.webp",
-    prostate: "/services/PROSTATE ARTERY EMBOLISATION.webp",
-    varicocele: "/services/Varicocele Embolisation.webp",
-    musculoskeletal: "/services/CHRONIC MUSCULOSKELETAL PAIN.webp",
-    microembolisation: "/services/TRANSARTERIAL MICROEMBOLISATION.webp",
-    dvt: "/services/DEEP VEIN THROMBOSIS.webp",
-    gi: "/services/GI INTERVENTION.webp",
-    emergency: "/services/EMERGENCY INTERVENTION.webp",
+    varicose: imgVaricose,
+    fibroid: imgFibroid,
+    thyroid: imgThyroid,
+    vascular: imgVascular1,
+    vascular2: imgVascular2,
+    liver: imgLiver,
+    dialysis: imgDialysis,
+    prostate: imgProstate,
+    varicocele: imgVaricocele,
+    musculoskeletal: imgMusculoskeletal,
+    microembolisation: imgMicroembolisation,
+    dvt: imgDvt,
+    gi: imgGi,
+    emergency: imgEmergency,
     about: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800&h=600&fit=crop",
     ir: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&h=500&fit=crop",
     sparsh: "https://www.sparshhospital.com/wp-content/uploads/2025/06/new-logo.svg",
-    gallery1: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop",
-    // gallery2: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=400&h=300&fit=crop",
-    // gallery3: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop",
-    // gallery4: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&h=300&fit=crop",
     blog1: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=800&h=500&fit=crop",
     blog2: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&h=500&fit=crop",
     blog3: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=500&fit=crop",
@@ -83,6 +108,24 @@ export const IMG = {
     blog5: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&h=500&fit=crop",
     blog6: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=500&fit=crop",
 };
+
+export const galleryImages=[
+    {
+        img1:gallery1,
+        img2:gallery2,
+        img3:gallery3,
+        img4:gallery4,
+        img5:gallery5
+    }
+
+]
+
+export const heroImages=[
+    {img:drHarshaMain},
+    {img:doc2},
+    {img:doc1},
+    {img:gallery7}
+]
 
 /* ─── NAVIGATION ─── */
 export const NAV = [
@@ -95,10 +138,10 @@ export const NAV = [
 /* ─── CREDENTIALS ─── */
 export const CREDS = [
     { inst: "PGIMER Chandigarh", desc: "MD Radio-Diagnosis" },
-    { inst: "AIIMS Rishikesh", desc: "Fellowship in Vascular & IR" },
+    { inst: "AIIMS ", desc: "Fellowship in Vascular & IR" },
     { inst: "SNUH, South Korea", desc: "Advanced Vascular Interventions" },
-    { inst: "IEO Milan, Italy", desc: "Thyroid Thermal Ablation" },
-    { inst: "EBIR", desc: "European Board of IR" },
+    // { inst: "IEO Milan, Italy", desc: "Thyroid Thermal Ablation" },
+    { inst: "EBIR (Veinna)", desc: "European Board of Interventional Radiology" },
     { inst: "EDiR", desc: "European Diploma in Radiology" },
     { inst: "Dip. ICRI", desc: "Indian College of Radiology" },
 ];
@@ -331,7 +374,7 @@ export const TREATMENTS = {
         icon: Activity,
         title: "Varicose Veins Treatment",
         sub: "EVLA / VenaSeal / MWA",
-        hero: "/services/VARICOSE VEINS.webp",
+        hero: imgVaricose,
         stats: [
             { v: "98%", l: "Success Rate" },
             { v: "30min", l: "Procedure Time" },
@@ -364,6 +407,13 @@ export const TREATMENTS = {
                     { name: "No Tumescent", desc: "Eliminates the need for multiple local anesthetic injections." },
                     { name: "Superior Comfort", desc: "Often removes the need for compression stockings after the procedure." }
                 ]
+            },
+            {
+                title: "3. Sclerotherapy",
+                description: `1. Sclerotherapy is the gold-standard, minimally invasive treatment designed to eliminate unsightly varicose and spider veins.
+                2. The procedure involves injecting a specialized medicinal solution—called a sclerosant—directly into the affected vessels.
+                ​3. This solution causes the vein walls to safely collapse and seal shut. Over the following weeks, your body naturally reroutes blood flow to healthier veins and absorbs the treated tissue, causing the visible discoloration to fade away`,
+                list : []
             }
         ],
         how: [
@@ -392,7 +442,7 @@ export const TREATMENTS = {
         icon: Stethoscope,
         title: "Uterine Fibroid Embolisation",
         sub: "Non-Surgical Fibroid Treatment",
-        hero: "/services/UTERINE FIBROID EMBOLISATION.webp",
+        hero: imgFibroid,
         stats: [
             { v: "90%", l: "Success Rate" },
             { v: "45min", l: "Procedure Time" },
@@ -445,7 +495,7 @@ export const TREATMENTS = {
         icon: Thermometer,
         title: "Thyroid Nodule Ablation",
         sub: "RFA / MWA / Scarless",
-        hero: "/services/THYROID NODULE ABLATION.webp",
+        hero: imgThyroid,
         stats: [
             { v: "90%", l: "Benign Rate" },
             { v: "20min", l: "Procedure Time" },
@@ -478,6 +528,15 @@ export const TREATMENTS = {
                     { name: "Cystic Nodule Success", desc: "Particularly effective for nodules containing a high amount of fluid." },
                     { name: "Consistent Heat", desc: "Provides a very predictable heat zone for larger treatment areas." }
                 ]
+            },
+            {
+                title: "3. Thyroid Artery Embolization (TAE)",
+                description: "hyroid Artery Embolization (TAE) is a sophisticated, minimally invasive procedure used to treat symptomatic thyroid nodules and certain cases of hyperthyroidism (like Graves' disease) without traditional surgery.",
+                list: [
+                    { name: "​How It Works", desc: "Instead of making an incision in the neck, an Interventional Radiologist inserts a tiny catheter through the wrist or groin. Using real-time X-ray guidance, the catheter is navigated to the specific arteries supplying the thyroid." },
+                    { name: "Microscopic particles", desc: "Microscopic particles are then released to block the blood flow.​Key Benefits" },
+                    { name: "Organ Preservation", desc: "Provides a very predictable heat zone for larger treatment areas." }
+                ]
             }
         ],
         how: [
@@ -506,7 +565,7 @@ export const TREATMENTS = {
         icon: Baby,
         title: "Varicocele Embolisation",
         sub: "Non-Surgical Male Fertility Treatment",
-        hero: "/services/Varicocele Embolisation.webp",
+        hero: imgVaricocele,
         stats: [
             { v: "95%", l: "Success Rate" },
             { v: "30min", l: "Procedure Time" },
@@ -558,7 +617,7 @@ export const TREATMENTS = {
         icon: Activity,
         title: "Peripheral Vascular / Arterial Disease",
         sub: "Angioplasty, Stenting & Thrombolysis",
-        hero: "/services/PERIPHERAL VASCULAR DISEASE 1.webp",
+        hero: imgVascular1,
         stats: [
             { v: "90%", l: "Success Rate" },
             { v: "45-90m", l: "Procedure Time" },
@@ -639,7 +698,7 @@ export const TREATMENTS = {
         icon: Droplet,
         title: "Deep Vein Thrombosis Treatment",
         sub: "Catheter Directed Thrombolysis",
-        hero: "/services/DEEP VEIN THROMBOSIS.webp",
+        hero: imgDvt,
         stats: [
             { v: "95%", l: "Clot Resolution" },
             { v: "Low", l: "PTS Risk" },
@@ -759,7 +818,7 @@ export const TREATMENTS = {
         icon: ActivitySquare,
         title: "Chronic Musculoskeletal Pain Treatment",
         sub: "Transarterial Microembolisation",
-        hero: "/services/CHRONIC MUSCULOSKELETAL PAIN.webp",
+        hero: imgMusculoskeletal,
         stats: [
             { v: "Same Day", l: "Discharge" },
             { v: "30-60m", l: "Procedure Time" },
@@ -767,6 +826,17 @@ export const TREATMENTS = {
         ],
         overview: "Chronic musculoskeletal pain affects millions of people and commonly involves conditions such as knee osteoarthritis, frozen shoulder, tennis elbow, and plantar fasciitis. Recent research shows that this pain is often caused by abnormal blood vessel growth (neovascularisation) that triggers persistent inflammation.",
         why: "Unlike traditional treatments like pain medications or steroid injections that offer temporary relief, transarterial microembolisation targets the underlying cause of inflammation by blocking abnormal blood vessels. Benefits include no surgery, no long-term steroids, same-day discharge, and long-lasting relief.",
+        methods: [
+            {
+                title: "Minimally Invasive Pain Intervention Treatments",
+                description: "Minimally invasive procedures designed to relieve chronic or acute pain in the spine, joints, and nerves by targeting the source of pain directly. Traditional surgeries for chronic pain often involve large incisions. Our interventions offer pinhole puncture procedures without large cuts, providing relief and reducing inflammation effectively.",
+                list: [
+                    { name: "Assessment", desc: "Detailed evaluation and identification of exact pain source via imaging." },
+                    { name: "Procedure", desc: "Nerve blocks, epidural injections, or RFA deliver medication directly to the site." },
+                    { name: "Benefits", desc: "Same-day discharge, targeted pain relief, reduced medication reliance, and rapid recovery." }
+                ]
+            }
+        ],
         how: [
             "A microcatheter is inserted through a small puncture in the wrist under local anaesthesia.",
             "Using real-time imaging guidance, the catheter is navigated to abnormal blood vessels near the painful joint.",
@@ -793,7 +863,7 @@ export const TREATMENTS = {
         icon: Microscope,
         title: "Liver Cancer Intervention",
         sub: "Interventional Oncology (HCC & Metastases)",
-        hero: "/services/LIVER CANCER INTERVENTION.webp",
+        hero: IMG.liver,
         stats: [
             { v: "Targeted", l: "Therapy" },
             { v: "60min", l: "Procedure Time" },
@@ -863,7 +933,7 @@ export const TREATMENTS = {
         icon: Crosshair,
         title: "Prostate Artery Embolisation (PAE)",
         sub: "Non-surgical BPH Treatment",
-        hero: "/services/PROSTATE EMBOLISATION.webp",
+        hero: IMG.prostate,
         stats: [
             { v: "Same Day", l: "Discharge" },
             { v: "No", l: "Catheter" },
@@ -897,7 +967,7 @@ export const TREATMENTS = {
         icon: Syringe,
         title: "Dialysis Access Care",
         sub: "Fistuloplasty & Permacath",
-        hero: "/services/DIALYSIS ACCESS.webp",
+        hero: IMG.dialysis,
         stats: [
             { v: "Same Day", l: "Discharge" },
             { v: "30-60m", l: "Duration" },
@@ -932,7 +1002,7 @@ export const TREATMENTS = {
         icon: AlertCircle,
         title: "Gastrointestinal (GI) Intervention",
         sub: "Image-Guided Procedures",
-        hero: "/services/GI INTERVENTION.webp",
+        hero: IMG.gi,
         stats: [
             { v: "Min", l: "Trauma" },
             { v: "30-60m", l: "Duration" },

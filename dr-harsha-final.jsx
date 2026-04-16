@@ -61,7 +61,7 @@ const NAV = [
 
 const CREDS = [
   { inst: "PGIMER", desc: "MD Radiodiagnosis", loc: "Chandigarh" },
-  { inst: "AIIMS", desc: "Fellowship VIR", loc: "Rishikesh" },
+  { inst: "AIIMS", desc: "Fellowship VIR",},
   { inst: "EBIR", desc: "European Board IR", loc: "Certified" },
   { inst: "EDiR", desc: "European Diploma", loc: "Radiology" },
 ];
@@ -372,7 +372,7 @@ const TREATMENTS = {
 
 const PUBLICATIONS = [
   { title: "Neurointerventional Radiology Research", journal: "PGIMER, Chandigarh", year: "2022", type: "Research" },
-  { title: "Vascular Interventional Radiology Procedures — Clinical Outcomes", journal: "AIIMS, Rishikesh", year: "2023", type: "Fellowship" },
+  { title: "Vascular Interventional Radiology Procedures — Clinical Outcomes", journal: "AIIMS, ", year: "2023", type: "Fellowship" },
   { title: "Awareness on Interventional Radiology — PinHole® Treatment", journal: "International Radiology Day (IDoR)", year: "2025", type: "Publication" },
   { title: "Complex Aortic Disease Management — Case Series", journal: "Sheffield Teaching Hospitals NHS", year: "2025", type: "Case Study" },
   { title: "Thyroid Artery Embolisation for Symptomatic Thyroid Swelling", journal: "Clinical Case Report", year: "2025", type: "Case Report" },
@@ -984,7 +984,7 @@ function About() {
               {[
                 { y: "2018", t: "MBBS", p: "RGUHS" },
                 { y: "2022", t: "MD Radiodiagnosis", p: "PGIMER, Chandigarh" },
-                { y: "2023", t: "Fellowship VIR", p: "AIIMS, Rishikesh" },
+                { y: "2023", t: "Fellowship VIR", p: "AIIMS," },
                 { y: "2024", t: "EBIR Certified", p: "European Board IR" },
                 { y: "—", t: "EDiR", p: "European Diploma" },
                 { y: "—", t: "DICRI", p: "Diplomate of ICRI" },

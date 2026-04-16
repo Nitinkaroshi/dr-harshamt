@@ -8,62 +8,66 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 
-// ─── WhatsApp booking endpoint ───
-app.post('/api/book', async (req, res) => {
+// ─── Telegram Bot Booking Endpoint ───
+app.post('/api/contact', async (req, res) => {
     const { name, phone, condition, message } = req.body;
 
     if (!name || !phone) {
         return res.status(400).json({ error: 'Name and phone are required' });
     }
 
-    const WA_PHONE_ID = process.env.WA_PHONE_NUMBER_ID;
-    const WA_TOKEN = process.env.WA_ACCESS_TOKEN;
-    const DOCTOR_WA = process.env.DOCTOR_WHATSAPP;
+    const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-    if (!WA_PHONE_ID || !WA_TOKEN || !DOCTOR_WA) {
-        console.error('Missing WhatsApp env vars');
-        return res.status(500).json({ success: false });
+    if (!BOT_TOKEN || !CHAT_ID) {
+        console.error('Missing Telegram env vars');
+        return res.status(500).json({ success: false, error: 'Server misconfiguration' });
     }
 
-    const lines = [
-        '\ud83d\udccb *New Appointment Request*',
-        '',
-        `\ud83d\udc64 *Name:* ${name}`,
-        `\ud83d\udcde *Phone:* ${phone}`,
-        `\ud83e\ude7a *Condition:* ${condition || 'Not specified'}`,
-    ];
-    if (message) lines.push(`\ud83d\udcac *Message:* ${message}`);
-    lines.push('', '\u2014 Sent from Dr. Harsha MT website');
+    const patientMsg = message ? message : "N/A";
+    const patientCond = condition ? condition : "General Inquiry";
+
+    const cleanPhone = phone.replace(/[^0-9+]/g, '');
+    const formattedPhone = cleanPhone.startsWith('+') ? cleanPhone : '+91' + cleanPhone;
+
+    // Format message with HTML and Emojis
+    const telegramMessage = `
+🏥 <b>New Appointment Request</b>
+
+👤 <b>Name:</b> ${name}
+📞 <b>Phone:</b> ${formattedPhone}
+🩺 <b>Condition:</b> ${patientCond}
+
+💬 <b>Message:</b>
+${patientMsg}
+    `;
 
     try {
-        const response = await fetch(
-            `https://graph.facebook.com/v21.0/${WA_PHONE_ID}/messages`,
-            {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${WA_TOKEN}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    messaging_product: 'whatsapp',
-                    to: DOCTOR_WA,
-                    type: 'text',
-                    text: { body: lines.join('\n') }
-                })
-            }
-        );
+        // We use native node fetch (requires Node 18+)
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: telegramMessage,
+                parse_mode: 'HTML'
+            })
+        });
 
         const data = await response.json();
 
-        if (response.ok) {
-            return res.json({ success: true });
+        if (response.ok && data.ok) {
+            return res.status(200).json({ success: true });
         }
 
-        console.error('WhatsApp API error:', data);
-        return res.status(500).json({ success: false });
-    } catch (err) {
-        console.error('Server error:', err);
-        return res.status(500).json({ success: false });
+        console.error('Telegram API error:', data);
+        return res.status(500).json({ success: false, error: 'Failed to send to Telegram' });
+
+    } catch (error) {
+        console.error('Server error:', error);
+        return res.status(500).json({ success: false, error: 'Internal server error' });
     }
 });
 

@@ -13,6 +13,7 @@ import '../../styles/HeroServicesSlider.css';
  * - Focus-on-hover effect (spotlight blur on siblings)
  * - Pause on hover logic
  */
+
 const HeroServicesSlider = ({ onTreatment }) => {
     // We triple the items to ensure the marquee always has enough content to scroll seamlessly
     const tripledServices = [...SERVICES, ...SERVICES, ...SERVICES];

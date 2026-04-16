@@ -175,7 +175,7 @@ function App() {
                     <HeroServicesSlider onTreatment={goToTreatment} />
                     <IRSection />
                     <IRAdvantages />
-                    <Suspense fallback={<div style={{ height: 400, background: "#071426" }} />}>
+                    <Suspense fallback={<div className="anatomy-3d-section" style={{ height: 400, background: "#071426" }} />}>
                         <AnatomyViewer3D />
                     </Suspense>
                     <Suspense fallback={<div style={{ height: 600 }} />}>

@@ -51,17 +51,23 @@ function Hexagon({ item, size = 140, delay = 0 }) {
                 boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
             }}
         >
-            {item.icon && <span style={{ fontSize: item.isCenter ? 0 : 28, marginBottom: 6 }}>{item.icon}</span>}
-            <span style={{
-                fontSize: item.isCenter ? 11 : 11,
-                fontWeight: 800, color: "#fff",
-                textAlign: "center", lineHeight: 1.3,
-                fontFamily: "'Roboto', sans-serif",
-                letterSpacing: item.isCenter ? "0.08em" : "0.02em",
-                textTransform: "uppercase",
-                whiteSpace: "pre-line",
-                padding: "0 8px"
-            }}>{item.label}</span>
+            <div style={{ 
+                transform: size < 110 ? "scale(0.8)" : "none", 
+                display: "flex", flexDirection: "column", 
+                alignItems: "center", justifyContent: "center" 
+            }}>
+                {item.icon && <span style={{ fontSize: item.isCenter ? 0 : 28, marginBottom: 4 }}>{item.icon}</span>}
+                <span style={{
+                    fontSize: item.isCenter ? 11 : 11,
+                    fontWeight: 800, color: "#fff",
+                    textAlign: "center", lineHeight: 1.3,
+                    fontFamily: "'Roboto', sans-serif",
+                    letterSpacing: item.isCenter ? "0.08em" : "0.02em",
+                    textTransform: "uppercase",
+                    whiteSpace: "pre-line",
+                    padding: "0 6px"
+                }}>{item.label}</span>
+            </div>
         </motion.div>
     );
 }
@@ -77,8 +83,8 @@ export default function IRAdvantages() {
         return () => window.removeEventListener('resize', check);
     }, []);
 
-    const hexSize = isMobile ? 95 : 130;
-    const verticalGap = isMobile ? -24 : -32;
+    const hexSize = isMobile ? 100 : 130;
+    const verticalGap = isMobile ? -26 : -32;
 
     return (
         <section style={{ background: "#F8FAFC", padding: "clamp(28px, 5vw, 56px) 0" }}>

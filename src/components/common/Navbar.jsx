@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { NAV, SERVICES } from '../../config/data';
 import { Menu, X, Calendar, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LogoImg from '../../assets/dr-harsha-hospital logo.png';
 
 export default function Navbar({ onNav }) {
     const [scrolled, setScrolled] = useState(false);
@@ -51,7 +52,7 @@ export default function Navbar({ onNav }) {
         setMobileOpen(false);
         setMobileServicesOpen(false);
         if (href.startsWith("/")) {
-            const p = href.substring(1); 
+            const p = href.substring(1);
             const isTargetPage = window.location.pathname === href;
 
             if (!isTargetPage) {
@@ -65,8 +66,11 @@ export default function Navbar({ onNav }) {
             if (!isHomePage) {
                 window.history.pushState({}, '', '/' + href);
                 onNav("home");
+                setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 100);
+            } else {
+                // Instantly scroll without artificial timeout
+                document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
             }
-            setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 100);
         }
     };
 
@@ -83,7 +87,7 @@ export default function Navbar({ onNav }) {
             <div style={{
                 maxWidth: 1100,
                 margin: "0 auto",
-                height: 68,
+                height: 84,
                 background: "#f8f6f1",
                 borderRadius: 20,
                 border: "1px solid rgba(0,0,0,0.04)",
@@ -94,18 +98,18 @@ export default function Navbar({ onNav }) {
                 boxShadow: "0 12px 30px -10px rgba(0,0,0,0.08)",
             }}>
                 {/* Left: Navigation Links */}
-                <div className="desk-nav" style={{ 
-                    flex: 1, 
-                    display: "flex", 
-                    alignItems: "center", 
+                <div className="desk-nav" style={{
+                    flex: 1,
+                    display: "flex",
+                    alignItems: "center",
                     gap: 8,
                     paddingLeft: 12
                 }}>
                     {NAV.map(n => {
                         const isServices = n.label === "Services";
                         return (
-                            <div 
-                                key={n.href} 
+                            <div
+                                key={n.href}
                                 onMouseEnter={isServices ? handleMouseEnter : undefined}
                                 onMouseLeave={isServices ? handleMouseLeave : undefined}
                                 style={{ position: "static" }}
@@ -138,37 +142,25 @@ export default function Navbar({ onNav }) {
 
                 {/* Center: Logo */}
                 <div
-                    style={{ 
-                        display: "flex", 
-                        alignItems: "center", 
-                        gap: 12, 
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
                         cursor: "pointer",
                         padding: "0 20px"
                     }}
-                    onClick={() => { 
-                        window.history.pushState({}, '', '/'); 
-                        onNav("home"); 
+                    onClick={() => {
+                        window.history.pushState({}, '', '/');
+                        onNav("home");
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setMobileOpen(false);
                         setMobileServicesOpen(false);
                     }}
                 >
-                    <div style={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: 10,
-                        background: "#071426",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 14,
-                        fontWeight: 700,
-                        color: "#fff",
-                        fontFamily: "'Roboto Slab', serif"
-                    }}>H</div>
+                    <img src={LogoImg} alt="Dr. Harsha Logo" style={{ height: 60, objectFit: "contain" }} />
                     <div style={{
                         color: "#071426",
-                        fontSize: 15,
+                        fontSize: 20,
                         fontWeight: 800,
                         fontFamily: "'Roboto Slab', serif",
                         letterSpacing: "-0.01em",
@@ -176,33 +168,34 @@ export default function Navbar({ onNav }) {
                     }}>DR. HARSHA M T</div>
                 </div>
 
-                <div style={{ 
-                    flex: 1, 
-                    display: "flex", 
-                    justifyContent: "flex-end", 
-                    paddingRight: 6 
+                <div style={{
+                    flex: 1,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    paddingRight: 6
                 }} className="desk-nav">
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(2, 132, 199, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={() => navigate("#contact")}
                         style={{
-                            background: "#6B7280",
+                            background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                             border: "none",
                             color: "#fff",
-                            padding: "10px 20px",
-                            borderRadius: 16,
-                            fontSize: 13,
-                            fontWeight: 600,
+                            padding: "12px 24px",
+                            borderRadius: 100,
+                            fontSize: 14,
+                            fontWeight: 700,
                             cursor: "pointer",
                             fontFamily: "'Roboto', sans-serif",
                             display: "flex",
                             alignItems: "center",
-                            gap: 8,
-                            transition: "all 0.3s ease"
+                            gap: 10,
                         }}
                     >
-                        <Calendar size={16} color='orange' />
-                        Book Treatment
-                    </button>
+                        <Calendar size={18} color="#ffffff" strokeWidth={2} />
+                        Book Appointment
+                    </motion.button>
                 </div>
 
                 <button
@@ -264,8 +257,8 @@ export default function Navbar({ onNav }) {
                                     }}
                                 >
                                     {n.label}
-                                    {isServices && <ChevronRight size={18} style={{ 
-                                        rotate: mobileServicesOpen ? "90deg" : "0deg", 
+                                    {isServices && <ChevronRight size={18} style={{
+                                        rotate: mobileServicesOpen ? "90deg" : "0deg",
                                         transition: "0.3s ease",
                                         color: "#2563EB",
                                         opacity: mobileServicesOpen ? 1 : 0.4
@@ -282,9 +275,9 @@ export default function Navbar({ onNav }) {
                                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                                 style={{ overflow: "hidden" }}
                                             >
-                                                <div style={{ 
-                                                    padding: "4px 0 16px 12px", 
-                                                    display: "grid", 
+                                                <div style={{
+                                                    padding: "4px 0 16px 12px",
+                                                    display: "grid",
                                                     gap: 4,
                                                     borderLeft: "2px solid #E5E7EB",
                                                     marginLeft: 4,
@@ -329,17 +322,24 @@ export default function Navbar({ onNav }) {
                         style={{
                             marginTop: 12,
                             width: "100%",
-                            background: "#2563EB",
+                            background: "linear-gradient(360deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                             border: "none",
                             color: "#fff",
                             padding: "14px",
-                            borderRadius: 8,
-                            fontSize: 15,
-                            fontWeight: 600,
+                            borderRadius: 12,
+                            fontSize: 16,
+                            fontWeight: 700,
                             cursor: "pointer",
-                            fontFamily: "'Roboto', sans-serif"
+                            fontFamily: "'Roboto', sans-serif",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 10
                         }}
-                    >Book Appointment</button>
+                    >
+                        <Calendar size={18} color="#ffffff" strokeWidth={2} />
+                        Book Appointment
+                    </button>
                 </div>
             )}
 
@@ -370,7 +370,7 @@ export default function Navbar({ onNav }) {
                     >
                         <div style={{ flex: 1.8, padding: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                             {SERVICES.slice(0, 8).map(s => (
-                                <div 
+                                <div
                                     key={s.id}
                                     onClick={() => { navigate(`/treatment/${s.id}`); setShowMegaMenu(false); }}
                                     style={{
@@ -405,7 +405,7 @@ export default function Navbar({ onNav }) {
                         <div style={{ flex: 1, background: "rgba(0,0,0,0.02)", padding: 32, borderLeft: "1px solid rgba(0,0,0,0.03)" }}>
                             <div style={{ textTransform: "uppercase", fontSize: 11, fontWeight: 800, color: "#9CA3AF", letterSpacing: "0.1em", marginBottom: 20 }}>Featured Treatment</div>
                             <AnimatePresence mode="wait">
-                                <motion.div 
+                                <motion.div
                                     key={activeService?.id}
                                     initial={{ opacity: 0, x: 10 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -421,17 +421,17 @@ export default function Navbar({ onNav }) {
                                     <div style={{ padding: 20 }}>
                                         <div style={{ fontWeight: 800, fontSize: 16, color: "#071426", marginBottom: 8 }}>{activeService?.t}</div>
                                         <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 16, lineHeight: 1.6, minHeight: 64 }}>{activeService?.d.split(".")[0] + "."}</p>
-                                        <button 
+                                        <button
                                             onClick={() => { navigate(`/treatment/${activeService?.id}`); setShowMegaMenu(false); }}
-                                            style={{ 
-                                                display: "flex", 
-                                                alignItems: "center", 
-                                                gap: 8, 
-                                                padding: "8px 16px", 
-                                                background: "#071426", 
-                                                color: "#fff", 
-                                                borderRadius: 99, 
-                                                fontSize: 12, 
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: 8,
+                                                padding: "8px 16px",
+                                                background: "#071426",
+                                                color: "#fff",
+                                                borderRadius: 99,
+                                                fontSize: 12,
                                                 fontWeight: 600,
                                                 border: "none",
                                                 cursor: "pointer"

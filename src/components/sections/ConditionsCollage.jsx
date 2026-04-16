@@ -25,7 +25,7 @@ export default function ConditionsCollage({ onTreatment }) {
         return () => window.removeEventListener('resize', check);
     }, []);
 
-    const HEX_W = isMobile ? 105 : 175;
+    const HEX_W = isMobile ? 130 : 215;
     const HEX_H = Math.round(HEX_W * 1.1547);
     const OVERLAP = Math.round(HEX_H * 0.25);
 
@@ -123,7 +123,8 @@ export default function ConditionsCollage({ onTreatment }) {
                                                 position: "absolute",
                                                 top: 3, left: 3, right: 3, bottom: 3,
                                                 clipPath: hexClip,
-                                                overflow: "hidden"
+                                                overflow: "hidden",
+                                                background: "#fff" // Added to look clean behind contained images
                                             }}>
                                                 <img
                                                     src={s.img}
