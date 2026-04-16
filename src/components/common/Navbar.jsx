@@ -51,6 +51,7 @@ export default function Navbar({ onNav }) {
     const navigate = (href) => {
         setMobileOpen(false);
         setMobileServicesOpen(false);
+        
         if (href.startsWith("/")) {
             const p = href.substring(1);
             const isTargetPage = window.location.pathname === href;
@@ -58,18 +59,24 @@ export default function Navbar({ onNav }) {
             if (!isTargetPage) {
                 window.history.pushState({}, '', href);
                 onNav(p);
+                // Force scroll after state update in App.jsx
             } else {
-                document.querySelector("#" + p)?.scrollIntoView({ behavior: "smooth" });
+                // Already on the page, just scroll
+                const el = document.querySelector("#" + p);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
             }
         } else if (href.startsWith("#")) {
             const isHomePage = window.location.pathname === '/' || window.location.pathname === '/about' || window.location.pathname === '/services';
             if (!isHomePage) {
                 window.history.pushState({}, '', '/' + href);
                 onNav("home");
-                setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 100);
+                setTimeout(() => {
+                    const el = document.querySelector(href);
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                }, 150);
             } else {
-                // Instantly scroll without artificial timeout
-                document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+                const el = document.querySelector(href);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
             }
         }
     };
@@ -84,6 +91,7 @@ export default function Navbar({ onNav }) {
             transition: "all 0.5s cubic-bezier(0.19, 1, 0.22, 1)",
             padding: "0 24px"
         }}>
+
             <div style={{
                 maxWidth: 1100,
                 margin: "0 auto",
@@ -97,13 +105,55 @@ export default function Navbar({ onNav }) {
                 padding: "0 12px",
                 boxShadow: "0 12px 30px -10px rgba(0,0,0,0.08)",
             }}>
+
+
+                 {/* Center: Logo */}
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        cursor: "pointer",
+                        padding: "0 20px"
+                    }}
+                    onClick={() => {
+                        window.history.pushState({}, '', '/');
+                        onNav("home");
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        setMobileOpen(false);
+                        setMobileServicesOpen(false);
+                    }}
+                >
+                    <img src={LogoImg} alt="Dr. Harsha Logo" style={{ height: 70, objectFit: "contain" }} />
+                    <div style={{
+                        color: "#071426",
+                        fontSize: 20,
+                        fontWeight: 800,
+                        fontFamily: "'Roboto Slab', serif",
+                        letterSpacing: "-0.01em",
+                        whiteSpace: "nowrap",
+                        marginTop:10
+                    }}>DR. HARSHA M T
+                     <p style={{ 
+                            fontSize: 13, 
+                            fontFamily:"'Roboto', sans-serif",
+                            color: "LinkText", 
+                            lineHeight: 0.5, 
+                            maxWidth: 260,
+                        }}>
+                            {/* {DOC.tagline} */}
+                            Interventional Radiologist
+                        </p>
+                    </div>
+                </div>
+
                 {/* Left: Navigation Links */}
                 <div className="desk-nav" style={{
                     flex: 1,
                     display: "flex",
                     alignItems: "center",
                     gap: 8,
-                    paddingLeft: 12
+                    paddingLeft: 50,
                 }}>
                     {NAV.map(n => {
                         const isServices = n.label === "Services";
@@ -112,7 +162,7 @@ export default function Navbar({ onNav }) {
                                 key={n.href}
                                 onMouseEnter={isServices ? handleMouseEnter : undefined}
                                 onMouseLeave={isServices ? handleMouseLeave : undefined}
-                                style={{ position: "static" }}
+                                style={{ position: "static"}}
                             >
                                 <button
                                     onClick={() => navigate(n.href)}
@@ -120,7 +170,7 @@ export default function Navbar({ onNav }) {
                                         background: isServices && showMegaMenu ? "#fff" : "none",
                                         border: "none",
                                         color: isServices && showMegaMenu ? "#071426" : "#4B5563",
-                                        fontSize: 13,
+                                        fontSize: 14,
                                         fontFamily: "'Roboto', sans-serif",
                                         cursor: "pointer",
                                         fontWeight: 500,
@@ -140,33 +190,6 @@ export default function Navbar({ onNav }) {
                     })}
                 </div>
 
-                {/* Center: Logo */}
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        cursor: "pointer",
-                        padding: "0 20px"
-                    }}
-                    onClick={() => {
-                        window.history.pushState({}, '', '/');
-                        onNav("home");
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                        setMobileOpen(false);
-                        setMobileServicesOpen(false);
-                    }}
-                >
-                    <img src={LogoImg} alt="Dr. Harsha Logo" style={{ height: 60, objectFit: "contain" }} />
-                    <div style={{
-                        color: "#071426",
-                        fontSize: 20,
-                        fontWeight: 800,
-                        fontFamily: "'Roboto Slab', serif",
-                        letterSpacing: "-0.01em",
-                        whiteSpace: "nowrap"
-                    }}>DR. HARSHA M T</div>
-                </div>
 
                 <div style={{
                     flex: 1,
@@ -238,7 +261,18 @@ export default function Navbar({ onNav }) {
                         return (
                             <div key={n.href}>
                                 <button
-                                    onClick={() => isServices ? setMobileServicesOpen(!mobileServicesOpen) : navigate(n.href)}
+                                    onClick={() => {
+                                        if (isServices) {
+                                            setMobileServicesOpen(!mobileServicesOpen);
+                                            // Scroll to services but don't close the menu if opening submenu
+                                            if (!mobileServicesOpen) {
+                                               navigate(n.href);
+                                               setMobileOpen(true); // Re-open because navigate closes it
+                                            }
+                                        } else {
+                                            navigate(n.href);
+                                        }
+                                    }}
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
@@ -247,7 +281,7 @@ export default function Navbar({ onNav }) {
                                         background: "none",
                                         border: "none",
                                         color: isServices && mobileServicesOpen ? "#2563EB" : "#374151",
-                                        fontSize: 16,
+                                        fontSize: 18,
                                         fontWeight: isServices && mobileServicesOpen ? 700 : 500,
                                         padding: "14px 0",
                                         fontFamily: "'Poppins', sans-serif",

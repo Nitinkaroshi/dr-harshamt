@@ -128,8 +128,8 @@ export const heroImages=[
 
 /* ─── NAVIGATION ─── */
 export const NAV = [
-    { label: "Services", href: "/services" },
-    { label: "About Me", href: "/about" },
+    { label: "Services", href: "#services" },
+    { label: "About Me", href: "#about" },
     { label: "Blogs", href: "#blog" },
     { label: "FAQs", href: "#faq" },
 ];
