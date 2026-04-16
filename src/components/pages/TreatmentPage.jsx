@@ -131,45 +131,80 @@ export default function TreatmentPage({ id, onBack, onContact }) {
     }
 
     return (
-        <div style={{ background: "#FAFBFC", minHeight: "100vh" }}>
+        <div style={{ background: "#FAFBFC", minHeight: "100vh", whiteSpace: 'pre-line' }}>
 
             {/* Hero */}
-            <div style={{ position: "relative", height: "clamp(450px, 55vw, 600px)", overflow: "hidden" }}>
-                <img
-                    src={t.hero}
-                    alt={`${t.title} — treatment in Bengaluru by Dr. Harsha M T`}
-                    loading="lazy"
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
-                />
+            {/* Hero */}
+            <div style={{ 
+                background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
+                padding: "80px 44px",
+                position: "relative",
+                overflow: "hidden",
+                paddingTop:"120px"
+            }}>
+                {/* Subtle background glow effect */}
                 <div style={{
                     position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "100px 0 60px",
-                    background: "linear-gradient(to top, rgba(7,20,38,0.95) 0%, rgba(7,20,38,0) 100%)"
+                    top: "-20%",
+                    right: "-10%",
+                    width: "50%",
+                    height: "100%",
+                    background: "radial-gradient(circle, rgba(13,148,136,0.15) 0%, rgba(7,20,38,0) 70%)",
+                    pointerEvents: "none"
+                }} />
+
+                <div style={{
+                    maxWidth: 1260,
+                    margin: "0 auto",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 450px), 1fr))",
+                    alignItems: "center",
+                    gap: 60,
+                    position: "relative",
+                    zIndex: 1
                 }}>
-                    <div style={{
-                        maxWidth: 1260,
-                        margin: "0 auto",
-                        padding: "0 24px"
-                    }}>
+                    {/* Left Column: Text Content */}
+                    <div>
                         <h1 style={{
                             fontFamily: "'Roboto Slab', serif",
-                            fontSize: "clamp(32px, 5vw, 48px)",
+                            fontSize: "clamp(36px, 5vw, 56px)",
                             fontWeight: 700,
                             color: "#fff",
-                            lineHeight: 1.1,
-                            marginBottom: 12,
-                            textShadow: "0 2px 10px rgba(0,0,0,0.3)"
+                            lineHeight: 1.15,
+                            marginBottom: 24,
+                            textShadow: "0 2px 10px rgba(0,0,0,0.2)"
                         }}>{t.title}</h1>
                         <p style={{
                             fontFamily: "'Roboto', sans-serif",
-                            fontSize: 18,
+                            fontSize: "clamp(18px, 2vw, 22px)",
                             color: "#5EEAD4",
                             fontWeight: 500,
-                            letterSpacing: "0.02em"
+                            letterSpacing: "0.02em",
+                            lineHeight: 1.6
                         }}>{t.sub}</p>
+                    </div>
+
+                    {/* Right Column: Hero Image */}
+                    <div style={{
+                        borderRadius: 24,
+                        overflow: "hidden",
+                        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)",
+                        // border: "1px solid rgba(255,255,255,0.1)",
+                        background: "#fff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
+                        <img
+                            src={t.hero}
+                            alt={`${t.title} — treatment in Bengaluru by Dr. Harsha M T`}
+                            loading="lazy"
+                            style={{ 
+                                width: "100%", 
+                                height: "auto",
+                                display: "block"
+                            }}
+                        />
                     </div>
                 </div>
             </div>
@@ -195,17 +230,17 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 > <ArrowLeft size={14} /> Back to Home</button>
 
                 {/* Stats */}
-                <div style={{ 
-                    display: "grid", 
-                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
-                    gap: 20, 
-                    marginBottom: 60 
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                    gap: 20,
+                    marginBottom: 60
                 }}>
                     {t.stats.map((s, i) => (
                         <div
                             key={i}
                             style={{
-                                background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                                background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                                 borderRadius: 16,
                                 padding: "32px 24px",
                                 textAlign: "center",
@@ -450,7 +485,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 {/* SVG illustration for specific treatments */}
                 {id === "varicose-veins" && (
                     <div style={{
-                        background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                        background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                         borderRadius: 14,
                         padding: "28px 20px",
                         marginBottom: 36
@@ -460,7 +495,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                 )}
                 {(id === "uterine-fibroid" || id === "prostate-embolisation") && (
                     <div style={{
-                        background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                        background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                         borderRadius: 14,
                         padding: "28px 20px",
                         marginBottom: 36
@@ -517,7 +552,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
 
                 {/* Pinhole illustration */}
                 <div style={{
-                    background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                    background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                     borderRadius: 14,
                     padding: "28px 20px",
                     marginBottom: 36
@@ -561,15 +596,15 @@ export default function TreatmentPage({ id, onBack, onContact }) {
                             alignItems: "center",
                             gap: 12
                         }}>Prevention & Self-Care Checklist</h2>
-                        <div style={{ 
-                            display: "grid", 
-                            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", 
-                            gap: 24 
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+                            gap: 24
                         }}>
                             {t.prevention.map((item, i) => (
-                                <div key={i} style={{ 
-                                    display: "flex", 
-                                    gap: 16, 
+                                <div key={i} style={{
+                                    display: "flex",
+                                    gap: 16,
                                     alignItems: "flex-start",
                                     padding: "20px",
                                     background: "#fff",
@@ -626,7 +661,7 @@ export default function TreatmentPage({ id, onBack, onContact }) {
 
                 {/* CTA */}
                 <div style={{
-                    background: "linear-gradient(135deg, #071426, #0A1E3D)",
+                    background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)",
                     borderRadius: 16,
                     padding: 32,
                     textAlign: "center"

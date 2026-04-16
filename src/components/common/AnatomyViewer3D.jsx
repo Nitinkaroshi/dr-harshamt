@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import body3d from "../../assets/body-3d.png";
 import { 
   Activity, 
   Thermometer, 
@@ -191,8 +192,8 @@ export function AnatomyViewer3D() {
   };
 
   return (
-    <section style={{ 
-      background: "linear-gradient(180deg, #071426, #0A1E3D)", 
+    <section className="anatomy-3d-section" style={{ 
+      background: "linear-gradient(180deg, #0F172A 0%, #1E3A8A 50%, #0284C7 100%)", 
       padding: "90px 0", 
       position: "relative",
       overflow: "hidden"
@@ -216,7 +217,7 @@ export function AnatomyViewer3D() {
             <div style={{ width: 24, height: 1, background: "rgba(13,148,136,0.4)" }} />
             <span style={{ 
               fontSize: 11, 
-              fontFamily: "'DM Sans', sans-serif", 
+              fontFamily: "'Roboto', sans-serif", 
               fontWeight: 600, 
               letterSpacing: "0.12em", 
               textTransform: "uppercase", 
@@ -225,7 +226,7 @@ export function AnatomyViewer3D() {
             <div style={{ width: 24, height: 1, background: "rgba(13,148,136,0.4)" }} />
           </div>
           <h2 style={{ 
-            fontFamily: "'Playfair Display', serif", 
+            fontFamily: "'Poppins', sans-serif", 
             fontSize: "clamp(26px, 3.8vw, 40px)", 
             fontWeight: 700, 
             color: "#fff", 
@@ -234,7 +235,7 @@ export function AnatomyViewer3D() {
             letterSpacing: "-0.02em" 
           }}>3D Cardiovascular System</h2>
           <p style={{ 
-            fontFamily: "'DM Sans', sans-serif", 
+            fontFamily: "'Roboto', sans-serif", 
             fontSize: 15, 
             color: "rgba(255,255,255,0.5)", 
             maxWidth: 640, 
@@ -284,7 +285,7 @@ export function AnatomyViewer3D() {
               }}>
                 {/* High-Quality 3D Human Body Image */}
                 <img 
-                  src="/body-3d.png" 
+                  src={body3d} 
                   alt="3D Human Anatomy" 
                   style={{
                     height: "100%",
@@ -294,6 +295,7 @@ export function AnatomyViewer3D() {
                     display: "block",
                     userSelect: "none",
                     pointerEvents: "none"
+                    ,draggable:false
                   }}
                 />
 
@@ -377,7 +379,7 @@ export function AnatomyViewer3D() {
                       fontSize: "clamp(9px, 1.5vw, 11px)",
                       fontWeight: 600,
                       color: "#fff",
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', sans-serif",
                       whiteSpace: "nowrap",
                       opacity: activeHotspot === key ? 1 : 0,
                       pointerEvents: activeHotspot === key ? "auto" : "none",
@@ -403,7 +405,7 @@ export function AnatomyViewer3D() {
                 borderRadius: 8,
                 fontSize: 11,
                 color: "rgba(255,255,255,0.5)",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 display: "flex",
                 alignItems: "center",
                 gap: 8
@@ -482,14 +484,14 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
             </div>
             <div>
               <h3 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Poppins', sans-serif",
                 fontSize: 24,
                 fontWeight: 700,
                 color: "#fff",
                 marginBottom: 4
               }}>{hotspot.label}</h3>
               <p style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
                 fontSize: 13,
                 color: hotspot.color,
                 fontWeight: 600
@@ -524,7 +526,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
           </button>
         </div>
         <p style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Roboto', sans-serif",
           fontSize: 14,
           color: "rgba(255,255,255,0.6)",
           lineHeight: 1.6
@@ -547,7 +549,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
             color: "#fff",
             fontSize: 14,
             fontWeight: 600,
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', sans-serif",
             cursor: isPlaying ? "not-allowed" : "pointer",
             display: "flex",
             alignItems: "center",
@@ -565,7 +567,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
       {/* Procedure Steps */}
       <div style={{ marginBottom: 24 }}>
         <h4 style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Roboto', sans-serif",
           fontSize: 12,
           fontWeight: 600,
           color: "rgba(255,255,255,0.4)",
@@ -605,7 +607,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
                   fontSize: 13,
                   fontWeight: 700,
                   color: "#fff",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   flexShrink: 0,
                   transition: "all 0.3s"
                 }}>
@@ -613,7 +615,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: 14,
                     fontWeight: 600,
                     color: index <= animationStep && isPlaying ? "#fff" : "rgba(255,255,255,0.8)",
@@ -621,7 +623,7 @@ function ProcedurePanel({ hotspot, animationStep, isPlaying, onPlay, onClose }) 
                     transition: "color 0.3s"
                   }}>{step.title}</div>
                   <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', sans-serif",
                     fontSize: 12,
                     color: "rgba(255,255,255,0.5)",
                     lineHeight: 1.5
@@ -673,7 +675,7 @@ function InstructionsPanel() {
       height: "100%"
     }}>
       <h3 style={{
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "'Poppins', sans-serif",
         fontSize: 24,
         fontWeight: 700,
         color: "#fff",
@@ -697,14 +699,14 @@ function InstructionsPanel() {
               <item.icon size={28} color="#5EEAD4" style={{ flexShrink: 0 }} />
               <div>
                 <div style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontSize: 15,
                   fontWeight: 600,
                   color: "#fff",
                   marginBottom: 6
                 }}>{item.title}</div>
                 <div style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', sans-serif",
                   fontSize: 13,
                   color: "rgba(255,255,255,0.5)",
                   lineHeight: 1.6
@@ -723,7 +725,7 @@ function InstructionsPanel() {
         borderRadius: 12
       }}>
         <div style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Roboto', sans-serif",
           fontSize: 12,
           color: "#5EEAD4",
           textAlign: "center",
@@ -742,7 +744,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
   if (type === "vein-ablation") {
     return (
       <svg viewBox="0 0 300 200" style={{ width: "100%", height: "auto" }}>
-        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="DM Sans" fontWeight="600">
+        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="Roboto" fontWeight="600">
           LASER VEIN ABLATION
         </text>
         
@@ -790,7 +792,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
           </>
         )}
         
-        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="DM Sans">
+        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Roboto">
           Laser energy seals the vein from inside
         </text>
       </svg>
@@ -800,7 +802,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
   if (type === "thyroid-ablation") {
     return (
       <svg viewBox="0 0 300 200" style={{ width: "100%", height: "auto" }}>
-        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="DM Sans" fontWeight="600">
+        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="Roboto" fontWeight="600">
           THYROID RADIOFREQUENCY ABLATION
         </text>
         
@@ -845,7 +847,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
           </>
         )}
         
-        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="DM Sans">
+        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Roboto">
           RF energy destroys nodule tissue without surgery
         </text>
       </svg>
@@ -855,7 +857,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
   if (type === "embolisation") {
     return (
       <svg viewBox="0 0 300 200" style={{ width: "100%", height: "auto" }}>
-        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="DM Sans" fontWeight="600">
+        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="Roboto" fontWeight="600">
           EMBOLISATION PROCEDURE
         </text>
         
@@ -908,7 +910,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
           </>
         )}
         
-        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="DM Sans">
+        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Roboto">
           Tiny particles block blood supply to target tissue
         </text>
       </svg>
@@ -918,7 +920,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
   if (type === "angioplasty") {
     return (
       <svg viewBox="0 0 300 200" style={{ width: "100%", height: "auto" }}>
-        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="DM Sans" fontWeight="600">
+        <text x="150" y="20" textAnchor="middle" fill={color} fontSize="11" fontFamily="Roboto" fontWeight="600">
           BALLOON ANGIOPLASTY & STENTING
         </text>
         
@@ -973,7 +975,7 @@ function MedicalIllustration({ type, color, isAnimating }) {
           />
         )}
         
-        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="DM Sans">
+        <text x="150" y="180" textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="10" fontFamily="Roboto">
           Balloon opens artery, stent keeps it open
         </text>
       </svg>

@@ -2,21 +2,17 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
 import Counter from '../common/Counter';
-import { DOC, IMG } from '../../config/data';
+import { DOC, IMG, galleryImages } from '../../config/data';
 import { Building2, GraduationCap, Globe, MapPin } from 'lucide-react';
 
-const GALLERY = [
-    { img: DOC.photo, label: "Dr. Harsha M T" },
-    { img: DOC.photoScrubs, label: "Performing Procedures" },
-    { img: DOC.photoApron, label: "In Consultation" },
-    // { img: IMG.gallery1, label: "Procedure in Progress" },
-    { img: IMG.gallery2, label: "Post-procedure Consultation" },
-    { img: IMG.gallery3, label: "Conference Presentation" },
-];
+const rawGallery = Object.values(galleryImages[0]);
+const GALLERY = rawGallery.map((img, idx) => ({
+    img: img,
+}));
 
 const TRAINING = [
     { inst: "PGIMER", loc: "Chandigarh", icon: <Building2 size={32} strokeWidth={1.5} color="#2563EB" />, degree: "MD Radio-diagnosis & IR" },
-    { inst: "AIIMS", loc: "Rishikesh", icon: <GraduationCap size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Fellowship VIR" },
+    { inst: "AIIMS", loc: "", icon: <GraduationCap size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Fellowship VIR" },
     { inst: "SNUH", loc: "South Korea", icon: <Globe size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Fellowship VIR" },
     { inst: "IEO", loc: "Milan, Italy", icon: <MapPin size={32} strokeWidth={1.5} color="#2563EB" />, degree: "Thyroid Thermal Ablation" },
 ];
@@ -154,9 +150,9 @@ export default function About() {
                             padding: "24px", color: "#fff",
                             boxShadow: "0 10px 30px rgba(37,99,235,0.2)"
                         }}>
-                            <div style={{ fontSize: 18, fontWeight: 800, fontFamily: "'Poppins', sans-serif", marginBottom: 8 }}>Director – Venuva Vascular Center</div>
-                            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontFamily: "'Roboto', sans-serif", lineHeight: 1.7 }}>
-                                Dr Harsha M T leads Venuva Vascular Center, a specialized facility focused on minimally invasive vascular and interventional radiology treatments through pinhole-sized access.
+                            {/* <div style={{ fontSize: 18, fontWeight: 800, fontFamily: "'Poppins', sans-serif", marginBottom: 8 }}>Director – Venuva Vascular Center</div>  */}
+                             <div style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontFamily: "'Roboto', sans-serif", lineHeight: 1.7 }}>
+                                Dr Harsha M T practices at Venuva Vascular Center, Malleshwaram, Bengaluru and Sparsh Hospital(Infantry Road and Yelahanka, Bengaluru).
                             </div>
                         </div>
                     </FadeIn>
@@ -319,7 +315,7 @@ export default function About() {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.4 }}
-                                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
                                     />
                                 </AnimatePresence>
                                 <div style={{
@@ -327,10 +323,6 @@ export default function About() {
                                     background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%)",
                                     padding: "30px 20px 16px"
                                 }}>
-                                    <div style={{
-                                        fontSize: 15, fontWeight: 600, color: "#fff",
-                                        fontFamily: "'Poppins', sans-serif"
-                                    }}>{GALLERY[galleryIdx].label}</div>
                                 </div>
                             </div>
 

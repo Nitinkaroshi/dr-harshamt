@@ -257,7 +257,7 @@ export default function BlogPage({ id, onBack }) {
                             color: "rgba(7,20,38,0.5)",
                             fontFamily: "'Roboto', sans-serif",
                             lineHeight: 1.5
-                        }}>Consultant Vascular & Interventional Radiologist<br />MBBS • MD (PGIMER) • FVIR (AIIMS Rishikesh) • EBIR • EDiR</div>
+                        }}>Consultant Vascular & Interventional Radiologist<br />MBBS • MD (PGIMER) • FVIR (AIIMS ) • EBIR • EDiR</div>
                     </div>
                 </div>
             </div>

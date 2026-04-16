@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import FadeIn from '../common/FadeIn';
 import { DOC, SERVICES } from '../../config/data';
@@ -43,37 +44,33 @@ export default function ContactSection() {
         setForm(prev => ({ ...prev, [field]: value }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus("submitting");
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
 
-        try {
-            const res = await fetch("/api/book", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: form.name,
-                    phone: form.phone,
-                    condition: form.condition || "",
-                    message: form.message || "",
-                })
-            });
+    try {
+        const res = await axios.post("/api/contact", {
+            name: form.name,
+            phone: form.phone,
+            condition: form.condition || "General Inquiry",
+            message: form.message || "",
+        });
 
-            const data = await res.json();
-
-            if (data.success) {
-                setStatus("sent");
-                setForm({ name: "", phone: "", condition: "", message: "" });
-                setTimeout(() => setStatus("idle"), 6000);
-            } else {
-                setStatus("error");
-                setTimeout(() => setStatus("idle"), 4000);
-            }
-        } catch {
+        if (res.status === 200 && res.data.success) {
+            setStatus("sent");
+            setForm({ name: "", phone: "", condition: "", message: "" });
+            setTimeout(() => setStatus("idle"), 6000);
+        } else {
+            console.error("Server returned success: false");
             setStatus("error");
             setTimeout(() => setStatus("idle"), 4000);
         }
-    };
+    } catch (err) {
+        console.error("Network/System Error:", err);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+    }
+};
 
     return (
         <section id="contact" style={{

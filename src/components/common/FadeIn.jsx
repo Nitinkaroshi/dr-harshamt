@@ -34,7 +34,7 @@ export default function FadeIn({ children, delay = 0, immediate = false, style: 
                 ...extraStyle,
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
         >
             {children}

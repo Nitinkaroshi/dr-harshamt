@@ -344,6 +344,9 @@ section {
   .mob-menu-container {
     display: block !important;
   }
+  .anatomy-3d-section {
+    display: none !important;
+  }
 }
 
 /* Failsafe for mobile menu on desktop */
