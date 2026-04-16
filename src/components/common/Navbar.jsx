@@ -57,7 +57,7 @@ export default function Navbar({ onNav }) {
             setMobileOpen(false);
             setMobileServicesOpen(false);
         }
-        
+
         if (href.startsWith("/")) {
             const p = href.substring(1);
             const isTargetPage = window.location.pathname === href;
@@ -113,7 +113,7 @@ export default function Navbar({ onNav }) {
             }}>
 
 
-                 {/* Center: Logo */}
+                {/* Center: Logo */}
                 <div
                     style={{
                         display: "flex",
@@ -141,16 +141,16 @@ export default function Navbar({ onNav }) {
                         minWidth: 0,
                         overflow: "hidden"
                     }}>DR. HARSHA M T
-                     <p style={{ 
-                            fontSize: isMobile ? 10 : 13, 
-                            fontFamily:"'Roboto', sans-serif",
-                            color: "#1668dbff", 
-                            lineHeight: 1, 
+                        <p style={{
+                            fontSize: isMobile ? 10 : 13,
+                            fontFamily: "'Roboto', sans-serif",
+                            color: "#1668dbff",
+                            lineHeight: 1,
                             maxWidth: isMobile ? 140 : 260,
                             letterSpacing: isMobile ? 0.2 : 0.5,
                             margin: 0,
                             fontWeight: 900,
-                           
+
                         }}>
                             {/* {DOC.tagline} */}
                             Interventional Radiologist
@@ -174,7 +174,7 @@ export default function Navbar({ onNav }) {
                                 key={n.href}
                                 onMouseEnter={isServices ? handleMouseEnter : undefined}
                                 onMouseLeave={isServices ? handleMouseLeave : undefined}
-                                style={{ position: "static"}}
+                                style={{ position: "static" }}
                             >
                                 <button
                                     onClick={() => navigate(n.href)}
@@ -192,7 +192,7 @@ export default function Navbar({ onNav }) {
                                         display: "flex",
                                         alignItems: "center",
                                         gap: 4,
-                                    
+
                                     }}
                                 >
                                     {n.label}
@@ -206,10 +206,9 @@ export default function Navbar({ onNav }) {
 
                 <div style={{
                     flex: 1,
-                    display: "flex",
+                    display: isMobile ? "none" : "flex",
                     justifyContent: "flex-end",
-                    paddingRight: 6,
-                    display: isMobile ? "none" : "flex"
+                    paddingRight: 6
                 }} className="desk-nav">
                     <motion.button
                         whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(2, 132, 199, 0.4)" }}
@@ -244,8 +243,7 @@ export default function Navbar({ onNav }) {
                         justifyContent: "center",
                         height: 40,
                         width: 40,
-                        paddingTop: 4,
-                        background: "#111827",
+                        background: "#081c47ff",
                         border: "1px solid rgba(255,255,255,0.1)",
                         color: "#fff",
                         borderRadius: 14,
