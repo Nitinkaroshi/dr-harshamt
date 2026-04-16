@@ -140,6 +140,7 @@ export default function Navbar({ onNav }) {
                             color: "LinkText", 
                             lineHeight: 0.5, 
                             maxWidth: 260,
+                            letterSpacing:0.5
                         }}>
                             {/* {DOC.tagline} */}
                             Interventional Radiologist
